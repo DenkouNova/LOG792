@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="ImageExtractCondSet" table="ImgExtr_Cond_Set">
+    <id name="Cond_Set_Id">
+      <generator class="increment" />
+    </id>
+
+    <!-- N-N relationship between conditions and sets -->
+    <set name="ImageExtractConditions" table="ImgExtr_Cond_Set_Conditions" cascade="all">
+      <key column="Cond_Set_Id"/>
+      <many-to-many column="Condition_Id" class="ImageExtractCondition"/>
+    </set>
+
+    <!-- N-N relationship between sets and image extract configs -->
+    <set name="ImageExtractConfigs" table="ImgExtr_Cond_Set_Configs" cascade="all">
+      <key column="Cond_Set_Id"/>
+      <many-to-many column="ImgExtr_Config_Id" class="ImageExtractConfig"/>
+    </set>
+    
+  </class>
+
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="ImageExtractConfig" table="ImgExtr_Config">
+    <id name="ImgExtr_Config_Id">
+      <generator class="increment" />
+    </id>
+
+    <property name="Image_Naming" />
+    <property name="Encoding_Config_Path" />
+    <property name="Endorsement_Config_Path" />
+
+    <!--
+    <set name="ConditionSets">
+      <key column="image_extract_id"/>
+      <one-to-many class="ImageExtractConditionSet"/>
+    </set>
+    -->
+    
+    <many-to-one name="statement" class="StatementDefinition" column="STATEMENT_ID"/>
+
+    <many-to-one name="imageExtractArchive" class="ImageExtractArchive" column="ImgExtr_Config_Id"/>
+
+
+</class>
+
+</hibernate-mapping>

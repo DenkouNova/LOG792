@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="StatementDefinition" table="Statement_Definition">
+    <id name="Statement_Id">
+      <generator class="assigned" />
+    </id>
+
+    <property name="Description" />
+
+    <many-to-one name="site" class="CaptureSiteDefinition" column="HOME_SITE"/>
+
+    <set name="Batches" inverse="false">
+      <key>
+        <column name="Statement_Id"/>
+      </key>
+      <one-to-many class="CaptureBatch"/>
+    </set>
+    
+    
+  </class>
+
+</hibernate-mapping>

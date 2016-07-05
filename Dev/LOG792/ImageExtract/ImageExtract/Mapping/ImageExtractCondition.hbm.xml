@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="ImageExtractCondition" table="ImgExtr_Condition">
+    <id name="Condition_Id">
+      <generator class="increment" />
+    </id>
+
+    <property name="Description" />
+    <property name="Where_Clause" />
+
+    <!-- N-N relationship between conditions and categories -->
+    <set name="ImageExtractConditionCategories" table="ImgExtr_Cond_Cat_Conditions" cascade="all">
+      <key column="Condition_Id"/>
+      <many-to-many column="Cond_Category_Id" class="ImageExtractCondCategory"/>
+    </set>
+
+    <!-- N-N relationship between conditions and sets -->
+    <set name="ImageExtractConditionSets" table="ImgExtr_Cond_Set_Conditions" cascade="all">
+      <key column="Condition_Id"/>
+      <many-to-many column="Cond_Set_Id" class="ImageExtractCondSet"/>
+    </set>
+
+  </class>
+
+</hibernate-mapping>

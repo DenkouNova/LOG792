@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="ItemPayment" table="Item_Payment">
+
+    <composite-id name="ItemPaymentIdentifier" class="ItemPaymentIdentifier">
+      <key-property name="Batch_Seq"/>
+      <key-property name="Item_Ref"/>
+    </composite-id>
+    
+    <property name="Payment_Amount" />
+    <property name="Image_File_Front" />
+    <property name="Image_File_Rear" />
+    <property name="Item_Source" />
+    <property name="Item_Status" />
+    <property name="Matched_Payment_Seq" />
+    <property name="Text_1" />
+    <property name="Bank_Account" />
+    <property name="Check_No" />
+
+    <many-to-one name="batch" class="CaptureBatch" insert="false" update="false">
+      <column name="Batch_Seq" />
+    </many-to-one>
+
+</class>
+
+</hibernate-mapping>

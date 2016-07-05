@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="MatchedPayment" table="Matched_Payment">
+
+    <composite-id name="MatchedPaymentIdentifier" class="MatchedPaymentIdentifier">
+      <key-property name="Batch_Seq"/>
+      <key-property name="Matched_Payment_Seq"/>
+    </composite-id>
+    
+    <property name="Matched_Payment_Status" />
+
+    <many-to-one name="batch" class="CaptureBatch" insert="false" update="false">
+      <column name="Batch_Seq" />
+    </many-to-one> 
+
+
+</class>
+
+</hibernate-mapping>

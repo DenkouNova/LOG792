@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="CaptureBatch" table="Capture_Batch">
+    <id name="Batch_Seq">
+      <generator class="increment" />
+    </id>
+
+    <property name="Capture_Date" />
+    <property name="Capture_Id" />
+    <property name="Capture_Type_Item" />
+    <property name="Client_Batch_Ref_Number" />
+    <property name="Custom_Batch_Number" />
+    <property name="Exception_Batch" />
+    <property name="Reprocessing_Batch" />
+
+    <many-to-one name="statement" class="StatementDefinition" column="STATEMENT_ID"/>
+
+    <set name="MatchedPayments" inverse="true">
+      <key>
+        <column name="Batch_Seq"/>
+      </key>
+      <one-to-many class="MatchedPayment"/>
+    </set>
+    
+    <set name="ItemPayments" inverse="true">
+      <key>
+        <column name="Batch_Seq"/>
+      </key>
+      <one-to-many class="ItemPayment"/>
+    </set>
+
+    <set name="ItemStatements" inverse="true">
+      <key>
+        <column name="Batch_Seq"/>
+      </key>
+      <one-to-many class="ItemStatement"/>
+    </set>
+
+</class>
+
+</hibernate-mapping>

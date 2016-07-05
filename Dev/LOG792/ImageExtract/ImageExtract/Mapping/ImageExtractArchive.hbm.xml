@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="ImageExtractArchive" table="ImgExtr_Archive">
+    <id name="ImgExtr_Config_Id">
+      <generator class="assigned" />
+    </id>
+
+    <property name="Archive_Naming" />
+    <property name="Archive_Type" />
+
+    <one-to-one name="imageExtractConfig" class="ImageExtractConfig"/>
+    
+    
+  </class>
+
+</hibernate-mapping>
