@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInclusion = new System.Windows.Forms.TabPage();
             this.tlpImageInclusion = new System.Windows.Forms.TableLayoutPanel();
@@ -54,12 +54,15 @@
             this.tabPageSeparation = new System.Windows.Forms.TabPage();
             this.tabPageAccompanying = new System.Windows.Forms.TabPage();
             this.tabPageArchive = new System.Windows.Forms.TabPage();
+            this.tabPageOtherOptions = new System.Windows.Forms.TabPage();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.flpChooseImageExtractConfig = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.comboChooseImageExtract = new System.Windows.Forms.ComboBox();
             this.btnNewConfig = new System.Windows.Forms.Button();
             this.btnDeleteConfig = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cbEnableImageExtractConfiguration = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageInclusion.SuspendLayout();
             this.tlpImageInclusion.SuspendLayout();
@@ -70,8 +73,10 @@
             this.pImageInclusionConditionCategoryButtons.SuspendLayout();
             this.tlpImageInclusionConditionCategoryButtons.SuspendLayout();
             this.flpLoadConditionsButtons.SuspendLayout();
+            this.tabPageOtherOptions.SuspendLayout();
             this.tlpMain.SuspendLayout();
             this.flpChooseImageExtractConfig.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,15 +85,14 @@
             this.tabControl1.Controls.Add(this.tabPageSeparation);
             this.tabControl1.Controls.Add(this.tabPageAccompanying);
             this.tabControl1.Controls.Add(this.tabPageArchive);
+            this.tabControl1.Controls.Add(this.tabPageOtherOptions);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(3, 45);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1292, 620);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
             // 
             // tabPageInclusion
             // 
@@ -128,14 +132,14 @@
             this.dgvImageInclusion.AllowUserToResizeColumns = false;
             this.dgvImageInclusion.AllowUserToResizeRows = false;
             this.dgvImageInclusion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvImageInclusion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvImageInclusion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvImageInclusion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImageInclusion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.BSeq,
@@ -143,14 +147,14 @@
             this.IRef,
             this.Side,
             this.Image});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvImageInclusion.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvImageInclusion.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvImageInclusion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvImageInclusion.EnableHeadersVisualStyles = false;
             this.dgvImageInclusion.Location = new System.Drawing.Point(3, 3);
@@ -210,12 +214,11 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 3);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 13);
+            this.label4.Size = new System.Drawing.Size(830, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "Image condition sets";
             // 
@@ -359,6 +362,16 @@
             this.tabPageArchive.TabIndex = 3;
             this.tabPageArchive.Text = "Archive regrouping";
             // 
+            // tabPageOtherOptions
+            // 
+            this.tabPageOtherOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageOtherOptions.Controls.Add(this.tableLayoutPanel1);
+            this.tabPageOtherOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOtherOptions.Name = "tabPageOtherOptions";
+            this.tabPageOtherOptions.Size = new System.Drawing.Size(1284, 594);
+            this.tabPageOtherOptions.TabIndex = 4;
+            this.tabPageOtherOptions.Text = "Other options";
+            // 
             // tlpMain
             // 
             this.tlpMain.ColumnCount = 1;
@@ -427,6 +440,35 @@
             this.btnDeleteConfig.Text = "Delete IE config";
             this.btnDeleteConfig.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel1.Controls.Add(this.cbEnableImageExtractConfiguration, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 594);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // cbEnableImageExtractConfiguration
+            // 
+            this.cbEnableImageExtractConfiguration.AutoSize = true;
+            this.cbEnableImageExtractConfiguration.Location = new System.Drawing.Point(347, 23);
+            this.cbEnableImageExtractConfiguration.Name = "cbEnableImageExtractConfiguration";
+            this.cbEnableImageExtractConfiguration.Size = new System.Drawing.Size(210, 17);
+            this.cbEnableImageExtractConfiguration.TabIndex = 0;
+            this.cbEnableImageExtractConfiguration.Text = "Enable this Image Extract configuration";
+            this.cbEnableImageExtractConfiguration.UseVisualStyleBackColor = true;
+            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,7 +482,6 @@
             this.tlpImageInclusion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvImageInclusion)).EndInit();
             this.flpImageInclusionConditionSets.ResumeLayout(false);
-            this.flpImageInclusionConditionSets.PerformLayout();
             this.tlpImageInclusionButtons.ResumeLayout(false);
             this.flpLoadExampleBatches.ResumeLayout(false);
             this.flpLoadExampleBatches.PerformLayout();
@@ -448,8 +489,11 @@
             this.tlpImageInclusionConditionCategoryButtons.ResumeLayout(false);
             this.tlpImageInclusionConditionCategoryButtons.PerformLayout();
             this.flpLoadConditionsButtons.ResumeLayout(false);
+            this.tabPageOtherOptions.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
             this.flpChooseImageExtractConfig.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -486,5 +530,8 @@
         private System.Windows.Forms.Button btnDeleteConfig;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TabPage tabPageOtherOptions;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox cbEnableImageExtractConfiguration;
     }
 }

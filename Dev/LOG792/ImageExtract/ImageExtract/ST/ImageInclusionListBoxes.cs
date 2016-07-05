@@ -18,5 +18,21 @@ namespace ImageExtract.ST
 
 
 
+        public void AddToIncludeBox(object o)
+        {
+            this.lbInclude.Items.Add(o);
+        }
+
+        public void AddToAllItemsBox(object o)
+        {
+            this.lbAllItems.Items.Add(o);
+        }
+
+        public void AddToExcludeBox(object o)
+        {
+            this.lbExclude.Items.Add(o);
+        }
+
+
     }
 }
