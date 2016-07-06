@@ -215,6 +215,29 @@ namespace ImageExtract.ST
             public bool validated = true;
         }
 
+        private void cbEnableImageExtractConfiguration_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Once this Image Extract configuration is actived, Image Extracts will start being automatically generated for this client." +
+                    "\r\n\r\nWould you like to continue?",
+                "Activate this configuration?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            MessageBox.Show(
+                "Once this Image Extract configuration is disactived, Image Extracts will no longer be automatically generated for this client." +
+                    "\r\n\r\nWould you like to continue?",
+                "Disactivate this configuration?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        }
+
+        private void btnLoadExampleBatches_Click(object sender, EventArgs e)
+        {
+            new LoadExampleImages().Show();
+        }
+
 
 
     }

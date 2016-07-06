@@ -1,0 +1,7 @@
+
+2016-07-06 08h49
+Doit ajouter CAPTURE_BATCH_SUMMARY au modèle - je dois l'avoir pour avoir le nombre d'items dans l'interface pour sélectionner les batches
+
+Finir le form LoadExampleImages.cs
+
+UC-006 Choisir les images (utiliser LoadExampleImages)

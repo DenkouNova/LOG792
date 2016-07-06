@@ -34,11 +34,6 @@
             this.tabPageInclusion = new System.Windows.Forms.TabPage();
             this.tlpImageInclusion = new System.Windows.Forms.TableLayoutPanel();
             this.dgvImageInclusion = new System.Windows.Forms.DataGridView();
-            this.BSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Side = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.flpImageInclusionConditionSets = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,14 +50,20 @@
             this.tabPageAccompanying = new System.Windows.Forms.TabPage();
             this.tabPageArchive = new System.Windows.Forms.TabPage();
             this.tabPageOtherOptions = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.flpChooseImageExtractConfig = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.comboChooseImageExtract = new System.Windows.Forms.ComboBox();
             this.btnNewConfig = new System.Windows.Forms.Button();
             this.btnDeleteConfig = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbEnableImageExtractConfiguration = new System.Windows.Forms.CheckBox();
+            this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageInclusion.SuspendLayout();
             this.tlpImageInclusion.SuspendLayout();
@@ -76,7 +77,6 @@
             this.tabPageOtherOptions.SuspendLayout();
             this.tlpMain.SuspendLayout();
             this.flpChooseImageExtractConfig.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -142,11 +142,11 @@
             this.dgvImageInclusion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvImageInclusion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImageInclusion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.BSeq,
-            this.MPS,
-            this.IRef,
-            this.Side,
-            this.Image});
+            this.dgvcImageInclusionBSeq,
+            this.dgvcImageInclusionMPS,
+            this.dgvcImageInclusionIRef,
+            this.dgvcImageInclusionSide,
+            this.dgvcImageInclusionImage});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -167,37 +167,6 @@
             this.dgvImageInclusion.Size = new System.Drawing.Size(394, 582);
             this.dgvImageInclusion.TabIndex = 0;
             this.dgvImageInclusion.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageInclusion_Paint);
-            // 
-            // BSeq
-            // 
-            this.BSeq.HeaderText = "BSeq";
-            this.BSeq.Name = "BSeq";
-            this.BSeq.Width = 46;
-            // 
-            // MPS
-            // 
-            this.MPS.HeaderText = "MPS";
-            this.MPS.Name = "MPS";
-            this.MPS.Width = 35;
-            // 
-            // IRef
-            // 
-            this.IRef.HeaderText = "IRef";
-            this.IRef.Name = "IRef";
-            this.IRef.Width = 35;
-            // 
-            // Side
-            // 
-            this.Side.HeaderText = "S";
-            this.Side.Name = "Side";
-            this.Side.Width = 22;
-            // 
-            // Image
-            // 
-            this.Image.HeaderText = "Image";
-            this.Image.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Image.Name = "Image";
-            this.Image.Width = 200;
             // 
             // flpImageInclusionConditionSets
             // 
@@ -279,6 +248,7 @@
             this.btnLoadExampleBatches.TabIndex = 1;
             this.btnLoadExampleBatches.Text = "Load example images";
             this.btnLoadExampleBatches.UseVisualStyleBackColor = true;
+            this.btnLoadExampleBatches.Click += new System.EventHandler(this.btnLoadExampleBatches_Click);
             // 
             // pImageInclusionConditionCategoryButtons
             // 
@@ -365,12 +335,44 @@
             // tabPageOtherOptions
             // 
             this.tabPageOtherOptions.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageOtherOptions.Controls.Add(this.tableLayoutPanel1);
+            this.tabPageOtherOptions.Controls.Add(this.label5);
+            this.tabPageOtherOptions.Controls.Add(this.label6);
+            this.tabPageOtherOptions.Controls.Add(this.button1);
             this.tabPageOtherOptions.Location = new System.Drawing.Point(4, 22);
             this.tabPageOtherOptions.Name = "tabPageOtherOptions";
             this.tabPageOtherOptions.Size = new System.Drawing.Size(1284, 594);
             this.tabPageOtherOptions.TabIndex = 4;
             this.tabPageOtherOptions.Text = "Other options";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(322, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(173, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "This Image Extract Configuration is:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(352, 50);
+            this.label6.Margin = new System.Windows.Forms.Padding(3, 10, 3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 18);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "ACTIVATED";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(339, 84);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(128, 48);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Disactivate this configuration";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tlpMain
             // 
@@ -440,34 +442,36 @@
             this.btnDeleteConfig.Text = "Delete IE config";
             this.btnDeleteConfig.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // dgvcImageInclusionBSeq
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel1.Controls.Add(this.cbEnableImageExtractConfiguration, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1284, 594);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.dgvcImageInclusionBSeq.HeaderText = "BSeq";
+            this.dgvcImageInclusionBSeq.Name = "dgvcImageInclusionBSeq";
+            this.dgvcImageInclusionBSeq.Width = 46;
             // 
-            // cbEnableImageExtractConfiguration
+            // dgvcImageInclusionMPS
             // 
-            this.cbEnableImageExtractConfiguration.AutoSize = true;
-            this.cbEnableImageExtractConfiguration.Location = new System.Drawing.Point(347, 23);
-            this.cbEnableImageExtractConfiguration.Name = "cbEnableImageExtractConfiguration";
-            this.cbEnableImageExtractConfiguration.Size = new System.Drawing.Size(210, 17);
-            this.cbEnableImageExtractConfiguration.TabIndex = 0;
-            this.cbEnableImageExtractConfiguration.Text = "Enable this Image Extract configuration";
-            this.cbEnableImageExtractConfiguration.UseVisualStyleBackColor = true;
+            this.dgvcImageInclusionMPS.HeaderText = "MPS";
+            this.dgvcImageInclusionMPS.Name = "dgvcImageInclusionMPS";
+            this.dgvcImageInclusionMPS.Width = 35;
+            // 
+            // dgvcImageInclusionIRef
+            // 
+            this.dgvcImageInclusionIRef.HeaderText = "IRef";
+            this.dgvcImageInclusionIRef.Name = "dgvcImageInclusionIRef";
+            this.dgvcImageInclusionIRef.Width = 35;
+            // 
+            // dgvcImageInclusionSide
+            // 
+            this.dgvcImageInclusionSide.HeaderText = "S";
+            this.dgvcImageInclusionSide.Name = "dgvcImageInclusionSide";
+            this.dgvcImageInclusionSide.Width = 22;
+            // 
+            // dgvcImageInclusionImage
+            // 
+            this.dgvcImageInclusionImage.HeaderText = "Image";
+            this.dgvcImageInclusionImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvcImageInclusionImage.Name = "dgvcImageInclusionImage";
+            this.dgvcImageInclusionImage.Width = 200;
             // 
             // BaseForm
             // 
@@ -490,10 +494,9 @@
             this.tlpImageInclusionConditionCategoryButtons.PerformLayout();
             this.flpLoadConditionsButtons.ResumeLayout(false);
             this.tabPageOtherOptions.ResumeLayout(false);
+            this.tabPageOtherOptions.PerformLayout();
             this.tlpMain.ResumeLayout(false);
             this.flpChooseImageExtractConfig.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -507,11 +510,6 @@
         private System.Windows.Forms.TabPage tabPageArchive;
         private System.Windows.Forms.TableLayoutPanel tlpImageInclusion;
         private System.Windows.Forms.DataGridView dgvImageInclusion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MPS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IRef;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Side;
-        private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flpImageInclusionConditionSets;
         private System.Windows.Forms.TableLayoutPanel tlpImageInclusionButtons;
@@ -531,7 +529,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPageOtherOptions;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.CheckBox cbEnableImageExtractConfiguration;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionBSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionMPS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionIRef;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionSide;
+        private System.Windows.Forms.DataGridViewImageColumn dgvcImageInclusionImage;
     }
 }
