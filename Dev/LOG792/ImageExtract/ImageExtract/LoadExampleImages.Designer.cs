@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
+            this.dataLoadInInterface = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpConditions = new System.Windows.Forms.TableLayoutPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,43 +45,36 @@
             this.tbCaptureDateLesserThan = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvBatches = new System.Windows.Forms.DataGridView();
-            this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnResetSelection = new System.Windows.Forms.Button();
-            this.btnAddSelection = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvSearchResults = new System.Windows.Forms.DataGridView();
             this.dgvcSearchResultsStatementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsCaptureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsBatchSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsBatchType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsNumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAddSelection = new System.Windows.Forms.Button();
+            this.btnResetSelection = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLoadInInterface)).BeginInit();
             this.tlpConditions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBatches)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.tlpButtons.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpMain
             // 
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Controls.Add(this.dataGridView1, 0, 5);
+            this.tlpMain.Controls.Add(this.dataLoadInInterface, 0, 5);
             this.tlpMain.Controls.Add(this.tlpConditions, 0, 0);
-            this.tlpMain.Controls.Add(this.dgvBatches, 0, 2);
+            this.tlpMain.Controls.Add(this.dgvSearchResults, 0, 2);
             this.tlpMain.Controls.Add(this.tlpButtons, 0, 6);
             this.tlpMain.Controls.Add(this.label5, 0, 1);
             this.tlpMain.Controls.Add(this.label6, 0, 4);
@@ -92,6 +92,65 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tlpMain.Size = new System.Drawing.Size(482, 628);
             this.tlpMain.TabIndex = 0;
+            // 
+            // dataLoadInInterface
+            // 
+            this.dataLoadInInterface.AllowUserToAddRows = false;
+            this.dataLoadInInterface.AllowUserToDeleteRows = false;
+            this.dataLoadInInterface.AllowUserToResizeColumns = false;
+            this.dataLoadInInterface.AllowUserToResizeRows = false;
+            this.dataLoadInInterface.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataLoadInInterface.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewCheckBoxColumn1});
+            this.dataLoadInInterface.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataLoadInInterface.Location = new System.Drawing.Point(3, 425);
+            this.dataLoadInInterface.Name = "dataLoadInInterface";
+            this.dataLoadInInterface.RowHeadersVisible = false;
+            this.dataLoadInInterface.Size = new System.Drawing.Size(476, 139);
+            this.dataLoadInInterface.TabIndex = 7;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Statement ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Capture Date";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Batch Seq";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Batch Type";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Num. of items";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 80;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Use";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewCheckBoxColumn1.Width = 40;
             // 
             // tlpConditions
             // 
@@ -193,27 +252,65 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Capture_Date <";
             // 
-            // dgvBatches
+            // dgvSearchResults
             // 
-            this.dgvBatches.AllowUserToAddRows = false;
-            this.dgvBatches.AllowUserToDeleteRows = false;
-            this.dgvBatches.AllowUserToResizeColumns = false;
-            this.dgvBatches.AllowUserToResizeRows = false;
-            this.dgvBatches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvBatches.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvSearchResults.AllowUserToAddRows = false;
+            this.dgvSearchResults.AllowUserToDeleteRows = false;
+            this.dgvSearchResults.AllowUserToResizeColumns = false;
+            this.dgvSearchResults.AllowUserToResizeRows = false;
+            this.dgvSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvSearchResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcSearchResultsStatementId,
             this.dgvcSearchResultsCaptureDate,
             this.dgvcSearchResultsBatchSeq,
             this.dgvcSearchResultsBatchType,
             this.dgvcSearchResultsNumberOfItems,
             this.dgvcSearchResultsUse});
-            this.dgvBatches.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBatches.Location = new System.Drawing.Point(3, 88);
-            this.dgvBatches.Name = "dgvBatches";
-            this.dgvBatches.RowHeadersVisible = false;
-            this.dgvBatches.Size = new System.Drawing.Size(476, 263);
-            this.dgvBatches.TabIndex = 2;
-            this.dgvBatches.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBatches_CellContentClick);
+            this.dgvSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSearchResults.Location = new System.Drawing.Point(3, 88);
+            this.dgvSearchResults.Name = "dgvSearchResults";
+            this.dgvSearchResults.RowHeadersVisible = false;
+            this.dgvSearchResults.Size = new System.Drawing.Size(476, 263);
+            this.dgvSearchResults.TabIndex = 2;
+            this.dgvSearchResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBatches_CellContentClick);
+            // 
+            // dgvcSearchResultsStatementId
+            // 
+            this.dgvcSearchResultsStatementId.HeaderText = "Statement ID";
+            this.dgvcSearchResultsStatementId.Name = "dgvcSearchResultsStatementId";
+            this.dgvcSearchResultsStatementId.Width = 80;
+            // 
+            // dgvcSearchResultsCaptureDate
+            // 
+            this.dgvcSearchResultsCaptureDate.HeaderText = "Capture Date";
+            this.dgvcSearchResultsCaptureDate.Name = "dgvcSearchResultsCaptureDate";
+            this.dgvcSearchResultsCaptureDate.Width = 80;
+            // 
+            // dgvcSearchResultsBatchSeq
+            // 
+            this.dgvcSearchResultsBatchSeq.HeaderText = "Batch Seq";
+            this.dgvcSearchResultsBatchSeq.Name = "dgvcSearchResultsBatchSeq";
+            this.dgvcSearchResultsBatchSeq.Width = 70;
+            // 
+            // dgvcSearchResultsBatchType
+            // 
+            this.dgvcSearchResultsBatchType.HeaderText = "Batch Type";
+            this.dgvcSearchResultsBatchType.Name = "dgvcSearchResultsBatchType";
+            this.dgvcSearchResultsBatchType.Width = 120;
+            // 
+            // dgvcSearchResultsNumberOfItems
+            // 
+            this.dgvcSearchResultsNumberOfItems.HeaderText = "Num. of items";
+            this.dgvcSearchResultsNumberOfItems.Name = "dgvcSearchResultsNumberOfItems";
+            this.dgvcSearchResultsNumberOfItems.Width = 80;
+            // 
+            // dgvcSearchResultsUse
+            // 
+            this.dgvcSearchResultsUse.HeaderText = "Use";
+            this.dgvcSearchResultsUse.Name = "dgvcSearchResultsUse";
+            this.dgvcSearchResultsUse.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcSearchResultsUse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvcSearchResultsUse.Width = 40;
             // 
             // tlpButtons
             // 
@@ -237,26 +334,14 @@
             this.tlpButtons.Size = new System.Drawing.Size(476, 55);
             this.tlpButtons.TabIndex = 3;
             // 
-            // btnResetSelection
+            // btnOK
             // 
-            this.btnResetSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnResetSelection.Location = new System.Drawing.Point(260, 3);
-            this.btnResetSelection.Name = "btnResetSelection";
-            this.btnResetSelection.Size = new System.Drawing.Size(72, 40);
-            this.btnResetSelection.TabIndex = 0;
-            this.btnResetSelection.Text = "Reset selection";
-            this.btnResetSelection.UseCompatibleTextRendering = true;
-            this.btnResetSelection.UseVisualStyleBackColor = true;
-            // 
-            // btnAddSelection
-            // 
-            this.btnAddSelection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddSelection.Location = new System.Drawing.Point(147, 3);
-            this.btnAddSelection.Name = "btnAddSelection";
-            this.btnAddSelection.Size = new System.Drawing.Size(72, 40);
-            this.btnAddSelection.TabIndex = 1;
-            this.btnAddSelection.Text = "Add selection";
-            this.btnAddSelection.UseVisualStyleBackColor = true;
+            this.btnOK.Location = new System.Drawing.Point(153, 3);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(72, 48);
+            this.btnOK.TabIndex = 3;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -266,15 +351,6 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(153, 3);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(72, 48);
-            this.btnOK.TabIndex = 3;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -317,102 +393,27 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(480, 46);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // dgvcSearchResultsStatementId
+            // btnAddSelection
             // 
-            this.dgvcSearchResultsStatementId.HeaderText = "Statement ID";
-            this.dgvcSearchResultsStatementId.Name = "dgvcSearchResultsStatementId";
-            this.dgvcSearchResultsStatementId.Width = 80;
+            this.btnAddSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddSelection.Location = new System.Drawing.Point(147, 3);
+            this.btnAddSelection.Name = "btnAddSelection";
+            this.btnAddSelection.Size = new System.Drawing.Size(72, 40);
+            this.btnAddSelection.TabIndex = 1;
+            this.btnAddSelection.Text = "Add selection";
+            this.btnAddSelection.UseVisualStyleBackColor = true;
+            this.btnAddSelection.Click += new System.EventHandler(this.btnAddSelection_Click);
             // 
-            // dgvcSearchResultsCaptureDate
+            // btnResetSelection
             // 
-            this.dgvcSearchResultsCaptureDate.HeaderText = "Capture Date";
-            this.dgvcSearchResultsCaptureDate.Name = "dgvcSearchResultsCaptureDate";
-            this.dgvcSearchResultsCaptureDate.Width = 80;
-            // 
-            // dgvcSearchResultsBatchSeq
-            // 
-            this.dgvcSearchResultsBatchSeq.HeaderText = "Batch Seq";
-            this.dgvcSearchResultsBatchSeq.Name = "dgvcSearchResultsBatchSeq";
-            this.dgvcSearchResultsBatchSeq.Width = 70;
-            // 
-            // dgvcSearchResultsBatchType
-            // 
-            this.dgvcSearchResultsBatchType.HeaderText = "Batch Type";
-            this.dgvcSearchResultsBatchType.Name = "dgvcSearchResultsBatchType";
-            this.dgvcSearchResultsBatchType.Width = 120;
-            // 
-            // dgvcSearchResultsNumberOfItems
-            // 
-            this.dgvcSearchResultsNumberOfItems.HeaderText = "Num. of items";
-            this.dgvcSearchResultsNumberOfItems.Name = "dgvcSearchResultsNumberOfItems";
-            this.dgvcSearchResultsNumberOfItems.Width = 80;
-            // 
-            // dgvcSearchResultsUse
-            // 
-            this.dgvcSearchResultsUse.HeaderText = "Use";
-            this.dgvcSearchResultsUse.Name = "dgvcSearchResultsUse";
-            this.dgvcSearchResultsUse.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcSearchResultsUse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgvcSearchResultsUse.Width = 40;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewCheckBoxColumn1});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 425);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(476, 139);
-            this.dataGridView1.TabIndex = 7;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Statement ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Capture Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Batch Seq";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Batch Type";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Num. of items";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 80;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Use";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 40;
+            this.btnResetSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnResetSelection.Location = new System.Drawing.Point(260, 3);
+            this.btnResetSelection.Name = "btnResetSelection";
+            this.btnResetSelection.Size = new System.Drawing.Size(72, 40);
+            this.btnResetSelection.TabIndex = 0;
+            this.btnResetSelection.Text = "Reset selection";
+            this.btnResetSelection.UseCompatibleTextRendering = true;
+            this.btnResetSelection.UseVisualStyleBackColor = true;
             // 
             // LoadExampleImages
             // 
@@ -424,12 +425,12 @@
             this.Text = "Load example images";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLoadInInterface)).EndInit();
             this.tlpConditions.ResumeLayout(false);
             this.tlpConditions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBatches)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).EndInit();
             this.tlpButtons.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -446,7 +447,7 @@
         private System.Windows.Forms.TextBox tbCaptureDateGreaterThan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbCaptureDateLesserThan;
-        private System.Windows.Forms.DataGridView dgvBatches;
+        private System.Windows.Forms.DataGridView dgvSearchResults;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
         private System.Windows.Forms.Button btnResetSelection;
         private System.Windows.Forms.Button btnAddSelection;
@@ -461,7 +462,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsBatchType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsNumberOfItems;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcSearchResultsUse;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataLoadInInterface;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;

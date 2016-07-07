@@ -77,18 +77,19 @@ namespace ImageExtract.ST
             Image img = new Bitmap(@"D:\Cossins\Documents\ETS\LOG792\Images\cheque.tif");
 
             // Set image last column to width
-            this.dgvImageInclusion.Columns["Image"].Width =
+            this.dgvImageInclusion.Columns[this.dgvcImageInclusionImage.Name].Width =
                 this.dgvImageInclusion.Width - 20 -
-                this.dgvImageInclusion.Columns["Side"].Width -
-                this.dgvImageInclusion.Columns["IRef"].Width -
-                this.dgvImageInclusion.Columns["MPS"].Width -
-                this.dgvImageInclusion.Columns["BSeq"].Width;
+                this.dgvImageInclusion.Columns[this.dgvcImageInclusionSide.Name].Width -
+                this.dgvImageInclusion.Columns[this.dgvcImageInclusionIRef.Name].Width -
+                this.dgvImageInclusion.Columns[this.dgvcImageInclusionMPS.Name].Width -
+                this.dgvImageInclusion.Columns[this.dgvcImageInclusionBSeq.Name].Width;
 
+            /*
             for (int i = 0; i < 50; i++)
             {
                 this.dgvImageInclusion.Rows.Add(256001, (100 + i).ToString(), (i * 100).ToString(), (i % 2 == 0 ? "F" : "R"), null);
-                ((DataGridViewImageCell)this.dgvImageInclusion.Rows[i].Cells["Image"]).Value = img;
-            }
+                ((DataGridViewImageCell)this.dgvImageInclusion.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
+            }*/
         }
 
 
