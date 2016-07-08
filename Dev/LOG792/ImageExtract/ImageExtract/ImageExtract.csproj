@@ -53,6 +53,7 @@
       <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -118,6 +119,19 @@
     <Compile Include="ST\ImageInclusionListBoxes.Designer.cs">
       <DependentUpon>ImageInclusionListBoxes.cs</DependentUpon>
     </Compile>
+    <Compile Include="ST\ImageInclusionTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\ImageInclusionTab.Designer.cs">
+      <DependentUpon>ImageInclusionTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\MyComboBoxOrListBoxItem.cs" />
+    <Compile Include="ST\OtherOptionsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\OtherOptionsTab.Designer.cs">
+      <DependentUpon>OtherOptionsTab.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +152,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ST\ImageInclusionListBoxes.resx">
       <DependentUpon>ImageInclusionListBoxes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\ImageInclusionTab.resx">
+      <DependentUpon>ImageInclusionTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\OtherOptionsTab.resx">
+      <DependentUpon>OtherOptionsTab.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

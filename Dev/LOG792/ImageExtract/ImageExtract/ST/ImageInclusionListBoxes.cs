@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Windows;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace ImageExtract.ST
 {
@@ -17,6 +18,17 @@ namespace ImageExtract.ST
         }
 
 
+
+
+        public void UnallowRemovalOfConditionSet()
+        {
+            this.btnRemoveConditionSet.Visible = false;
+
+            // Center the "Add section" button by messing with the margins
+            Padding myMargin = btnAddConditionSet.Margin;
+            myMargin.Top += btnRemoveConditionSet.Margin.Top + btnRemoveConditionSet.Margin.Bottom + btnRemoveConditionSet.Size.Height / 2;
+            this.btnAddConditionSet.Margin = myMargin;
+        }
 
         public void AddToIncludeBox(object o)
         {

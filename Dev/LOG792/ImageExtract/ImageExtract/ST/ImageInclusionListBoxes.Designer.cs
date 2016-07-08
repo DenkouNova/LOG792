@@ -51,8 +51,8 @@
             this.btnIncludeLeft = new System.Windows.Forms.Button();
             this.btnIncludeRight = new System.Windows.Forms.Button();
             this.flpAddRemoveButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAddConditionSet = new System.Windows.Forms.Button();
             this.btnRemoveConditionSet = new System.Windows.Forms.Button();
+            this.btnAddConditionSet = new System.Windows.Forms.Button();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.tlpListBoxes.SuspendLayout();
             this.tlpExcludeButtons.SuspendLayout();
@@ -169,7 +169,7 @@
             this.btnRemoveExclude.Name = "btnRemoveExclude";
             this.btnRemoveExclude.Size = new System.Drawing.Size(89, 38);
             this.btnRemoveExclude.TabIndex = 0;
-            this.btnRemoveExclude.Text = "Remove";
+            this.btnRemoveExclude.Text = "Remove condition";
             this.btnRemoveExclude.UseVisualStyleBackColor = true;
             // 
             // lbExclude
@@ -232,7 +232,7 @@
             this.btnRemoveAllItems.Name = "btnRemoveAllItems";
             this.btnRemoveAllItems.Size = new System.Drawing.Size(89, 38);
             this.btnRemoveAllItems.TabIndex = 0;
-            this.btnRemoveAllItems.Text = "Remove";
+            this.btnRemoveAllItems.Text = "Remove condition";
             this.btnRemoveAllItems.UseVisualStyleBackColor = true;
             // 
             // lbAllItems
@@ -252,7 +252,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(194, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "All items";
+            this.label2.Text = "Unused";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tlpInclude
@@ -315,7 +315,7 @@
             this.btnRemoveInclude.Name = "btnRemoveInclude";
             this.btnRemoveInclude.Size = new System.Drawing.Size(89, 38);
             this.btnRemoveInclude.TabIndex = 0;
-            this.btnRemoveInclude.Text = "Remove";
+            this.btnRemoveInclude.Text = "Remove condition";
             this.btnRemoveInclude.UseVisualStyleBackColor = true;
             // 
             // tlpIncludeButtons
@@ -366,24 +366,24 @@
             this.flpAddRemoveButtons.Size = new System.Drawing.Size(94, 343);
             this.flpAddRemoveButtons.TabIndex = 5;
             // 
-            // btnAddConditionSet
-            // 
-            this.btnAddConditionSet.Location = new System.Drawing.Point(3, 174);
-            this.btnAddConditionSet.Name = "btnAddConditionSet";
-            this.btnAddConditionSet.Size = new System.Drawing.Size(91, 35);
-            this.btnAddConditionSet.TabIndex = 0;
-            this.btnAddConditionSet.Text = "Add\r\ncondition set";
-            this.btnAddConditionSet.UseVisualStyleBackColor = true;
-            // 
             // btnRemoveConditionSet
             // 
-            this.btnRemoveConditionSet.Location = new System.Drawing.Point(3, 133);
-            this.btnRemoveConditionSet.Margin = new System.Windows.Forms.Padding(3, 133, 3, 3);
+            this.btnRemoveConditionSet.Location = new System.Drawing.Point(3, 118);
+            this.btnRemoveConditionSet.Margin = new System.Windows.Forms.Padding(3, 118, 3, 3);
             this.btnRemoveConditionSet.Name = "btnRemoveConditionSet";
             this.btnRemoveConditionSet.Size = new System.Drawing.Size(91, 35);
             this.btnRemoveConditionSet.TabIndex = 1;
             this.btnRemoveConditionSet.Text = "Remove\r\ncondition set";
             this.btnRemoveConditionSet.UseVisualStyleBackColor = true;
+            // 
+            // btnAddConditionSet
+            // 
+            this.btnAddConditionSet.Location = new System.Drawing.Point(3, 159);
+            this.btnAddConditionSet.Name = "btnAddConditionSet";
+            this.btnAddConditionSet.Size = new System.Drawing.Size(91, 35);
+            this.btnAddConditionSet.TabIndex = 0;
+            this.btnAddConditionSet.Text = "Add\r\ncondition set";
+            this.btnAddConditionSet.UseVisualStyleBackColor = true;
             // 
             // tlpMain
             // 
