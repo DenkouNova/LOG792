@@ -24,9 +24,9 @@ namespace ImageExtract.ST
         MyComboBoxOrListBoxItem noConfigSelected;
 
         ImageInclusionTab m_imageInclusionTab;
-        // Initialize Image Separation tab
-        // Initialize Accompanying File tab
-        // Initialize Image Archiving tab
+        ImageSeparationTab m_imageSeparationTab;
+        CompanionFileTab m_accompanyingFileTab;
+        ImageArchivingTab m_imageArchivingTab;
         OtherOptionsTab m_otherOptionsTab;
 
 
@@ -71,18 +71,30 @@ namespace ImageExtract.ST
 
         public void InitializeTabs()
         {
+            // Initialize Image Inclusion tab
             m_imageInclusionTab = new ImageInclusionTab();
             this.tabControl1.TabPages[0].Controls.Add(m_imageInclusionTab);
             m_imageInclusionTab.Dock = System.Windows.Forms.DockStyle.Fill;
+
             // Initialize Image Separation tab
+            m_imageSeparationTab = new ImageSeparationTab();
+            this.tabControl1.TabPages[1].Controls.Add(m_imageSeparationTab);
+            m_imageSeparationTab.Dock = System.Windows.Forms.DockStyle.Fill;
 
             // Initialize Accompanying File tab
+            m_accompanyingFileTab = new CompanionFileTab();
+            this.tabControl1.TabPages[2].Controls.Add(m_accompanyingFileTab);
+            m_accompanyingFileTab.Dock = System.Windows.Forms.DockStyle.Fill;
 
             // Initialize Image Archiving tab
+            m_imageArchivingTab = new ImageArchivingTab();
+            this.tabControl1.TabPages[3].Controls.Add(m_imageArchivingTab);
+            m_imageArchivingTab.Dock = System.Windows.Forms.DockStyle.Fill;
 
             // Initialize Other Options tab
             m_otherOptionsTab = new OtherOptionsTab();
             this.tabControl1.TabPages[4].Controls.Add(m_otherOptionsTab);
+            m_otherOptionsTab.Dock = System.Windows.Forms.DockStyle.Fill;
         }
 
 
@@ -124,8 +136,6 @@ namespace ImageExtract.ST
             sf.LineAlignment = StringAlignment.Center;
 
             e.Graphics.DrawString(currentTab.Text, e.Font, textbrush, itemrect, sf);
-
-            Debug.WriteLine(e.Index);
 
             textbrush.Dispose();
         }

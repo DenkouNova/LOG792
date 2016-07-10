@@ -1,7 +1,6 @@
 
-2016-07-06 08h49
-Doit ajouter CAPTURE_BATCH_SUMMARY au modèle - je dois l'avoir pour avoir le nombre d'items dans l'interface pour sélectionner les batches
+2016-07-08
+Doit éditer les use case de choix d'image pour ajouter les condition links
 
-Finir le form LoadExampleImages.cs
 
-UC-006 Choisir les images (utiliser LoadExampleImages)
+

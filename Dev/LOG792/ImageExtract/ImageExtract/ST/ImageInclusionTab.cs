@@ -77,11 +77,8 @@ namespace ImageExtract.ST
 
             // Important: changing font color requires dgv.EnableHeadersVisualStyles = false;
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = (dgv.Enabled ? Color.Black : Color.Gray);
+            foreach (DataGridViewRow dgvr in dgv.Rows) dgvr.Visible = dgv.Enabled;
 
-            foreach (DataGridViewRow dgvr in dgv.Rows)
-            {
-                dgvr.Visible = dgv.Enabled;
-            }
         }
 
         private void btnLoadExampleBatches_Click(object sender, EventArgs e)

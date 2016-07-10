@@ -45,6 +45,11 @@ namespace ImageExtract.ST
             this.lbExclude.Items.Add(o);
         }
 
+        private void btnRemoveAllItems_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

@@ -71,7 +71,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Name = "OtherOptionsTab";
-            this.Size = new System.Drawing.Size(382, 284);
+            this.Size = new System.Drawing.Size(1278, 588);
             this.ResumeLayout(false);
             this.PerformLayout();
 

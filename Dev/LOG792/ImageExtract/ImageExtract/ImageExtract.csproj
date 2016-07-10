@@ -107,11 +107,53 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringTools.cs" />
+    <Compile Include="ST\CompanionFileOptionsFixedLength.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsFixedLength.Designer.cs">
+      <DependentUpon>CompanionFileOptionsFixedLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsCustomClass.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsCustomClass.Designer.cs">
+      <DependentUpon>CompanionFileOptionsCustomClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\CompanionFileTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\CompanionFileTab.Designer.cs">
+      <DependentUpon>CompanionFileTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\ArchiveRegroupingTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\ArchiveRegroupingTab.Designer.cs">
+      <DependentUpon>ArchiveRegroupingTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="ST\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ST\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsCSV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsCSV.Designer.cs">
+      <DependentUpon>CompanionFileOptionsCSV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsNoFile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\CompanionFileOptionsNoFile.Designer.cs">
+      <DependentUpon>CompanionFileOptionsNoFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\ImageArchivingTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\ImageArchivingTab.Designer.cs">
+      <DependentUpon>ImageArchivingTab.cs</DependentUpon>
     </Compile>
     <Compile Include="ST\ImageInclusionListBoxes.cs">
       <SubType>UserControl</SubType>
@@ -124,6 +166,12 @@
     </Compile>
     <Compile Include="ST\ImageInclusionTab.Designer.cs">
       <DependentUpon>ImageInclusionTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ST\ImageSeparationTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ST\ImageSeparationTab.Designer.cs">
+      <DependentUpon>ImageSeparationTab.cs</DependentUpon>
     </Compile>
     <Compile Include="ST\MyComboBoxOrListBoxItem.cs" />
     <Compile Include="ST\OtherOptionsTab.cs">
@@ -147,14 +195,38 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ST\CompanionFileOptionsFixedLength.resx">
+      <DependentUpon>CompanionFileOptionsFixedLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\CompanionFileOptionsCustomClass.resx">
+      <DependentUpon>CompanionFileOptionsCustomClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\CompanionFileTab.resx">
+      <DependentUpon>CompanionFileTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\ArchiveRegroupingTab.resx">
+      <DependentUpon>ArchiveRegroupingTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ST\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\CompanionFileOptionsCSV.resx">
+      <DependentUpon>CompanionFileOptionsCSV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\CompanionFileOptionsNoFile.resx">
+      <DependentUpon>CompanionFileOptionsNoFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\ImageArchivingTab.resx">
+      <DependentUpon>ImageArchivingTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ST\ImageInclusionListBoxes.resx">
       <DependentUpon>ImageInclusionListBoxes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ST\ImageInclusionTab.resx">
       <DependentUpon>ImageInclusionTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ST\ImageSeparationTab.resx">
+      <DependentUpon>ImageSeparationTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ST\OtherOptionsTab.resx">
       <DependentUpon>OtherOptionsTab.cs</DependentUpon>

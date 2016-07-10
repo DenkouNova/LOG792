@@ -31,7 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageInclusion = new System.Windows.Forms.TabPage();
             this.tabPageSeparation = new System.Windows.Forms.TabPage();
-            this.tabPageAccompanying = new System.Windows.Forms.TabPage();
+            this.tabPageCompanion = new System.Windows.Forms.TabPage();
             this.tabPageArchive = new System.Windows.Forms.TabPage();
             this.tabPageOtherOptions = new System.Windows.Forms.TabPage();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
@@ -40,6 +40,8 @@
             this.comboChooseImageExtract = new System.Windows.Forms.ComboBox();
             this.btnNewConfig = new System.Windows.Forms.Button();
             this.btnDeleteConfig = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSaveConfig = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tlpMain.SuspendLayout();
             this.flpChooseImageExtractConfig.SuspendLayout();
@@ -49,7 +51,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPageInclusion);
             this.tabControl1.Controls.Add(this.tabPageSeparation);
-            this.tabControl1.Controls.Add(this.tabPageAccompanying);
+            this.tabControl1.Controls.Add(this.tabPageCompanion);
             this.tabControl1.Controls.Add(this.tabPageArchive);
             this.tabControl1.Controls.Add(this.tabPageOtherOptions);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -80,14 +82,14 @@
             this.tabPageSeparation.TabIndex = 1;
             this.tabPageSeparation.Text = "Image separation";
             // 
-            // tabPageAccompanying
+            // tabPageCompanion
             // 
-            this.tabPageAccompanying.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageAccompanying.Location = new System.Drawing.Point(4, 22);
-            this.tabPageAccompanying.Name = "tabPageAccompanying";
-            this.tabPageAccompanying.Size = new System.Drawing.Size(1284, 594);
-            this.tabPageAccompanying.TabIndex = 2;
-            this.tabPageAccompanying.Text = "Accompanying file";
+            this.tabPageCompanion.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCompanion.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCompanion.Name = "tabPageCompanion";
+            this.tabPageCompanion.Size = new System.Drawing.Size(1284, 594);
+            this.tabPageCompanion.TabIndex = 2;
+            this.tabPageCompanion.Text = "Companion file";
             // 
             // tabPageArchive
             // 
@@ -129,6 +131,8 @@
             this.flpChooseImageExtractConfig.Controls.Add(this.comboChooseImageExtract);
             this.flpChooseImageExtractConfig.Controls.Add(this.btnNewConfig);
             this.flpChooseImageExtractConfig.Controls.Add(this.btnDeleteConfig);
+            this.flpChooseImageExtractConfig.Controls.Add(this.panel1);
+            this.flpChooseImageExtractConfig.Controls.Add(this.btnSaveConfig);
             this.flpChooseImageExtractConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpChooseImageExtractConfig.Location = new System.Drawing.Point(1, 1);
             this.flpChooseImageExtractConfig.Margin = new System.Windows.Forms.Padding(1);
@@ -175,6 +179,22 @@
             this.btnDeleteConfig.Text = "Delete IE config";
             this.btnDeleteConfig.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(603, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(107, 32);
+            this.panel1.TabIndex = 3;
+            // 
+            // btnSaveConfig
+            // 
+            this.btnSaveConfig.Location = new System.Drawing.Point(716, 3);
+            this.btnSaveConfig.Name = "btnSaveConfig";
+            this.btnSaveConfig.Size = new System.Drawing.Size(91, 32);
+            this.btnSaveConfig.TabIndex = 4;
+            this.btnSaveConfig.Text = "Save IE config";
+            this.btnSaveConfig.UseVisualStyleBackColor = true;
+            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,7 +215,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageInclusion;
         private System.Windows.Forms.TabPage tabPageSeparation;
-        private System.Windows.Forms.TabPage tabPageAccompanying;
+        private System.Windows.Forms.TabPage tabPageCompanion;
         private System.Windows.Forms.TabPage tabPageArchive;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.FlowLayoutPanel flpChooseImageExtractConfig;
@@ -204,5 +224,7 @@
         private System.Windows.Forms.Button btnDeleteConfig;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabPage tabPageOtherOptions;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSaveConfig;
     }
 }
