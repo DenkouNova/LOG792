@@ -37,14 +37,12 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpConditions = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tbCaptureDateGreaterThan = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbCaptureDateLesserThan = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.dgvSearchResults = new System.Windows.Forms.DataGridView();
             this.dgvcSearchResultsStatementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsCaptureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +58,11 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddSelection = new System.Windows.Forms.Button();
             this.btnResetSelection = new System.Windows.Forms.Button();
+            this.vtbCaptureDateLesserThan = new CustomControls.ValidatedTextBox();
+            this.vtbBatchSeqLesserThan = new CustomControls.ValidatedTextBox();
+            this.vtbStatementIdEquals = new CustomControls.ValidatedTextBox();
+            this.vtbCaptureDateGreaterThan = new CustomControls.ValidatedTextBox();
+            this.vtbBatchSeqGreaterThan = new CustomControls.ValidatedTextBox();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLoadInInterface)).BeginInit();
             this.tlpConditions.SuspendLayout();
@@ -83,7 +86,7 @@
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 7;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48F));
@@ -108,10 +111,10 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewCheckBoxColumn1});
             this.dataLoadInInterface.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLoadInInterface.Location = new System.Drawing.Point(3, 425);
+            this.dataLoadInInterface.Location = new System.Drawing.Point(3, 436);
             this.dataLoadInInterface.Name = "dataLoadInInterface";
             this.dataLoadInInterface.RowHeadersVisible = false;
-            this.dataLoadInInterface.Size = new System.Drawing.Size(476, 139);
+            this.dataLoadInInterface.Size = new System.Drawing.Size(476, 128);
             this.dataLoadInInterface.TabIndex = 7;
             // 
             // dataGridViewTextBoxColumn1
@@ -159,76 +162,38 @@
             this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpConditions.Controls.Add(this.textBox3, 3, 1);
-            this.tlpConditions.Controls.Add(this.label4, 2, 1);
-            this.tlpConditions.Controls.Add(this.textBox2, 1, 1);
-            this.tlpConditions.Controls.Add(this.tbCaptureDateGreaterThan, 3, 0);
-            this.tlpConditions.Controls.Add(this.label3, 0, 1);
-            this.tlpConditions.Controls.Add(this.tbCaptureDateLesserThan, 1, 0);
+            this.tlpConditions.Controls.Add(this.label7, 0, 2);
             this.tlpConditions.Controls.Add(this.label2, 2, 0);
             this.tlpConditions.Controls.Add(this.label1, 0, 0);
+            this.tlpConditions.Controls.Add(this.label4, 0, 1);
+            this.tlpConditions.Controls.Add(this.label3, 2, 1);
+            this.tlpConditions.Controls.Add(this.btnSearch, 2, 2);
+            this.tlpConditions.Controls.Add(this.vtbCaptureDateLesserThan, 1, 0);
+            this.tlpConditions.Controls.Add(this.vtbBatchSeqLesserThan, 1, 1);
+            this.tlpConditions.Controls.Add(this.vtbStatementIdEquals, 1, 2);
+            this.tlpConditions.Controls.Add(this.vtbCaptureDateGreaterThan, 3, 0);
+            this.tlpConditions.Controls.Add(this.vtbBatchSeqGreaterThan, 3, 1);
             this.tlpConditions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpConditions.Location = new System.Drawing.Point(3, 3);
             this.tlpConditions.Name = "tlpConditions";
-            this.tlpConditions.RowCount = 2;
-            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpConditions.Size = new System.Drawing.Size(476, 59);
+            this.tlpConditions.RowCount = 3;
+            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
+            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpConditions.Size = new System.Drawing.Size(476, 89);
             this.tlpConditions.TabIndex = 0;
             // 
-            // textBox3
+            // label7
             // 
-            this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox3.Location = new System.Drawing.Point(331, 32);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(142, 20);
-            this.textBox3.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(241, 35);
-            this.label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 24);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Batch_Seq =";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox2.Location = new System.Drawing.Point(93, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 20);
-            this.textBox2.TabIndex = 4;
-            // 
-            // tbCaptureDateGreaterThan
-            // 
-            this.tbCaptureDateGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbCaptureDateGreaterThan.Location = new System.Drawing.Point(331, 3);
-            this.tbCaptureDateGreaterThan.Name = "tbCaptureDateGreaterThan";
-            this.tbCaptureDateGreaterThan.Size = new System.Drawing.Size(142, 20);
-            this.tbCaptureDateGreaterThan.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 35);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 24);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Statement_ID =";
-            // 
-            // tbCaptureDateLesserThan
-            // 
-            this.tbCaptureDateLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbCaptureDateLesserThan.Location = new System.Drawing.Point(93, 3);
-            this.tbCaptureDateLesserThan.Name = "tbCaptureDateLesserThan";
-            this.tbCaptureDateLesserThan.Size = new System.Drawing.Size(142, 20);
-            this.tbCaptureDateLesserThan.TabIndex = 1;
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Location = new System.Drawing.Point(3, 64);
+            this.label7.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 25);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Statement ID =";
             // 
             // label2
             // 
@@ -239,7 +204,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 23);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Capture_Date >";
+            this.label2.Text = "Capture Date >";
             // 
             // label1
             // 
@@ -250,7 +215,42 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Capture_Date <";
+            this.label1.Text = "Capture Date <";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(3, 35);
+            this.label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 23);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Batch Seq <";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Location = new System.Drawing.Point(241, 35);
+            this.label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Batch Seq >";
+            // 
+            // btnSearch
+            // 
+            this.tlpConditions.SetColumnSpan(this.btnSearch, 2);
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Location = new System.Drawing.Point(316, 58);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(78, 0, 78, 0);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(82, 31);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvSearchResults
             // 
@@ -267,10 +267,10 @@
             this.dgvcSearchResultsNumberOfItems,
             this.dgvcSearchResultsUse});
             this.dgvSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSearchResults.Location = new System.Drawing.Point(3, 88);
+            this.dgvSearchResults.Location = new System.Drawing.Point(3, 118);
             this.dgvSearchResults.Name = "dgvSearchResults";
             this.dgvSearchResults.RowHeadersVisible = false;
-            this.dgvSearchResults.Size = new System.Drawing.Size(476, 263);
+            this.dgvSearchResults.Size = new System.Drawing.Size(476, 244);
             this.dgvSearchResults.TabIndex = 2;
             this.dgvSearchResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBatches_CellContentClick);
             // 
@@ -356,7 +356,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 70);
+            this.label5.Location = new System.Drawing.Point(3, 100);
             this.label5.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 13);
@@ -367,7 +367,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 407);
+            this.label6.Location = new System.Drawing.Point(3, 418);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(342, 13);
@@ -385,7 +385,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnAddSelection, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnResetSelection, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 355);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 366);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -415,6 +415,66 @@
             this.btnResetSelection.UseCompatibleTextRendering = true;
             this.btnResetSelection.UseVisualStyleBackColor = true;
             // 
+            // vtbCaptureDateLesserThan
+            // 
+            this.vtbCaptureDateLesserThan.CanBeEmpty = true;
+            this.vtbCaptureDateLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
+            this.vtbCaptureDateLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbCaptureDateLesserThan.ErrorMessage = "";
+            this.vtbCaptureDateLesserThan.Location = new System.Drawing.Point(93, 3);
+            this.vtbCaptureDateLesserThan.Name = "vtbCaptureDateLesserThan";
+            this.vtbCaptureDateLesserThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbCaptureDateLesserThan.TabIndex = 8;
+            this.vtbCaptureDateLesserThan.TextBoxName = "Capture Date <";
+            // 
+            // vtbBatchSeqLesserThan
+            // 
+            this.vtbBatchSeqLesserThan.CanBeEmpty = true;
+            this.vtbBatchSeqLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
+            this.vtbBatchSeqLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbBatchSeqLesserThan.ErrorMessage = "";
+            this.vtbBatchSeqLesserThan.Location = new System.Drawing.Point(93, 32);
+            this.vtbBatchSeqLesserThan.Name = "vtbBatchSeqLesserThan";
+            this.vtbBatchSeqLesserThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbBatchSeqLesserThan.TabIndex = 9;
+            this.vtbBatchSeqLesserThan.TextBoxName = "Batch Seq <";
+            // 
+            // vtbStatementIdEquals
+            // 
+            this.vtbStatementIdEquals.CanBeEmpty = false;
+            this.vtbStatementIdEquals.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
+            this.vtbStatementIdEquals.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbStatementIdEquals.ErrorMessage = "";
+            this.vtbStatementIdEquals.Location = new System.Drawing.Point(93, 61);
+            this.vtbStatementIdEquals.Name = "vtbStatementIdEquals";
+            this.vtbStatementIdEquals.Size = new System.Drawing.Size(142, 20);
+            this.vtbStatementIdEquals.TabIndex = 10;
+            this.vtbStatementIdEquals.TextBoxName = "Statement ID =";
+            // 
+            // vtbCaptureDateGreaterThan
+            // 
+            this.vtbCaptureDateGreaterThan.CanBeEmpty = true;
+            this.vtbCaptureDateGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
+            this.vtbCaptureDateGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbCaptureDateGreaterThan.ErrorMessage = "";
+            this.vtbCaptureDateGreaterThan.Location = new System.Drawing.Point(331, 3);
+            this.vtbCaptureDateGreaterThan.Name = "vtbCaptureDateGreaterThan";
+            this.vtbCaptureDateGreaterThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbCaptureDateGreaterThan.TabIndex = 11;
+            this.vtbCaptureDateGreaterThan.TextBoxName = "Capture Date >";
+            // 
+            // vtbBatchSeqGreaterThan
+            // 
+            this.vtbBatchSeqGreaterThan.CanBeEmpty = true;
+            this.vtbBatchSeqGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
+            this.vtbBatchSeqGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbBatchSeqGreaterThan.ErrorMessage = "";
+            this.vtbBatchSeqGreaterThan.Location = new System.Drawing.Point(331, 32);
+            this.vtbBatchSeqGreaterThan.Name = "vtbBatchSeqGreaterThan";
+            this.vtbBatchSeqGreaterThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbBatchSeqGreaterThan.TabIndex = 12;
+            this.vtbBatchSeqGreaterThan.TextBoxName = "Batch Seq >";
+            // 
             // LoadExampleImages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -440,13 +500,8 @@
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.TableLayoutPanel tlpConditions;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbCaptureDateGreaterThan;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbCaptureDateLesserThan;
         private System.Windows.Forms.DataGridView dgvSearchResults;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
         private System.Windows.Forms.Button btnResetSelection;
@@ -469,5 +524,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSearch;
+        private CustomControls.ValidatedTextBox vtbCaptureDateLesserThan;
+        private CustomControls.ValidatedTextBox vtbBatchSeqLesserThan;
+        private CustomControls.ValidatedTextBox vtbStatementIdEquals;
+        private CustomControls.ValidatedTextBox vtbCaptureDateGreaterThan;
+        private CustomControls.ValidatedTextBox vtbBatchSeqGreaterThan;
     }
 }

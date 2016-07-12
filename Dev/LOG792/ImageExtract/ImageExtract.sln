@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageExtract", "ImageExtrac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageExtractUnitTests", "ImageExtractUnitTests\ImageExtractUnitTests.csproj", "{FBC73B30-0E5A-484C-B087-ABFEFB755D76}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{C84CCEA3-172F-43F5-86DC-663ACE59D189}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FBC73B30-0E5A-484C-B087-ABFEFB755D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC73B30-0E5A-484C-B087-ABFEFB755D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC73B30-0E5A-484C-B087-ABFEFB755D76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C84CCEA3-172F-43F5-86DC-663ACE59D189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C84CCEA3-172F-43F5-86DC-663ACE59D189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C84CCEA3-172F-43F5-86DC-663ACE59D189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C84CCEA3-172F-43F5-86DC-663ACE59D189}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

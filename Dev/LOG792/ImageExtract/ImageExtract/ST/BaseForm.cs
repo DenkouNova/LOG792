@@ -51,10 +51,6 @@ namespace ImageExtract.ST
         }
 
 
-
-
-
-
         // Called upon a) opening the form, b) deleting an Image Extract Config, or c) choosing not to save a new Image Extract Config
         public void ReloadTopSection()
         {
@@ -71,10 +67,6 @@ namespace ImageExtract.ST
 
             this.comboChooseImageExtract.SelectedIndex = 0;
         }
-
-
-
-
 
 
         public void InitializeTabs()
