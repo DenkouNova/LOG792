@@ -1,16 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+using System.Diagnostics;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Collections.Generic;
+
+using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Criterion;
+using NHibernate.Tool.hbm2ddl;
+
+using ImageExtract.ST;
+using ImageExtract.Domain;
 
 namespace ImageExtract.ST
 {
     public partial class ImageInclusionTab : UserControl
     {
+        ISession databaseSession;
+
         List<ImageInclusionListBoxes> conditionSetListBoxes = new List<ImageInclusionListBoxes>();
         public List<ImageInclusionListBoxes> ConditionSetListBoxes
         {
@@ -21,23 +32,45 @@ namespace ImageExtract.ST
         public ImageInclusionTab()
         {
             InitializeComponent();
-            InitializeImageInclusionDataGrid();
+            databaseSession = NHibernateHelper.GetCurrentSession();
+
+            LoadConditionCategoryButtons();
+
+            // CodeForScreenshots();
+        }
+
+
+        // Condition categories are system-wide and need not be saved. Just load them upon opening the program and that's it
+        public void LoadConditionCategoryButtons()
+        {
+            Button currentButton;
+
+            foreach (ImageExtractCondCategory oneCategory in databaseSession.CreateCriteria<Domain.ImageExtractCondCategory>().
+                List<Domain.ImageExtractCondCategory>())
+            {
+                currentButton = new Button();
+                currentButton.Font = this.btnExampleConditionCategoryButton.Font;
+                currentButton.Size = this.btnExampleConditionCategoryButton.Size;
+                currentButton.Text = oneCategory.Description;
+                currentButton.Tag = oneCategory;
+                this.flpLoadConditionsButtons.Controls.Add(currentButton);
+                currentButton.Click += new System.EventHandler(this.ConditionCategoryButtons_Click);
+            }
+            btnExampleConditionCategoryButton.Visible = false;
+        }
+
+
+        public void CodeForScreenshots()
+        {
             AddConditionSetListBox(false);
             AddConditionSetListBox();
 
-            //this.listBox1.Items.Add(new MyComboBoxOrListBoxItem("brax", -1));
-            //conditionSetListBoxes[0].AddToIncludeBox(new MyComboBoxOrListBoxItem("Singles", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Singles", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Multiples", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Only", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Skirt", 0));
-            //conditionSetListBoxes[0].AddToExcludeBox(new MyComboBoxOrListBoxItem("Check Skirt", 0));
-        }
 
-
-
-        public void InitializeImageInclusionDataGrid()
-        {
+            // Initialize Image Inclusion Datagrid
             Image img = new Bitmap(@"D:\Cossins\Documents\ETS\LOG792\Images\cheque.tif");
 
             // Set image last column to width
@@ -56,8 +89,7 @@ namespace ImageExtract.ST
             }
         }
 
-
-        public void AddConditionSetListBox()
+                public void AddConditionSetListBox()
         {
             AddConditionSetListBox(true);
         }
@@ -85,7 +117,16 @@ namespace ImageExtract.ST
         {
             new LoadExampleImages().Show();
         }
+
+        private void ConditionCategoryButtons_Click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            ImageExtractCondCategory category = (ImageExtractCondCategory)b.Tag;
+            MessageBox.Show("ID " + category.Cond_Category_Id +", Description = '" + category.Description + "'");
+        }
         #endregion
+
+        
 
 
 

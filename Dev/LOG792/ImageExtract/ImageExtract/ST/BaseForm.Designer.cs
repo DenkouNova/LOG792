@@ -178,6 +178,7 @@
             this.btnDeleteConfig.TabIndex = 2;
             this.btnDeleteConfig.Text = "Delete IE config";
             this.btnDeleteConfig.UseVisualStyleBackColor = true;
+            this.btnDeleteConfig.Click += new System.EventHandler(this.btnDeleteConfig_Click);
             // 
             // panel1
             // 

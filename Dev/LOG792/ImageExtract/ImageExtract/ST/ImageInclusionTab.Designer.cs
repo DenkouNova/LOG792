@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpImageInclusion = new System.Windows.Forms.TableLayoutPanel();
             this.dgvImageInclusion = new System.Windows.Forms.DataGridView();
             this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +48,7 @@
             this.tlpImageInclusionConditionCategoryButtons = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.flpLoadConditionsButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnConditionCategory1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnExampleConditionCategoryButton = new System.Windows.Forms.Button();
             this.tlpImageInclusion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImageInclusion)).BeginInit();
             this.flpImageInclusionConditionSets.SuspendLayout();
@@ -87,14 +86,14 @@
             this.dgvImageInclusion.AllowUserToResizeColumns = false;
             this.dgvImageInclusion.AllowUserToResizeRows = false;
             this.dgvImageInclusion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvImageInclusion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvImageInclusion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvImageInclusion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImageInclusion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcImageInclusionBSeq,
@@ -102,14 +101,14 @@
             this.dgvcImageInclusionIRef,
             this.dgvcImageInclusionSide,
             this.dgvcImageInclusionImage});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvImageInclusion.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvImageInclusion.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvImageInclusion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvImageInclusion.EnableHeadersVisualStyles = false;
             this.dgvImageInclusion.Location = new System.Drawing.Point(3, 3);
@@ -274,31 +273,21 @@
             // 
             // flpLoadConditionsButtons
             // 
-            this.flpLoadConditionsButtons.Controls.Add(this.btnConditionCategory1);
-            this.flpLoadConditionsButtons.Controls.Add(this.button2);
+            this.flpLoadConditionsButtons.Controls.Add(this.btnExampleConditionCategoryButton);
             this.flpLoadConditionsButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpLoadConditionsButtons.Location = new System.Drawing.Point(3, 19);
             this.flpLoadConditionsButtons.Name = "flpLoadConditionsButtons";
             this.flpLoadConditionsButtons.Size = new System.Drawing.Size(713, 74);
             this.flpLoadConditionsButtons.TabIndex = 3;
             // 
-            // btnConditionCategory1
+            // btnExampleConditionCategoryButton
             // 
-            this.btnConditionCategory1.Location = new System.Drawing.Point(3, 3);
-            this.btnConditionCategory1.Name = "btnConditionCategory1";
-            this.btnConditionCategory1.Size = new System.Drawing.Size(84, 34);
-            this.btnConditionCategory1.TabIndex = 0;
-            this.btnConditionCategory1.Text = "Transaction status";
-            this.btnConditionCategory1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(93, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(84, 34);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Batch Type";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExampleConditionCategoryButton.Location = new System.Drawing.Point(3, 3);
+            this.btnExampleConditionCategoryButton.Name = "btnExampleConditionCategoryButton";
+            this.btnExampleConditionCategoryButton.Size = new System.Drawing.Size(84, 34);
+            this.btnExampleConditionCategoryButton.TabIndex = 0;
+            this.btnExampleConditionCategoryButton.Text = "(Condition category)";
+            this.btnExampleConditionCategoryButton.UseVisualStyleBackColor = true;
             // 
             // ImageInclusionTab
             // 
@@ -341,7 +330,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpImageInclusionConditionCategoryButtons;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flpLoadConditionsButtons;
-        private System.Windows.Forms.Button btnConditionCategory1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnExampleConditionCategoryButton;
     }
 }

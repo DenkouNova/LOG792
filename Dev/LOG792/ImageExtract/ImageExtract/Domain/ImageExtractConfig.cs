@@ -7,6 +7,7 @@ namespace ImageExtract.Domain {
     
     public class ImageExtractConfig {
         public virtual int ImgExtr_Config_Id { get; set; }
+        public virtual string Description { get; set; }
         public virtual string Image_Naming { get; set; }
         public virtual string Encoding_Config_Path { get; set; }
         public virtual string Endorsement_Config_Path { get; set; }
@@ -26,6 +27,7 @@ namespace ImageExtract.Domain {
         public override string ToString()
         {
             return "ImgExtr_Config_Id = " + StringTools.TraceString(ImgExtr_Config_Id) +
+                ", " + "Description = " + StringTools.TraceString(Description) +
                 ", " + "Image_Naming = " + StringTools.TraceString(Image_Naming) +
                 ", " + "Encoding_Config_Path = " + StringTools.TraceString(Encoding_Config_Path) +
                 ", " + "Endorsement_Config_Path = " + StringTools.TraceString(Endorsement_Config_Path) +

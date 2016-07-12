@@ -9,6 +9,7 @@
     </id>
 
     <property name="Image_Naming" />
+    <property name="Description" />
     <property name="Encoding_Config_Path" />
     <property name="Endorsement_Config_Path" />
 
