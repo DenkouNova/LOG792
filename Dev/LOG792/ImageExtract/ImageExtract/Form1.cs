@@ -34,6 +34,14 @@ namespace ImageExtract
 
             try
             {
+
+                sess = NHibernateHelper.GetCurrentSession();
+                criteria = sess.CreateCriteria<Domain.CaptureBatchSummary>();
+                IList<Domain.CaptureBatchSummary> listOfCaptureBatchSummaries = criteria.List<Domain.CaptureBatchSummary>();
+                MessageBox.Show("Found " + listOfCaptureBatchSummaries.Count + " capture batch summary/summaries");
+                foreach (var oneItem in listOfCaptureBatchSummaries) MessageBox.Show(oneItem.ToString());
+                sess.Close();
+
                 /*
                 sess = NHibernateHelper.GetCurrentSession();
                 criteria = sess.CreateCriteria<Domain.ImageExtractConditionCategory>();
@@ -70,12 +78,14 @@ namespace ImageExtract
                 sess.Close();
                 */
 
+                /*
                 sess = NHibernateHelper.GetCurrentSession();
                 criteria = sess.CreateCriteria<Domain.ImageExtractConfig>();
                 IList<Domain.ImageExtractConfig> listOfImageExtracts = criteria.List<Domain.ImageExtractConfig>();
                 MessageBox.Show("Found " + listOfImageExtracts.Count + " image extract(s)");
                 foreach (var oneItem in listOfImageExtracts) MessageBox.Show(oneItem.ToString());
                 sess.Close();
+                */
 
                 /*
                 sess = NHibernateHelper.GetCurrentSession();
@@ -142,6 +152,7 @@ namespace ImageExtract
                 }
             }
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {

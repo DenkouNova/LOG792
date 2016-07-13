@@ -17,6 +17,7 @@ namespace ImageExtract.Domain {
         public virtual int? Reprocessing_Batch { get; set; }
 
         public virtual StatementDefinition statement { get; set; }
+        public virtual CaptureBatchSummary captureBatchSummary { get; set; }
 
         private ISet<MatchedPayment> matchedPayments = new HashSet<MatchedPayment>();
         public virtual ISet<MatchedPayment> MatchedPayments
@@ -53,7 +54,8 @@ namespace ImageExtract.Domain {
                 "Statement_Id = " + StringTools.TraceString(statement.Statement_Id) +
                 ", " + "MatchedPayments.Count = " + MatchedPayments.Count +
                 ", " + "ItemPayments.Count = " + ItemPayments.Count +
-                ", " + "ItemStatements.Count = " + ItemStatements.Count;
+                ", " + "ItemStatements.Count = " + ItemStatements.Count +
+                ", " + "CaptureBatchSummary.TotNumEnvelops = " + captureBatchSummary.Tot_Num_Envelops;
         }
 
 

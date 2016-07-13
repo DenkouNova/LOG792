@@ -59,9 +59,26 @@ namespace ImageExtract
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            ICriteria queryCriteria;
+
             if (CustomFormValidation.ControlIsValid(this.tlpConditions))
             {
-                MessageBox.Show("valid");
+                databaseSession = NHibernateHelper.GetCurrentSession();
+                queryCriteria = databaseSession.CreateCriteria<CaptureBatch>();
+
+                queryCriteria.Add(Restrictions.Eq("Statement_Id", this.vtbStatementIdEquals.Text));
+                if (!String.IsNullOrEmpty(this.vtbBatchSeqLesserThan.Text))
+                    queryCriteria.Add(Restrictions.Lt("Batch_Seq", this.vtbBatchSeqLesserThan.Text));
+                if (!String.IsNullOrEmpty(this.vtbBatchSeqGreaterThan.Text))
+                    queryCriteria.Add(Restrictions.Gt("Batch_Seq", this.vtbBatchSeqGreaterThan.Text));
+                if (!String.IsNullOrEmpty(this.vtbCaptureDateLesserThan.Text))
+                    queryCriteria.Add(Restrictions.Lt("Capture_Date", this.vtbCaptureDateLesserThan.Text));
+                if (!String.IsNullOrEmpty(this.vtbCaptureDateGreaterThan.Text))
+                    queryCriteria.Add(Restrictions.Gt("Capture_Date", this.vtbCaptureDateGreaterThan.Text));
+
+                IList<Domain.CaptureBatch> listOfBatches = queryCriteria.List<Domain.CaptureBatch>();
+                MessageBox.Show("Found " + listOfBatches.Count + " batch(es)");
+                foreach (var oneBatch in listOfBatches) MessageBox.Show(oneBatch.ToString());
             }
         }
         #endregion

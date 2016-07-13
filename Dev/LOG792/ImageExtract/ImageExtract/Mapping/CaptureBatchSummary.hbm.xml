@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                  assembly="ImageExtract"
+                  namespace="ImageExtract.Domain">
+
+  <class name="CaptureBatchSummary" table="Capture_Batch_Summary">
+    <id name="Batch_Seq">
+      <generator class="increment" />
+    </id>
+
+    <property name="Tot_Num_Payments" />
+    <property name="Tot_Num_Statements" />
+    <property name="Tot_Num_Envelops" />
+
+    <one-to-one name="captureBatch" class="CaptureBatch"/>
+    
+</class>
+
+</hibernate-mapping>

@@ -43,6 +43,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.vtbCaptureDateLesserThan = new CustomControls.ValidatedTextBox();
+            this.vtbBatchSeqLesserThan = new CustomControls.ValidatedTextBox();
+            this.vtbStatementIdEquals = new CustomControls.ValidatedTextBox();
+            this.vtbCaptureDateGreaterThan = new CustomControls.ValidatedTextBox();
+            this.vtbBatchSeqGreaterThan = new CustomControls.ValidatedTextBox();
             this.dgvSearchResults = new System.Windows.Forms.DataGridView();
             this.dgvcSearchResultsStatementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsCaptureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,11 +63,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnAddSelection = new System.Windows.Forms.Button();
             this.btnResetSelection = new System.Windows.Forms.Button();
-            this.vtbCaptureDateLesserThan = new CustomControls.ValidatedTextBox();
-            this.vtbBatchSeqLesserThan = new CustomControls.ValidatedTextBox();
-            this.vtbStatementIdEquals = new CustomControls.ValidatedTextBox();
-            this.vtbCaptureDateGreaterThan = new CustomControls.ValidatedTextBox();
-            this.vtbBatchSeqGreaterThan = new CustomControls.ValidatedTextBox();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLoadInInterface)).BeginInit();
             this.tlpConditions.SuspendLayout();
@@ -252,6 +252,66 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // vtbCaptureDateLesserThan
+            // 
+            this.vtbCaptureDateLesserThan.CanBeEmpty = true;
+            this.vtbCaptureDateLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
+            this.vtbCaptureDateLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbCaptureDateLesserThan.ErrorMessage = "";
+            this.vtbCaptureDateLesserThan.Location = new System.Drawing.Point(93, 3);
+            this.vtbCaptureDateLesserThan.Name = "vtbCaptureDateLesserThan";
+            this.vtbCaptureDateLesserThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbCaptureDateLesserThan.TabIndex = 8;
+            this.vtbCaptureDateLesserThan.TextBoxName = "Capture Date <";
+            // 
+            // vtbBatchSeqLesserThan
+            // 
+            this.vtbBatchSeqLesserThan.CanBeEmpty = true;
+            this.vtbBatchSeqLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
+            this.vtbBatchSeqLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbBatchSeqLesserThan.ErrorMessage = "";
+            this.vtbBatchSeqLesserThan.Location = new System.Drawing.Point(93, 32);
+            this.vtbBatchSeqLesserThan.Name = "vtbBatchSeqLesserThan";
+            this.vtbBatchSeqLesserThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbBatchSeqLesserThan.TabIndex = 9;
+            this.vtbBatchSeqLesserThan.TextBoxName = "Batch Seq <";
+            // 
+            // vtbStatementIdEquals
+            // 
+            this.vtbStatementIdEquals.CanBeEmpty = false;
+            this.vtbStatementIdEquals.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
+            this.vtbStatementIdEquals.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbStatementIdEquals.ErrorMessage = "";
+            this.vtbStatementIdEquals.Location = new System.Drawing.Point(93, 61);
+            this.vtbStatementIdEquals.Name = "vtbStatementIdEquals";
+            this.vtbStatementIdEquals.Size = new System.Drawing.Size(142, 20);
+            this.vtbStatementIdEquals.TabIndex = 10;
+            this.vtbStatementIdEquals.TextBoxName = "Statement ID =";
+            // 
+            // vtbCaptureDateGreaterThan
+            // 
+            this.vtbCaptureDateGreaterThan.CanBeEmpty = true;
+            this.vtbCaptureDateGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
+            this.vtbCaptureDateGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbCaptureDateGreaterThan.ErrorMessage = "";
+            this.vtbCaptureDateGreaterThan.Location = new System.Drawing.Point(331, 3);
+            this.vtbCaptureDateGreaterThan.Name = "vtbCaptureDateGreaterThan";
+            this.vtbCaptureDateGreaterThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbCaptureDateGreaterThan.TabIndex = 11;
+            this.vtbCaptureDateGreaterThan.TextBoxName = "Capture Date >";
+            // 
+            // vtbBatchSeqGreaterThan
+            // 
+            this.vtbBatchSeqGreaterThan.CanBeEmpty = true;
+            this.vtbBatchSeqGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
+            this.vtbBatchSeqGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vtbBatchSeqGreaterThan.ErrorMessage = "";
+            this.vtbBatchSeqGreaterThan.Location = new System.Drawing.Point(331, 32);
+            this.vtbBatchSeqGreaterThan.Name = "vtbBatchSeqGreaterThan";
+            this.vtbBatchSeqGreaterThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbBatchSeqGreaterThan.TabIndex = 12;
+            this.vtbBatchSeqGreaterThan.TextBoxName = "Batch Seq >";
+            // 
             // dgvSearchResults
             // 
             this.dgvSearchResults.AllowUserToAddRows = false;
@@ -414,66 +474,6 @@
             this.btnResetSelection.Text = "Reset selection";
             this.btnResetSelection.UseCompatibleTextRendering = true;
             this.btnResetSelection.UseVisualStyleBackColor = true;
-            // 
-            // vtbCaptureDateLesserThan
-            // 
-            this.vtbCaptureDateLesserThan.CanBeEmpty = true;
-            this.vtbCaptureDateLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
-            this.vtbCaptureDateLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vtbCaptureDateLesserThan.ErrorMessage = "";
-            this.vtbCaptureDateLesserThan.Location = new System.Drawing.Point(93, 3);
-            this.vtbCaptureDateLesserThan.Name = "vtbCaptureDateLesserThan";
-            this.vtbCaptureDateLesserThan.Size = new System.Drawing.Size(142, 20);
-            this.vtbCaptureDateLesserThan.TabIndex = 8;
-            this.vtbCaptureDateLesserThan.TextBoxName = "Capture Date <";
-            // 
-            // vtbBatchSeqLesserThan
-            // 
-            this.vtbBatchSeqLesserThan.CanBeEmpty = true;
-            this.vtbBatchSeqLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
-            this.vtbBatchSeqLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vtbBatchSeqLesserThan.ErrorMessage = "";
-            this.vtbBatchSeqLesserThan.Location = new System.Drawing.Point(93, 32);
-            this.vtbBatchSeqLesserThan.Name = "vtbBatchSeqLesserThan";
-            this.vtbBatchSeqLesserThan.Size = new System.Drawing.Size(142, 20);
-            this.vtbBatchSeqLesserThan.TabIndex = 9;
-            this.vtbBatchSeqLesserThan.TextBoxName = "Batch Seq <";
-            // 
-            // vtbStatementIdEquals
-            // 
-            this.vtbStatementIdEquals.CanBeEmpty = false;
-            this.vtbStatementIdEquals.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
-            this.vtbStatementIdEquals.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vtbStatementIdEquals.ErrorMessage = "";
-            this.vtbStatementIdEquals.Location = new System.Drawing.Point(93, 61);
-            this.vtbStatementIdEquals.Name = "vtbStatementIdEquals";
-            this.vtbStatementIdEquals.Size = new System.Drawing.Size(142, 20);
-            this.vtbStatementIdEquals.TabIndex = 10;
-            this.vtbStatementIdEquals.TextBoxName = "Statement ID =";
-            // 
-            // vtbCaptureDateGreaterThan
-            // 
-            this.vtbCaptureDateGreaterThan.CanBeEmpty = true;
-            this.vtbCaptureDateGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
-            this.vtbCaptureDateGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vtbCaptureDateGreaterThan.ErrorMessage = "";
-            this.vtbCaptureDateGreaterThan.Location = new System.Drawing.Point(331, 3);
-            this.vtbCaptureDateGreaterThan.Name = "vtbCaptureDateGreaterThan";
-            this.vtbCaptureDateGreaterThan.Size = new System.Drawing.Size(142, 20);
-            this.vtbCaptureDateGreaterThan.TabIndex = 11;
-            this.vtbCaptureDateGreaterThan.TextBoxName = "Capture Date >";
-            // 
-            // vtbBatchSeqGreaterThan
-            // 
-            this.vtbBatchSeqGreaterThan.CanBeEmpty = true;
-            this.vtbBatchSeqGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
-            this.vtbBatchSeqGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vtbBatchSeqGreaterThan.ErrorMessage = "";
-            this.vtbBatchSeqGreaterThan.Location = new System.Drawing.Point(331, 32);
-            this.vtbBatchSeqGreaterThan.Name = "vtbBatchSeqGreaterThan";
-            this.vtbBatchSeqGreaterThan.Size = new System.Drawing.Size(142, 20);
-            this.vtbBatchSeqGreaterThan.TabIndex = 12;
-            this.vtbBatchSeqGreaterThan.TextBoxName = "Batch Seq >";
             // 
             // LoadExampleImages
             // 

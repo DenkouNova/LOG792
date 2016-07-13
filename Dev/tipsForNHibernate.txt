@@ -1,0 +1,11 @@
+
+Step 1 - drag-and-drop Domain class in Solution's Domain
+Step 2 - Comment everything but ID for now. Re-add underscores in ID.
+
+Step 3 - Make a copy of an hbm.xml
+Step 4 - Make sure the XML is embedded
+Step 5 - Comment everything but ID. Change variable name in ID
+
+
+
+ID 522 310 416 Password 8592

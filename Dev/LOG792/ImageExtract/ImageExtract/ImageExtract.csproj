@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\CaptureBatchSummary.cs" />
     <Compile Include="Domain\CaptureBatch.cs" />
     <Compile Include="Domain\CaptureSiteDefinition.cs" />
     <Compile Include="Domain\ImageExtractConfig.cs" />
@@ -254,6 +255,9 @@
     <Content Include="hibernate.cfg.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Mapping\CaptureBatchSummary.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mapping\ImageExtractCondCategory.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

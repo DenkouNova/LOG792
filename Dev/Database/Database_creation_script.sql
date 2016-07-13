@@ -17,11 +17,13 @@
 --           imgextr_cond_set, imgextr_cond_set_conditions, imgextr_condition,
 --           imgextr_cond_cat_conditions, imgextr_cond_category
 -- v1.06 - ajouté image_extract_config.description
+-- v1.07 - ajouté capture_batch_summary
 -- =============================================================================
 
 -- =============================================================================
 -- On efface toutes les tables de base CTEC en ordre de clés étrangères
 -- =============================================================================
+DROP TABLE IF EXISTS capture_batch_summary;
 DROP TABLE IF EXISTS item_payment;
 DROP TABLE IF EXISTS item_statement;
 DROP TABLE IF EXISTS matched_payment;
@@ -116,6 +118,19 @@ CREATE TABLE 'item_statement' (
   FOREIGN KEY(batch_seq, matched_payment_seq)
     REFERENCES matched_payment(batch_seq, matched_payment_seq)
 );
+
+CREATE TABLE 'capture_batch_summary' (
+  'batch_seq' INTEGER,
+  'tot_num_payments' INTEGER,
+  'tot_num_statements' INTEGER,
+  'tot_num_envelops' INTEGER,
+  PRIMARY KEY(batch_seq),
+  FOREIGN KEY(batch_seq)
+    REFERENCES capture_batch(batch_seq)
+);
+
+
+
 
 -- =============================================================================
 -- On insère les tables reliées à l'Extraction d'Image
@@ -413,6 +428,22 @@ INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front,
     '2165618', --bank_account
     '28946'    --check_no
   );
+
+-- =============================================================================
+-- Insertion de données CTEC - CAPTURE_BATCH_SUMMARY
+--                             FK sur capture_batch
+-- =============================================================================
+
+-- dans le vrai système CTEC, ces données sont insérées par un trigger
+INSERT INTO Capture_Batch_Summary
+SELECT
+  cb.Batch_Seq,
+    (SELECT COUNT(*) FROM Item_Payment WHERE Batch_Seq = cb.Batch_Seq) AS Tot_Num_Payments,
+    (SELECT COUNT(*) FROM Item_Statement WHERE Batch_Seq = cb.Batch_Seq) AS Tot_Num_Statements,
+    (SELECT COUNT(*) FROM Matched_Payment WHERE Batch_Seq = cb.Batch_Seq) AS Tot_Num_Envelops
+FROM
+  Capture_Batch cb
+;
 
 -- =============================================================================
 -- Insertion de données IE - imgextr_config
