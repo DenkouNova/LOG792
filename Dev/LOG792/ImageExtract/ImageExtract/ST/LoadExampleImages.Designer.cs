@@ -52,7 +52,7 @@
             this.dgvcSearchResultsStatementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsCaptureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsBatchSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSearchResultsBatchType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSearchResultsCaptureId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsNumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSearchResultsUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
@@ -158,9 +158,9 @@
             // tlpConditions
             // 
             this.tlpConditions.ColumnCount = 4;
-            this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tlpConditions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpConditions.Controls.Add(this.label7, 0, 2);
             this.tlpConditions.Controls.Add(this.label2, 2, 0);
@@ -180,7 +180,6 @@
             this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.34F));
             this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.tlpConditions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpConditions.Size = new System.Drawing.Size(476, 89);
             this.tlpConditions.TabIndex = 0;
             // 
@@ -191,7 +190,7 @@
             this.label7.Location = new System.Drawing.Point(3, 64);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 25);
+            this.label7.Size = new System.Drawing.Size(89, 25);
             this.label7.TabIndex = 6;
             this.label7.Text = "Statement ID =";
             // 
@@ -202,9 +201,9 @@
             this.label2.Location = new System.Drawing.Point(241, 6);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 23);
+            this.label2.Size = new System.Drawing.Size(89, 23);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Capture Date >";
+            this.label2.Text = "Capture Date >=";
             // 
             // label1
             // 
@@ -213,9 +212,9 @@
             this.label1.Location = new System.Drawing.Point(3, 6);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 23);
+            this.label1.Size = new System.Drawing.Size(89, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Capture Date <";
+            this.label1.Text = "Capture Date <=";
             // 
             // label4
             // 
@@ -224,9 +223,9 @@
             this.label4.Location = new System.Drawing.Point(3, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 23);
+            this.label4.Size = new System.Drawing.Size(89, 23);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Batch Seq <";
+            this.label4.Text = "Batch Seq <=";
             // 
             // label3
             // 
@@ -235,9 +234,9 @@
             this.label3.Location = new System.Drawing.Point(241, 35);
             this.label3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 23);
+            this.label3.Size = new System.Drawing.Size(89, 23);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Batch Seq >";
+            this.label3.Text = "Batch Seq >=";
             // 
             // btnSearch
             // 
@@ -258,9 +257,9 @@
             this.vtbCaptureDateLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
             this.vtbCaptureDateLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtbCaptureDateLesserThan.ErrorMessage = "";
-            this.vtbCaptureDateLesserThan.Location = new System.Drawing.Point(93, 3);
+            this.vtbCaptureDateLesserThan.Location = new System.Drawing.Point(98, 3);
             this.vtbCaptureDateLesserThan.Name = "vtbCaptureDateLesserThan";
-            this.vtbCaptureDateLesserThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbCaptureDateLesserThan.Size = new System.Drawing.Size(137, 20);
             this.vtbCaptureDateLesserThan.TabIndex = 8;
             this.vtbCaptureDateLesserThan.TextBoxName = "Capture Date <";
             // 
@@ -270,9 +269,9 @@
             this.vtbBatchSeqLesserThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
             this.vtbBatchSeqLesserThan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtbBatchSeqLesserThan.ErrorMessage = "";
-            this.vtbBatchSeqLesserThan.Location = new System.Drawing.Point(93, 32);
+            this.vtbBatchSeqLesserThan.Location = new System.Drawing.Point(98, 32);
             this.vtbBatchSeqLesserThan.Name = "vtbBatchSeqLesserThan";
-            this.vtbBatchSeqLesserThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbBatchSeqLesserThan.Size = new System.Drawing.Size(137, 20);
             this.vtbBatchSeqLesserThan.TabIndex = 9;
             this.vtbBatchSeqLesserThan.TextBoxName = "Batch Seq <";
             // 
@@ -282,9 +281,9 @@
             this.vtbStatementIdEquals.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
             this.vtbStatementIdEquals.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtbStatementIdEquals.ErrorMessage = "";
-            this.vtbStatementIdEquals.Location = new System.Drawing.Point(93, 61);
+            this.vtbStatementIdEquals.Location = new System.Drawing.Point(98, 61);
             this.vtbStatementIdEquals.Name = "vtbStatementIdEquals";
-            this.vtbStatementIdEquals.Size = new System.Drawing.Size(142, 20);
+            this.vtbStatementIdEquals.Size = new System.Drawing.Size(137, 20);
             this.vtbStatementIdEquals.TabIndex = 10;
             this.vtbStatementIdEquals.TextBoxName = "Statement ID =";
             // 
@@ -294,9 +293,9 @@
             this.vtbCaptureDateGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.DateFormatYYYYMMDD;
             this.vtbCaptureDateGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtbCaptureDateGreaterThan.ErrorMessage = "";
-            this.vtbCaptureDateGreaterThan.Location = new System.Drawing.Point(331, 3);
+            this.vtbCaptureDateGreaterThan.Location = new System.Drawing.Point(336, 3);
             this.vtbCaptureDateGreaterThan.Name = "vtbCaptureDateGreaterThan";
-            this.vtbCaptureDateGreaterThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbCaptureDateGreaterThan.Size = new System.Drawing.Size(137, 20);
             this.vtbCaptureDateGreaterThan.TabIndex = 11;
             this.vtbCaptureDateGreaterThan.TextBoxName = "Capture Date >";
             // 
@@ -306,9 +305,9 @@
             this.vtbBatchSeqGreaterThan.DataType = CustomControls.ValidatedTextBox.StTextBoxDataType.PositiveNumeric;
             this.vtbBatchSeqGreaterThan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vtbBatchSeqGreaterThan.ErrorMessage = "";
-            this.vtbBatchSeqGreaterThan.Location = new System.Drawing.Point(331, 32);
+            this.vtbBatchSeqGreaterThan.Location = new System.Drawing.Point(336, 32);
             this.vtbBatchSeqGreaterThan.Name = "vtbBatchSeqGreaterThan";
-            this.vtbBatchSeqGreaterThan.Size = new System.Drawing.Size(142, 20);
+            this.vtbBatchSeqGreaterThan.Size = new System.Drawing.Size(137, 20);
             this.vtbBatchSeqGreaterThan.TabIndex = 12;
             this.vtbBatchSeqGreaterThan.TextBoxName = "Batch Seq >";
             // 
@@ -323,7 +322,7 @@
             this.dgvcSearchResultsStatementId,
             this.dgvcSearchResultsCaptureDate,
             this.dgvcSearchResultsBatchSeq,
-            this.dgvcSearchResultsBatchType,
+            this.dgvcSearchResultsCaptureId,
             this.dgvcSearchResultsNumberOfItems,
             this.dgvcSearchResultsUse});
             this.dgvSearchResults.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -352,11 +351,11 @@
             this.dgvcSearchResultsBatchSeq.Name = "dgvcSearchResultsBatchSeq";
             this.dgvcSearchResultsBatchSeq.Width = 70;
             // 
-            // dgvcSearchResultsBatchType
+            // dgvcSearchResultsCaptureId
             // 
-            this.dgvcSearchResultsBatchType.HeaderText = "Batch Type";
-            this.dgvcSearchResultsBatchType.Name = "dgvcSearchResultsBatchType";
-            this.dgvcSearchResultsBatchType.Width = 120;
+            this.dgvcSearchResultsCaptureId.HeaderText = "Capture ID";
+            this.dgvcSearchResultsCaptureId.Name = "dgvcSearchResultsCaptureId";
+            this.dgvcSearchResultsCaptureId.Width = 120;
             // 
             // dgvcSearchResultsNumberOfItems
             // 
@@ -511,12 +510,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsStatementId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsCaptureDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsBatchSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsBatchType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsNumberOfItems;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcSearchResultsUse;
         private System.Windows.Forms.DataGridView dataLoadInInterface;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -532,5 +525,11 @@
         private CustomControls.ValidatedTextBox vtbStatementIdEquals;
         private CustomControls.ValidatedTextBox vtbCaptureDateGreaterThan;
         private CustomControls.ValidatedTextBox vtbBatchSeqGreaterThan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsStatementId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsCaptureDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsBatchSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsCaptureId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsNumberOfItems;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcSearchResultsUse;
     }
 }

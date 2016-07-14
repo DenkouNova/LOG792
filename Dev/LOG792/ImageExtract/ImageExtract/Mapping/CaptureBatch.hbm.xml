@@ -17,7 +17,8 @@
     <property name="Reprocessing_Batch" />
 
     <many-to-one name="statement" class="StatementDefinition" column="STATEMENT_ID"/>
-
+    <one-to-one name="captureBatchSummary" class="CaptureBatchSummary"/>
+    
     <set name="MatchedPayments" inverse="true">
       <key>
         <column name="Batch_Seq"/>
