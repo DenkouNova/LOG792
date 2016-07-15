@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.dataLoadInInterface = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvLoadInInterface = new System.Windows.Forms.DataGridView();
+            this.dgvcLoadStatementId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcLoadCaptureDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcLoadBatchSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcLoadBatchType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcLoadNumberOfItems = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcLoadUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpConditions = new System.Windows.Forms.TableLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             this.btnAddSelection = new System.Windows.Forms.Button();
             this.btnResetSelection = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLoadInInterface)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLoadInInterface)).BeginInit();
             this.tlpConditions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.tlpButtons.SuspendLayout();
@@ -75,7 +75,7 @@
             // 
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Controls.Add(this.dataLoadInInterface, 0, 5);
+            this.tlpMain.Controls.Add(this.dgvLoadInInterface, 0, 5);
             this.tlpMain.Controls.Add(this.tlpConditions, 0, 0);
             this.tlpMain.Controls.Add(this.dgvSearchResults, 0, 2);
             this.tlpMain.Controls.Add(this.tlpButtons, 0, 6);
@@ -96,64 +96,65 @@
             this.tlpMain.Size = new System.Drawing.Size(482, 628);
             this.tlpMain.TabIndex = 0;
             // 
-            // dataLoadInInterface
+            // dgvLoadInInterface
             // 
-            this.dataLoadInInterface.AllowUserToAddRows = false;
-            this.dataLoadInInterface.AllowUserToDeleteRows = false;
-            this.dataLoadInInterface.AllowUserToResizeColumns = false;
-            this.dataLoadInInterface.AllowUserToResizeRows = false;
-            this.dataLoadInInterface.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataLoadInInterface.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewCheckBoxColumn1});
-            this.dataLoadInInterface.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLoadInInterface.Location = new System.Drawing.Point(3, 436);
-            this.dataLoadInInterface.Name = "dataLoadInInterface";
-            this.dataLoadInInterface.RowHeadersVisible = false;
-            this.dataLoadInInterface.Size = new System.Drawing.Size(476, 128);
-            this.dataLoadInInterface.TabIndex = 7;
+            this.dgvLoadInInterface.AllowUserToAddRows = false;
+            this.dgvLoadInInterface.AllowUserToDeleteRows = false;
+            this.dgvLoadInInterface.AllowUserToResizeColumns = false;
+            this.dgvLoadInInterface.AllowUserToResizeRows = false;
+            this.dgvLoadInInterface.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvLoadInInterface.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvcLoadStatementId,
+            this.dgvcLoadCaptureDate,
+            this.dgvcLoadBatchSeq,
+            this.dgvcLoadBatchType,
+            this.dgvcLoadNumberOfItems,
+            this.dgvcLoadUse});
+            this.dgvLoadInInterface.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLoadInInterface.Location = new System.Drawing.Point(3, 436);
+            this.dgvLoadInInterface.Name = "dgvLoadInInterface";
+            this.dgvLoadInInterface.RowHeadersVisible = false;
+            this.dgvLoadInInterface.Size = new System.Drawing.Size(476, 128);
+            this.dgvLoadInInterface.TabIndex = 7;
+            this.dgvLoadInInterface.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLoadInInterface_CellMouseUp);
             // 
-            // dataGridViewTextBoxColumn1
+            // dgvcLoadStatementId
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Statement ID";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 80;
+            this.dgvcLoadStatementId.HeaderText = "Statement ID";
+            this.dgvcLoadStatementId.Name = "dgvcLoadStatementId";
+            this.dgvcLoadStatementId.Width = 80;
             // 
-            // dataGridViewTextBoxColumn2
+            // dgvcLoadCaptureDate
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Capture Date";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 80;
+            this.dgvcLoadCaptureDate.HeaderText = "Capture Date";
+            this.dgvcLoadCaptureDate.Name = "dgvcLoadCaptureDate";
+            this.dgvcLoadCaptureDate.Width = 80;
             // 
-            // dataGridViewTextBoxColumn3
+            // dgvcLoadBatchSeq
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Batch Seq";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 70;
+            this.dgvcLoadBatchSeq.HeaderText = "Batch Seq";
+            this.dgvcLoadBatchSeq.Name = "dgvcLoadBatchSeq";
+            this.dgvcLoadBatchSeq.Width = 70;
             // 
-            // dataGridViewTextBoxColumn4
+            // dgvcLoadBatchType
             // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Batch Type";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 120;
+            this.dgvcLoadBatchType.HeaderText = "Batch Type";
+            this.dgvcLoadBatchType.Name = "dgvcLoadBatchType";
+            this.dgvcLoadBatchType.Width = 120;
             // 
-            // dataGridViewTextBoxColumn5
+            // dgvcLoadNumberOfItems
             // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Num. of items";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 80;
+            this.dgvcLoadNumberOfItems.HeaderText = "Num. of items";
+            this.dgvcLoadNumberOfItems.Name = "dgvcLoadNumberOfItems";
+            this.dgvcLoadNumberOfItems.Width = 80;
             // 
-            // dataGridViewCheckBoxColumn1
+            // dgvcLoadUse
             // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Use";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCheckBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewCheckBoxColumn1.Width = 40;
+            this.dgvcLoadUse.HeaderText = "Use";
+            this.dgvcLoadUse.Name = "dgvcLoadUse";
+            this.dgvcLoadUse.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcLoadUse.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dgvcLoadUse.Width = 40;
             // 
             // tlpConditions
             // 
@@ -331,7 +332,7 @@
             this.dgvSearchResults.RowHeadersVisible = false;
             this.dgvSearchResults.Size = new System.Drawing.Size(476, 244);
             this.dgvSearchResults.TabIndex = 2;
-            this.dgvSearchResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBatches_CellContentClick);
+            this.dgvSearchResults.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSearchResults_CellMouseUp);
             // 
             // dgvcSearchResultsStatementId
             // 
@@ -484,7 +485,7 @@
             this.Text = "Load example images";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLoadInInterface)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLoadInInterface)).EndInit();
             this.tlpConditions.ResumeLayout(false);
             this.tlpConditions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).EndInit();
@@ -510,13 +511,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dataLoadInInterface;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridView dgvLoadInInterface;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSearch;
@@ -531,5 +526,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsCaptureId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSearchResultsNumberOfItems;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcSearchResultsUse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLoadStatementId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLoadCaptureDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLoadBatchSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLoadBatchType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcLoadNumberOfItems;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcLoadUse;
     }
 }

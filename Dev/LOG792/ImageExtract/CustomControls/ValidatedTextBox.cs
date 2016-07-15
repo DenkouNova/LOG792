@@ -43,7 +43,7 @@ namespace CustomControls
             {
                 if (this.DataType == StTextBoxDataType.PositiveNumeric && !textIsPositiveNumeric())
                 {
-                    this.ErrorMessage = String.Format("Field {0} must be an integer higher than zero.", controlDisplayedName);
+                    this.ErrorMessage = String.Format("Field {0} must be an integer higher than zero and no more than 9 digits long.", controlDisplayedName);
                 }
                 else if (this.DataType == StTextBoxDataType.DateFormatYYYYMMDD && !textIsDateFormatYYYYMMDD())
                 {
