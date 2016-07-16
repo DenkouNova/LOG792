@@ -24,7 +24,7 @@ namespace ImageExtract.ST
 
         public void InitializeImageSeparationDataGrid()
         {
-            Image img = new Bitmap(@"D:\Cossins\Documents\ETS\LOG792\Images\cheque.tif");
+            Image img = new Bitmap(TestConstants.ExampleImagePath);
 
             // Set image last column to width
             this.dgvImageSeparation.Columns[this.dgvcImageInclusionImage.Name].Width =

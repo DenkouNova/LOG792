@@ -71,7 +71,7 @@ namespace ImageExtract.ST
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Skirt", 0));
 
             // Initialize Image Inclusion Datagrid
-            Image img = new Bitmap(@"D:\Cossins\Documents\ETS\LOG792\Images\cheque.tif");
+            Image img = new Bitmap(TestConstants.ExampleImagePath);
 
             // Set image last column to width
             this.dgvImageInclusion.Columns[this.dgvcImageInclusionImage.Name].Width =

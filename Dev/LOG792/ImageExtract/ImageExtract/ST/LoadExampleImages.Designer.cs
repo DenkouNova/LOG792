@@ -57,7 +57,7 @@
             this.dgvcSearchResultsUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
             this.btnOK = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -385,7 +385,7 @@
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpButtons.Controls.Add(this.btnOK, 1, 0);
-            this.tlpButtons.Controls.Add(this.button2, 3, 0);
+            this.tlpButtons.Controls.Add(this.btnCancel, 3, 0);
             this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpButtons.Location = new System.Drawing.Point(3, 570);
             this.tlpButtons.Name = "tlpButtons";
@@ -402,15 +402,17 @@
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // button2
+            // btnCancel
             // 
-            this.button2.Location = new System.Drawing.Point(251, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 48);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancel.Location = new System.Drawing.Point(251, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(72, 48);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label5
             // 
@@ -474,6 +476,7 @@
             this.btnResetSelection.Text = "Reset selection";
             this.btnResetSelection.UseCompatibleTextRendering = true;
             this.btnResetSelection.UseVisualStyleBackColor = true;
+            this.btnResetSelection.Click += new System.EventHandler(this.btnResetSelection_Click);
             // 
             // LoadExampleImages
             // 
@@ -506,7 +509,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
         private System.Windows.Forms.Button btnResetSelection;
         private System.Windows.Forms.Button btnAddSelection;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

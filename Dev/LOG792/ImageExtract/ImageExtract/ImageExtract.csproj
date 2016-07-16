@@ -183,6 +183,7 @@
     <Compile Include="ST\OtherOptionsTab.Designer.cs">
       <DependentUpon>OtherOptionsTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestConstants.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

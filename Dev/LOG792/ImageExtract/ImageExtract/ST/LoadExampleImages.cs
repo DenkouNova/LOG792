@@ -31,7 +31,7 @@ namespace ImageExtract
         {
             InitializeComponent();
 
-            
+            listBatchesForInterface = new List<CaptureBatch>();
         }
 
 
@@ -55,6 +55,20 @@ namespace ImageExtract
             }*/
         }
 
+        private void btnResetSelection_Click(object sender, EventArgs e)
+        {
+            this.dgvLoadInInterface.Rows.Clear();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -63,8 +77,6 @@ namespace ImageExtract
                 databaseSession = NHibernateHelper.GetCurrentSession();
 
                 queryCriteria = databaseSession.CreateCriteria<CaptureBatch>();
-
-                //queryCriteria.Add(Restrictions.Eq("Statement_Id", this.vtbStatementIdEquals.Text));
 
                 queryCriteria.CreateAlias("statement", "statement").
                     Add(Restrictions.Eq("statement.Statement_Id", Convert.ToInt32(this.vtbStatementIdEquals.Text)));
@@ -80,7 +92,6 @@ namespace ImageExtract
                 listSearchResultBatches = queryCriteria.List<Domain.CaptureBatch>();
 
                 this.dgvSearchResults.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellValueChanged);
-                this.dgvLoadInInterface.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoadInInterface_CellValueChanged);
                 this.dgvSearchResults.Rows.Clear();
 
                 if (listSearchResultBatches.Count == 0)
@@ -89,7 +100,7 @@ namespace ImageExtract
                 }
                 else
                 {
-                    foreach (var oneBatch in listSearchResultBatches)
+                    foreach (Domain.CaptureBatch oneBatch in listSearchResultBatches)
                     {
                         AddBatchInSearchResults(oneBatch);
                     }
@@ -99,10 +110,6 @@ namespace ImageExtract
 
             if (dgvSearchResults.Rows.Count > 0)
                 this.dgvSearchResults.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellValueChanged);
-
-            if (dgvLoadInInterface.Rows.Count > 0)
-                this.dgvLoadInInterface.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoadInInterface_CellValueChanged);
-
         }
 
         private void dgvSearchResults_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -113,15 +120,17 @@ namespace ImageExtract
 
         private void dgvSearchResults_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            Domain.CaptureBatch clickedBatch = listSearchResultBatches.First(cb => cb.Batch_Seq ==
+                  Convert.ToInt32(this.dgvSearchResults.Rows[e.RowIndex].Cells[dgvcSearchResultsBatchSeq.Index].Value));
+
             if ((bool)this.dgvSearchResults.Rows[e.RowIndex].Cells[dgvcSearchResultsUse.Index].Value)
             {
-                Domain.CaptureBatch clickedBatch = listSearchResultBatches.First(cb => cb.Batch_Seq ==
-               Convert.ToInt32(this.dgvSearchResults.Rows[e.RowIndex].Cells[dgvcSearchResultsBatchSeq.Index].Value));
-                MessageBox.Show(clickedBatch.ToString());
+                AddBatchInLoadInterface(clickedBatch);
             }
-            //MessageBox.Show(this.dgvSearchResults.Rows[e.RowIndex].Cells[dgvcSearchResultsBatchSeq.Index].Value.ToString());
-
-           
+            else
+            {
+                RemoveBatchFromLoadInterface(clickedBatch);
+            }
         }
 
         private void dgvLoadInInterface_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -132,22 +141,79 @@ namespace ImageExtract
 
         private void dgvLoadInInterface_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Clickytung");
+            Domain.CaptureBatch clickedBatch = listBatchesForInterface.First(cb => cb.Batch_Seq ==
+                  Convert.ToInt32(this.dgvLoadInInterface.Rows[e.RowIndex].Cells[this.dgvcLoadBatchSeq.Index].Value));
+
+            if ((bool)this.dgvLoadInInterface.Rows[e.RowIndex].Cells[dgvcSearchResultsUse.Index].Value)
+            {
+                // This part should never happen, as you can guess
+                throw new Exception("ERROR: We should never have rows in the loaded Data Grid View that have Use = false.");
+            }
+            else
+            {
+                RemoveBatchFromLoadInterface(clickedBatch);
+            }
         }
         #endregion
 
         
 
-        
+       
         private void AddBatchInSearchResults(CaptureBatch oneBatch)
         {
             this.dgvSearchResults.Rows.Add(
-                1319,
+                oneBatch.statement.Statement_Id,
                 oneBatch.Capture_Date,
                 oneBatch.Batch_Seq,
                 oneBatch.Capture_Id,
                 oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
                 false);
+        }
+
+        private void AddBatchInLoadInterface(CaptureBatch oneBatch)
+        {
+            listBatchesForInterface.Add(oneBatch);
+            this.dgvLoadInInterface.Rows.Add(
+                oneBatch.statement.Statement_Id,
+                oneBatch.Capture_Date,
+                oneBatch.Batch_Seq,
+                oneBatch.Capture_Id,
+                oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
+                true);
+
+            RefreshDgvLoadInterfaceEvents();
+        }
+
+        private void RemoveBatchFromLoadInterface(CaptureBatch oneBatch)
+        {
+            DataGridViewRow rowToRemove = null;
+
+            // Locate the batch in the interface dgv
+            for (int i = 0; i < dgvLoadInInterface.Rows.Count && rowToRemove == null; i++)
+                if (Convert.ToInt32(dgvLoadInInterface.Rows[i].Cells[dgvcLoadBatchSeq.Index].Value) == oneBatch.Batch_Seq)
+                    rowToRemove = dgvLoadInInterface.Rows[i];
+
+            // Remove the batch from the datagrid and the List
+            if (rowToRemove != null)
+            {
+                listBatchesForInterface.Remove(oneBatch);
+                dgvLoadInInterface.Rows.Remove(rowToRemove);
+            }
+
+            // Remove the "use" check from the search results
+            for (int i = 0; i < dgvSearchResults.Rows.Count && rowToRemove == null; i++)
+                if (Convert.ToInt32(dgvSearchResults.Rows[i].Cells[dgvcSearchResultsBatchSeq.Index].Value) == oneBatch.Batch_Seq)
+                    dgvLoadInInterface.Rows[i].Cells[this.dgvcSearchResultsUse.Index].Value = false;
+
+            RefreshDgvLoadInterfaceEvents();
+        }
+
+        private void RefreshDgvLoadInterfaceEvents()
+        {
+            this.dgvLoadInInterface.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoadInInterface_CellValueChanged);
+
+            if (dgvLoadInInterface.Rows.Count > 0)
+                this.dgvLoadInInterface.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoadInInterface_CellValueChanged);
         }
 
 
