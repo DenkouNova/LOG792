@@ -1,6 +1,6 @@
 ﻿namespace ImageExtract
 {
-    partial class LoadExampleImages
+    partial class DialogLoadExampleImages
     {
         /// <summary>
         /// Required designer variable.
@@ -114,6 +114,7 @@
             this.dgvLoadInInterface.Location = new System.Drawing.Point(3, 436);
             this.dgvLoadInInterface.Name = "dgvLoadInInterface";
             this.dgvLoadInInterface.RowHeadersVisible = false;
+            this.dgvLoadInInterface.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoadInInterface.Size = new System.Drawing.Size(476, 128);
             this.dgvLoadInInterface.TabIndex = 7;
             this.dgvLoadInInterface.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLoadInInterface_CellMouseUp);
@@ -330,6 +331,7 @@
             this.dgvSearchResults.Location = new System.Drawing.Point(3, 118);
             this.dgvSearchResults.Name = "dgvSearchResults";
             this.dgvSearchResults.RowHeadersVisible = false;
+            this.dgvSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSearchResults.Size = new System.Drawing.Size(476, 244);
             this.dgvSearchResults.TabIndex = 2;
             this.dgvSearchResults.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSearchResults_CellMouseUp);
@@ -478,13 +480,13 @@
             this.btnResetSelection.UseVisualStyleBackColor = true;
             this.btnResetSelection.Click += new System.EventHandler(this.btnResetSelection_Click);
             // 
-            // LoadExampleImages
+            // DialogLoadExampleImages
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(482, 628);
             this.Controls.Add(this.tlpMain);
-            this.Name = "LoadExampleImages";
+            this.Name = "DialogLoadExampleImages";
             this.Text = "Load example images";
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpImageInclusion = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvImageInclusion = new System.Windows.Forms.DataGridView();
+            this.dgvPreviewGrid = new System.Windows.Forms.DataGridView();
             this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +50,7 @@
             this.flpLoadConditionsButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExampleConditionCategoryButton = new System.Windows.Forms.Button();
             this.tlpImageInclusion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvImageInclusion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPreviewGrid)).BeginInit();
             this.flpImageInclusionConditionSets.SuspendLayout();
             this.tlpImageInclusionButtons.SuspendLayout();
             this.flpLoadExampleBatches.SuspendLayout();
@@ -66,7 +66,7 @@
             this.tlpImageInclusion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tlpImageInclusion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tlpImageInclusion.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpImageInclusion.Controls.Add(this.dgvImageInclusion, 0, 0);
+            this.tlpImageInclusion.Controls.Add(this.dgvPreviewGrid, 0, 0);
             this.tlpImageInclusion.Controls.Add(this.flpImageInclusionConditionSets, 2, 1);
             this.tlpImageInclusion.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tlpImageInclusion.Controls.Add(this.tlpImageInclusionButtons, 2, 0);
@@ -79,48 +79,48 @@
             this.tlpImageInclusion.Size = new System.Drawing.Size(1278, 588);
             this.tlpImageInclusion.TabIndex = 1;
             // 
-            // dgvImageInclusion
+            // dgvPreviewGrid
             // 
-            this.dgvImageInclusion.AllowUserToAddRows = false;
-            this.dgvImageInclusion.AllowUserToDeleteRows = false;
-            this.dgvImageInclusion.AllowUserToResizeColumns = false;
-            this.dgvImageInclusion.AllowUserToResizeRows = false;
-            this.dgvImageInclusion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvImageInclusion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvImageInclusion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvImageInclusion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvPreviewGrid.AllowUserToAddRows = false;
+            this.dgvPreviewGrid.AllowUserToDeleteRows = false;
+            this.dgvPreviewGrid.AllowUserToResizeColumns = false;
+            this.dgvPreviewGrid.AllowUserToResizeRows = false;
+            this.dgvPreviewGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPreviewGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvPreviewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPreviewGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcImageInclusionBSeq,
             this.dgvcImageInclusionMPS,
             this.dgvcImageInclusionIRef,
             this.dgvcImageInclusionSide,
             this.dgvcImageInclusionImage});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvImageInclusion.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvImageInclusion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvImageInclusion.EnableHeadersVisualStyles = false;
-            this.dgvImageInclusion.Location = new System.Drawing.Point(3, 3);
-            this.dgvImageInclusion.Name = "dgvImageInclusion";
-            this.dgvImageInclusion.RowHeadersVisible = false;
-            this.tlpImageInclusion.SetRowSpan(this.dgvImageInclusion, 2);
-            this.dgvImageInclusion.RowTemplate.Height = 100;
-            this.dgvImageInclusion.RowTemplate.ReadOnly = true;
-            this.dgvImageInclusion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvImageInclusion.Size = new System.Drawing.Size(394, 582);
-            this.dgvImageInclusion.TabIndex = 0;
-            this.dgvImageInclusion.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageInclusion_Paint);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPreviewGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvPreviewGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPreviewGrid.EnableHeadersVisualStyles = false;
+            this.dgvPreviewGrid.Location = new System.Drawing.Point(3, 3);
+            this.dgvPreviewGrid.Name = "dgvPreviewGrid";
+            this.dgvPreviewGrid.RowHeadersVisible = false;
+            this.tlpImageInclusion.SetRowSpan(this.dgvPreviewGrid, 2);
+            this.dgvPreviewGrid.RowTemplate.Height = 100;
+            this.dgvPreviewGrid.RowTemplate.ReadOnly = true;
+            this.dgvPreviewGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvPreviewGrid.Size = new System.Drawing.Size(394, 582);
+            this.dgvPreviewGrid.TabIndex = 0;
+            this.dgvPreviewGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageInclusion_Paint);
             // 
             // dgvcImageInclusionBSeq
             // 
@@ -297,7 +297,7 @@
             this.Name = "ImageInclusionTab";
             this.Size = new System.Drawing.Size(1278, 588);
             this.tlpImageInclusion.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvImageInclusion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPreviewGrid)).EndInit();
             this.flpImageInclusionConditionSets.ResumeLayout(false);
             this.tlpImageInclusionButtons.ResumeLayout(false);
             this.flpLoadExampleBatches.ResumeLayout(false);
@@ -313,7 +313,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tlpImageInclusion;
-        private System.Windows.Forms.DataGridView dgvImageInclusion;
+        private System.Windows.Forms.DataGridView dgvPreviewGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionBSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionMPS;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionIRef;

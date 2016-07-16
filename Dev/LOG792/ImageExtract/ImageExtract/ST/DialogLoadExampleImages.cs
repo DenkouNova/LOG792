@@ -20,39 +20,30 @@ using CustomControls;
 
 namespace ImageExtract
 {
-    public partial class LoadExampleImages : Form
+    public partial class DialogLoadExampleImages : Form
     {
-        ISession databaseSession;
-        ICriteria queryCriteria;
-        IList<CaptureBatch> listSearchResultBatches;
-        IList<CaptureBatch> listBatchesForInterface;
+        private ISession databaseSession;
+        private ICriteria queryCriteria;
+        private IList<CaptureBatch> listSearchResultBatches;
+        private IList<CaptureBatch> listBatchesForInterface;
 
-        public LoadExampleImages()
+        public DialogLoadExampleImages()
         {
             InitializeComponent();
 
             listBatchesForInterface = new List<CaptureBatch>();
         }
 
-
         #region events
         private void btnAddSelection_Click(object sender, EventArgs e)
         {
-            /*
-            this.tbBatchSeqLesserThan.Rows.Add(1319, "20160704", 256800, "Singles", true);
-            this.tbBatchSeqLesserThan.Rows.Add(1319, "20160704", 256801, "Multis", true);
-            this.tbBatchSeqLesserThan.Rows.Add(1319, "20160705", 256823, "Multis", true);
-
-            this.dataLoadInInterface.Rows.Add(1319, "20160704", 256801, "Multis", true);
-            */
-
-            /*
-            // Test code for screenshots
-            for (int i = 0; i < 50; i++)
+            Domain.CaptureBatch clickedBatch; 
+            
+            foreach (DataGridViewRow oneRow in this.dgvSearchResults.Rows)
             {
-                this.dgvImageInclusion.Rows.Add(256001, (100 + i).ToString(), (i * 100).ToString(), (i % 2 == 0 ? "F" : "R"), null);
-                ((DataGridViewImageCell)this.dgvImageInclusion.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
-            }*/
+                clickedBatch = listSearchResultBatches.First(cb => cb.Batch_Seq == Convert.ToInt32(oneRow.Cells[dgvcSearchResultsBatchSeq.Index].Value));
+                AddBatchInLoadInterface(clickedBatch);
+            }
         }
 
         private void btnResetSelection_Click(object sender, EventArgs e)
@@ -62,12 +53,13 @@ namespace ImageExtract
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            this.listBatchesForInterface = new List<CaptureBatch>();
+            this.Hide();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -152,12 +144,27 @@ namespace ImageExtract
             else
             {
                 RemoveBatchFromLoadInterface(clickedBatch);
+
+                // Remove the "use" check from the search results
+                for (int i = 0; i < dgvSearchResults.Rows.Count; i++)
+                {
+                    //MessageBox.Show(i + "");
+                    if (Convert.ToInt32(dgvSearchResults.Rows[i].Cells[dgvcSearchResultsBatchSeq.Index].Value) == clickedBatch.Batch_Seq)
+                    {
+                        //MessageBox.Show(clickedBatch.Batch_Seq + "");
+                       this.dgvSearchResults.Rows[i].Cells[this.dgvcSearchResultsUse.Index].Value = false;
+                    }
+                }          
             }
         }
         #endregion
 
-        
+        public IList<CaptureBatch> GetBatchesForInterface()
+        {
+            if (listBatchesForInterface == null) listBatchesForInterface = new List<CaptureBatch>();
 
+            return listBatchesForInterface;
+        }
        
         private void AddBatchInSearchResults(CaptureBatch oneBatch)
         {
@@ -172,16 +179,19 @@ namespace ImageExtract
 
         private void AddBatchInLoadInterface(CaptureBatch oneBatch)
         {
-            listBatchesForInterface.Add(oneBatch);
-            this.dgvLoadInInterface.Rows.Add(
-                oneBatch.statement.Statement_Id,
-                oneBatch.Capture_Date,
-                oneBatch.Batch_Seq,
-                oneBatch.Capture_Id,
-                oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
-                true);
+            if (!listBatchesForInterface.Contains(oneBatch))
+            {
+                listBatchesForInterface.Add(oneBatch);
+                this.dgvLoadInInterface.Rows.Add(
+                    oneBatch.statement.Statement_Id,
+                    oneBatch.Capture_Date,
+                    oneBatch.Batch_Seq,
+                    oneBatch.Capture_Id,
+                    oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
+                    true);
 
-            RefreshDgvLoadInterfaceEvents();
+                RefreshDgvLoadInterfaceEvents();
+            }
         }
 
         private void RemoveBatchFromLoadInterface(CaptureBatch oneBatch)
@@ -199,11 +209,6 @@ namespace ImageExtract
                 listBatchesForInterface.Remove(oneBatch);
                 dgvLoadInInterface.Rows.Remove(rowToRemove);
             }
-
-            // Remove the "use" check from the search results
-            for (int i = 0; i < dgvSearchResults.Rows.Count && rowToRemove == null; i++)
-                if (Convert.ToInt32(dgvSearchResults.Rows[i].Cells[dgvcSearchResultsBatchSeq.Index].Value) == oneBatch.Batch_Seq)
-                    dgvLoadInInterface.Rows[i].Cells[this.dgvcSearchResultsUse.Index].Value = false;
 
             RefreshDgvLoadInterfaceEvents();
         }

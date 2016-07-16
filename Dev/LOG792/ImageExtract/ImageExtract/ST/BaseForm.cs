@@ -34,6 +34,7 @@ namespace ImageExtract.ST
         ImageArchivingTab m_imageArchivingTab;
         OtherOptionsTab m_otherOptionsTab;
 
+        IList<CaptureBatch> batchesShownInPreview = null;
 
         public BaseForm()
         {

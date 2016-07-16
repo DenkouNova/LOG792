@@ -100,11 +100,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FieldVerifications.cs" />
-    <Compile Include="ST\LoadExampleImages.cs">
+    <Compile Include="Observer\IObservable.cs" />
+    <Compile Include="Observer\IObserver.cs" />
+    <Compile Include="ST\DialogLoadExampleImages.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ST\LoadExampleImages.Designer.cs">
-      <DependentUpon>LoadExampleImages.cs</DependentUpon>
+    <Compile Include="ST\DialogLoadExampleImages.Designer.cs">
+      <DependentUpon>DialogLoadExampleImages.cs</DependentUpon>
     </Compile>
     <Compile Include="NHibernateHelper.cs" />
     <Compile Include="Program.cs" />
@@ -176,6 +178,7 @@
     <Compile Include="ST\ImageSeparationTab.Designer.cs">
       <DependentUpon>ImageSeparationTab.cs</DependentUpon>
     </Compile>
+    <Compile Include="ST\VariablesSingleton.cs" />
     <Compile Include="ST\MyComboBoxOrListBoxItem.cs" />
     <Compile Include="ST\OtherOptionsTab.cs">
       <SubType>UserControl</SubType>
@@ -187,8 +190,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ST\LoadExampleImages.resx">
-      <DependentUpon>LoadExampleImages.cs</DependentUpon>
+    <EmbeddedResource Include="ST\DialogLoadExampleImages.resx">
+      <DependentUpon>DialogLoadExampleImages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

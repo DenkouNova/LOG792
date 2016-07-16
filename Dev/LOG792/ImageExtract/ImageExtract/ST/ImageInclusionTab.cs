@@ -74,24 +74,29 @@ namespace ImageExtract.ST
             Image img = new Bitmap(TestConstants.ExampleImagePath);
 
             // Set image last column to width
-            this.dgvImageInclusion.Columns[this.dgvcImageInclusionImage.Name].Width =
-                this.dgvImageInclusion.Width - 20 -
-                this.dgvImageInclusion.Columns[this.dgvcImageInclusionSide.Name].Width -
-                this.dgvImageInclusion.Columns[this.dgvcImageInclusionIRef.Name].Width -
-                this.dgvImageInclusion.Columns[this.dgvcImageInclusionMPS.Name].Width -
-                this.dgvImageInclusion.Columns[this.dgvcImageInclusionBSeq.Name].Width;
+            this.dgvPreviewGrid.Columns[this.dgvcImageInclusionImage.Name].Width =
+                this.dgvPreviewGrid.Width - 20 -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionSide.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionIRef.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionMPS.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionBSeq.Name].Width;
 
 
             for (int i = 0; i < 50; i++)
             {
-                this.dgvImageInclusion.Rows.Add(256001, (100 + i).ToString(), (i * 100).ToString(), (i % 2 == 0 ? "F" : "R"), null);
-                ((DataGridViewImageCell)this.dgvImageInclusion.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
+                this.dgvPreviewGrid.Rows.Add(256001, (100 + i).ToString(), (i * 100).ToString(), (i % 2 == 0 ? "F" : "R"), null);
+                ((DataGridViewImageCell)this.dgvPreviewGrid.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
             }
         }
 
                 public void AddConditionSetListBox()
         {
             AddConditionSetListBox(true);
+        }
+
+        private void AddOneBatchInPreviewGrid(Domain.CaptureBatch oneBatch)
+        {
+
         }
 
         public void AddConditionSetListBox(bool blnAllowRemovalOfConditionSet)
@@ -115,7 +120,12 @@ namespace ImageExtract.ST
 
         private void btnLoadExampleBatches_Click(object sender, EventArgs e)
         {
-            new LoadExampleImages().Show();
+            DialogLoadExampleImages exampleImages = new DialogLoadExampleImages();
+            IList<CaptureBatch> selectedBatches;
+
+            exampleImages.ShowDialog();
+
+            selectedBatches = exampleImages.GetBatchesForInterface();
         }
 
         private void ConditionCategoryButtons_Click(object sender, EventArgs e)
