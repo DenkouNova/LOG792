@@ -15,6 +15,7 @@ using NHibernate.Tool.hbm2ddl;
 
 using ImageExtract.ST;
 using ImageExtract.Domain;
+using ImageExtract.ObserverPattern;
 
 using CustomControls;
 
@@ -27,43 +28,76 @@ namespace ImageExtract
         private IList<CaptureBatch> listSearchResultBatches;
         private IList<CaptureBatch> listBatchesForInterface;
 
+        private MyObservable observableSearchResultList = new MyObservable();
+        private MyObservable observableBatchesForInterface = new MyObservable();
+        private ListOfBatchesObserver observerSearchResultList = new ListOfBatchesObserver("Search results");
+        private ListOfBatchesObserver observerBatchesForInterface = new ListOfBatchesObserver("Batches for interface");
+
         public DialogLoadExampleImages()
         {
             InitializeComponent();
 
+            this.dgvSearchResults.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellValueChanged);
+
+            // this.dgvSearchResults.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellValueChanged);
+
+            listSearchResultBatches = new List<CaptureBatch>();
             listBatchesForInterface = new List<CaptureBatch>();
+
+            observableSearchResultList.Subscribe(observerSearchResultList);
+            observableBatchesForInterface.Subscribe(observerBatchesForInterface);
+            observerSearchResultList.dgv = this.dgvSearchResults;
+            observerBatchesForInterface.dgv = this.dgvLoadInInterface;
+        }
+
+        private void AddBatchInSearchResultsList(Domain.CaptureBatch oneBatch)
+        {
+            listSearchResultBatches.Add(oneBatch);
+            observableSearchResultList.NotifyObservers(new CaptureBatchEvent(oneBatch, CaptureBatchEvent.AddOrRemoveMode.ADD));
         }
 
         #region events
+        private void dgv_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // This will call dgv_CellValueChanged
+            if (e.ColumnIndex == this.dgvcSearchResultsUse.Index && e.RowIndex != -1)
+            {
+                MessageBox.Show("dgv_CellMouseUp");
+                this.dgvSearchResults.EndEdit();
+            }
+        }
+
+        private void dgv_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+
+            MessageBox.Show("dgv_CellValueChanged");
+        }
+
         private void btnAddSelection_Click(object sender, EventArgs e)
         {
-            Domain.CaptureBatch clickedBatch; 
-            
-            foreach (DataGridViewRow oneRow in this.dgvSearchResults.Rows)
-            {
-                clickedBatch = listSearchResultBatches.First(cb => cb.Batch_Seq == Convert.ToInt32(oneRow.Cells[dgvcSearchResultsBatchSeq.Index].Value));
-                AddBatchInLoadInterface(clickedBatch);
-            }
+
         }
 
         private void btnResetSelection_Click(object sender, EventArgs e)
         {
-            this.dgvLoadInInterface.Rows.Clear();
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Hide();
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.listBatchesForInterface = new List<CaptureBatch>();
-            this.Hide();
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            IList<Domain.CaptureBatch> listOfFoundBatches;
+
             if (CustomFormValidation.ControlIsValid(this.tlpConditions))
             {
                 databaseSession = NHibernateHelper.GetCurrentSession();
@@ -81,145 +115,104 @@ namespace ImageExtract
                 if (!String.IsNullOrEmpty(this.vtbCaptureDateGreaterThan.Text))
                     queryCriteria.Add(Restrictions.Gt("Capture_Date", this.vtbCaptureDateGreaterThan.Text));
 
-                listSearchResultBatches = queryCriteria.List<Domain.CaptureBatch>();
+                listOfFoundBatches = queryCriteria.List<Domain.CaptureBatch>();
 
-                this.dgvSearchResults.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellValueChanged);
-                this.dgvSearchResults.Rows.Clear();
-
-                if (listSearchResultBatches.Count == 0)
+                if (listOfFoundBatches.Count == 0)
                 {
                     MessageBox.Show("No batches were found using the search criteria.");
                 }
                 else
                 {
-                    foreach (Domain.CaptureBatch oneBatch in listSearchResultBatches)
+                    foreach (Domain.CaptureBatch oneBatch in listOfFoundBatches)
                     {
-                        AddBatchInSearchResults(oneBatch);
+                        AddBatchInSearchResultsList(oneBatch);
                     }
                 }
-                
             }
 
-            if (dgvSearchResults.Rows.Count > 0)
-                this.dgvSearchResults.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellValueChanged);
         }
 
-        private void dgvSearchResults_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            // This will call dgvSearchResults_CellValueChanged
-            if (e.ColumnIndex == this.dgvcSearchResultsUse.Index && e.RowIndex != -1) this.dgvSearchResults.EndEdit();
-        }
-
-        private void dgvSearchResults_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            Domain.CaptureBatch clickedBatch = listSearchResultBatches.First(cb => cb.Batch_Seq ==
-                  Convert.ToInt32(this.dgvSearchResults.Rows[e.RowIndex].Cells[dgvcSearchResultsBatchSeq.Index].Value));
-
-            if ((bool)this.dgvSearchResults.Rows[e.RowIndex].Cells[dgvcSearchResultsUse.Index].Value)
-            {
-                AddBatchInLoadInterface(clickedBatch);
-            }
-            else
-            {
-                RemoveBatchFromLoadInterface(clickedBatch);
-            }
-        }
-
-        private void dgvLoadInInterface_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            // This will call dgvLoadInInterface_CellValueChanged
-            if (e.ColumnIndex == this.dgvcLoadUse.Index && e.RowIndex != -1) this.dgvLoadInInterface.EndEdit();
-        }
-
-        private void dgvLoadInInterface_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            Domain.CaptureBatch clickedBatch = listBatchesForInterface.First(cb => cb.Batch_Seq ==
-                  Convert.ToInt32(this.dgvLoadInInterface.Rows[e.RowIndex].Cells[this.dgvcLoadBatchSeq.Index].Value));
-
-            if ((bool)this.dgvLoadInInterface.Rows[e.RowIndex].Cells[dgvcSearchResultsUse.Index].Value)
-            {
-                // This part should never happen, as you can guess
-                throw new Exception("ERROR: We should never have rows in the loaded Data Grid View that have Use = false.");
-            }
-            else
-            {
-                RemoveBatchFromLoadInterface(clickedBatch);
-
-                // Remove the "use" check from the search results
-                for (int i = 0; i < dgvSearchResults.Rows.Count; i++)
-                {
-                    //MessageBox.Show(i + "");
-                    if (Convert.ToInt32(dgvSearchResults.Rows[i].Cells[dgvcSearchResultsBatchSeq.Index].Value) == clickedBatch.Batch_Seq)
-                    {
-                        //MessageBox.Show(clickedBatch.Batch_Seq + "");
-                       this.dgvSearchResults.Rows[i].Cells[this.dgvcSearchResultsUse.Index].Value = false;
-                    }
-                }          
-            }
-        }
         #endregion
 
-        public IList<CaptureBatch> GetBatchesForInterface()
-        {
-            if (listBatchesForInterface == null) listBatchesForInterface = new List<CaptureBatch>();
 
-            return listBatchesForInterface;
-        }
-       
-        private void AddBatchInSearchResults(CaptureBatch oneBatch)
-        {
-            this.dgvSearchResults.Rows.Add(
-                oneBatch.statement.Statement_Id,
-                oneBatch.Capture_Date,
-                oneBatch.Batch_Seq,
-                oneBatch.Capture_Id,
-                oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
-                false);
-        }
 
-        private void AddBatchInLoadInterface(CaptureBatch oneBatch)
+
+
+
+
+
+
+
+        class CaptureBatchEvent
         {
-            if (!listBatchesForInterface.Contains(oneBatch))
+            public enum AddOrRemoveMode
             {
-                listBatchesForInterface.Add(oneBatch);
-                this.dgvLoadInInterface.Rows.Add(
-                    oneBatch.statement.Statement_Id,
-                    oneBatch.Capture_Date,
-                    oneBatch.Batch_Seq,
-                    oneBatch.Capture_Id,
-                    oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
-                    true);
+                ADD,
+                REMOVE
+            }
 
-                RefreshDgvLoadInterfaceEvents();
+            public Domain.CaptureBatch batch;
+            public AddOrRemoveMode addOrRemove;
+
+            public CaptureBatchEvent(Domain.CaptureBatch p_batch, AddOrRemoveMode p_addOrRemove)
+            {
+                batch = p_batch;
+                addOrRemove = p_addOrRemove;
             }
         }
 
-        private void RemoveBatchFromLoadInterface(CaptureBatch oneBatch)
+
+        class ListOfBatchesObserver : MyObserver
         {
-            DataGridViewRow rowToRemove = null;
+            public DataGridView dgv;
 
-            // Locate the batch in the interface dgv
-            for (int i = 0; i < dgvLoadInInterface.Rows.Count && rowToRemove == null; i++)
-                if (Convert.ToInt32(dgvLoadInInterface.Rows[i].Cells[dgvcLoadBatchSeq.Index].Value) == oneBatch.Batch_Seq)
-                    rowToRemove = dgvLoadInInterface.Rows[i];
+            public ListOfBatchesObserver(string name)
+                : base(name) { }
 
-            // Remove the batch from the datagrid and the List
-            if (rowToRemove != null)
+            public override void OnNext(object value)
             {
-                listBatchesForInterface.Remove(oneBatch);
-                dgvLoadInInterface.Rows.Remove(rowToRemove);
+                CaptureBatchEvent batchEvent;
+                Domain.CaptureBatch oneBatch;
+                CaptureBatchEvent.AddOrRemoveMode addOrRemove;
+                bool blnUse = false;
+
+                if (dgv == null)
+                {
+                    throw new Exception("DataGridView was not initialized in observer '" + this.Name + "'.");
+                }
+                else
+                {
+                    batchEvent = value as CaptureBatchEvent;
+                    if (batchEvent == null)
+                    {
+                        throw new Exception("Observer '" + this.Name + "' received an invalid object, should be a CaptureBatchEvent.");
+                    }
+                    else
+                    {
+                        oneBatch = batchEvent.batch;
+                        addOrRemove = batchEvent.addOrRemove;
+
+                        if (addOrRemove == CaptureBatchEvent.AddOrRemoveMode.ADD)
+                        {
+                            this.dgv.Rows.Add(
+                            oneBatch.statement.Statement_Id,
+                            oneBatch.Capture_Date,
+                            oneBatch.Batch_Seq,
+                            oneBatch.Capture_Id,
+                            oneBatch.captureBatchSummary.Tot_Num_Payments + oneBatch.captureBatchSummary.Tot_Num_Statements,
+                            blnUse);
+                        }
+                        else if (addOrRemove == CaptureBatchEvent.AddOrRemoveMode.REMOVE)
+                        {
+
+                        }
+                    }
+                }
+
             }
-
-            RefreshDgvLoadInterfaceEvents();
         }
 
-        private void RefreshDgvLoadInterfaceEvents()
-        {
-            this.dgvLoadInInterface.CellValueChanged -= new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoadInInterface_CellValueChanged);
 
-            if (dgvLoadInInterface.Rows.Count > 0)
-                this.dgvLoadInInterface.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoadInInterface_CellValueChanged);
-        }
 
 
 

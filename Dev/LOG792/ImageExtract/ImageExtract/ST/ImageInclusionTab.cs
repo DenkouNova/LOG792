@@ -124,8 +124,8 @@ namespace ImageExtract.ST
             IList<CaptureBatch> selectedBatches;
 
             exampleImages.ShowDialog();
-
-            selectedBatches = exampleImages.GetBatchesForInterface();
+            
+            // brax selectedBatches = exampleImages.GetBatchesForInterface();
         }
 
         private void ConditionCategoryButtons_Click(object sender, EventArgs e)

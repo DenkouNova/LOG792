@@ -100,8 +100,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FieldVerifications.cs" />
-    <Compile Include="Observer\IObservable.cs" />
-    <Compile Include="Observer\IObserver.cs" />
+    <Compile Include="ObserverPattern\MyObservable.cs" />
+    <Compile Include="ObserverPattern\MyObserver.cs" />
     <Compile Include="ST\DialogLoadExampleImages.cs">
       <SubType>Form</SubType>
     </Compile>

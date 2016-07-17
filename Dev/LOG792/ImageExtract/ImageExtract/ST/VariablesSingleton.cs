@@ -28,9 +28,6 @@ namespace ImageExtract.ST
             return allVariables;
         }
 
-
-
-
         private List<Domain.CaptureBatch> previewBatches;
 
         private VariablesSingleton()

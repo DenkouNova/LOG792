@@ -117,7 +117,7 @@
             this.dgvLoadInInterface.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoadInInterface.Size = new System.Drawing.Size(476, 128);
             this.dgvLoadInInterface.TabIndex = 7;
-            this.dgvLoadInInterface.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLoadInInterface_CellMouseUp);
+            this.dgvLoadInInterface.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseUp);
             // 
             // dgvcLoadStatementId
             // 
@@ -334,7 +334,7 @@
             this.dgvSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSearchResults.Size = new System.Drawing.Size(476, 244);
             this.dgvSearchResults.TabIndex = 2;
-            this.dgvSearchResults.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSearchResults_CellMouseUp);
+            this.dgvSearchResults.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseUp);
             // 
             // dgvcSearchResultsStatementId
             // 
