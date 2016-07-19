@@ -117,7 +117,7 @@
             this.dgvLoadInInterface.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLoadInInterface.Size = new System.Drawing.Size(476, 128);
             this.dgvLoadInInterface.TabIndex = 7;
-            this.dgvLoadInInterface.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseUp);
+            this.dgvLoadInInterface.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLoadInInterface_CellMouseUp);
             // 
             // dgvcLoadStatementId
             // 
@@ -248,7 +248,7 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(78, 0, 78, 0);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(82, 31);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TabIndex = 11;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -334,7 +334,7 @@
             this.dgvSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSearchResults.Size = new System.Drawing.Size(476, 244);
             this.dgvSearchResults.TabIndex = 2;
-            this.dgvSearchResults.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseUp);
+            this.dgvSearchResults.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSearchResults_CellMouseUp);
             // 
             // dgvcSearchResultsStatementId
             // 

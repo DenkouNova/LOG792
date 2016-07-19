@@ -93,12 +93,6 @@
     <Compile Include="Domain\ItemStatement.cs" />
     <Compile Include="Domain\MatchedPayment.cs" />
     <Compile Include="Domain\StatementDefinition.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="FieldVerifications.cs" />
     <Compile Include="ObserverPattern\MyObservable.cs" />
     <Compile Include="ObserverPattern\MyObserver.cs" />
@@ -187,9 +181,6 @@
       <DependentUpon>OtherOptionsTab.cs</DependentUpon>
     </Compile>
     <Compile Include="TestConstants.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ST\DialogLoadExampleImages.resx">
       <DependentUpon>DialogLoadExampleImages.cs</DependentUpon>
     </EmbeddedResource>

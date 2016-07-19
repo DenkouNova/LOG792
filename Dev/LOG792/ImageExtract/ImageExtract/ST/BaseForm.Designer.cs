@@ -42,6 +42,7 @@
             this.btnDeleteConfig = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSaveConfig = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tlpMain.SuspendLayout();
             this.flpChooseImageExtractConfig.SuspendLayout();
@@ -133,6 +134,7 @@
             this.flpChooseImageExtractConfig.Controls.Add(this.btnDeleteConfig);
             this.flpChooseImageExtractConfig.Controls.Add(this.panel1);
             this.flpChooseImageExtractConfig.Controls.Add(this.btnSaveConfig);
+            this.flpChooseImageExtractConfig.Controls.Add(this.btnTest);
             this.flpChooseImageExtractConfig.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpChooseImageExtractConfig.Location = new System.Drawing.Point(1, 1);
             this.flpChooseImageExtractConfig.Margin = new System.Windows.Forms.Padding(1);
@@ -196,6 +198,16 @@
             this.btnSaveConfig.Text = "Save IE config";
             this.btnSaveConfig.UseVisualStyleBackColor = true;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(813, 3);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(91, 32);
+            this.btnTest.TabIndex = 5;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.TabPage tabPageOtherOptions;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSaveConfig;
+        private System.Windows.Forms.Button btnTest;
     }
 }
