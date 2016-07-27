@@ -207,12 +207,18 @@ namespace ImageExtract.ST
             ICriteria criteria;
             ISession sess;
 
+            TestImageGenerator tig = new TestImageGenerator();
+            tig.Show();
+
+
+            /*
             sess = NHibernateHelper.GetCurrentSession();
             criteria = sess.CreateCriteria<Domain.CaptureBatchSummary>();
             IList<Domain.CaptureBatchSummary> listOfCaptureBatchSummaries = criteria.List<Domain.CaptureBatchSummary>();
             MessageBox.Show("Found " + listOfCaptureBatchSummaries.Count + " capture batch summary/summaries");
             foreach (var oneItem in listOfCaptureBatchSummaries) MessageBox.Show(oneItem.ToString());
             sess.Close();
+            */
 
             /*
             sess = NHibernateHelper.GetCurrentSession();

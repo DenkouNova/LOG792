@@ -181,6 +181,12 @@
       <DependentUpon>OtherOptionsTab.cs</DependentUpon>
     </Compile>
     <Compile Include="TestConstants.cs" />
+    <Compile Include="TestImageGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestImageGenerator.Designer.cs">
+      <DependentUpon>TestImageGenerator.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ST\DialogLoadExampleImages.resx">
       <DependentUpon>DialogLoadExampleImages.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ST\OtherOptionsTab.resx">
       <DependentUpon>OtherOptionsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestImageGenerator.resx">
+      <DependentUpon>TestImageGenerator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
