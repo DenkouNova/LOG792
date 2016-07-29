@@ -28,7 +28,13 @@ namespace ImageExtract
         private ISession databaseSession;
         private ICriteria queryCriteria;
         private IList<CaptureBatch> listOfSearchResultBatches;
-        private IList<CaptureBatch> listOfBatchesForInterface;
+
+        private IList<CaptureBatch> listOfBatchesForInterface { get; set; }
+        public IList<CaptureBatch> ListOfBatchesForInterface
+        {
+            get { return listOfBatchesForInterface; }
+            set { listOfBatchesForInterface = value; }
+        }
 
         private MyObservable observableSearchResultList = new MyObservable();
         private MyObservable observableBatchesForInterface = new MyObservable();

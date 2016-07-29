@@ -3,21 +3,22 @@
 -- Script de création de base de données.
 -- On crée les tables avec un script car l'outil SQLite Browser ne permet pas
 -- de créer les tables avec des clés étrangères (Foreign Key)
--- 
+--
 -- Historique
 -- v1.00 - pas de script, fichier créé dans SqLite Browser
 -- v1.01 - pas de script, fichier créé dans SqLite Browser
 -- v1.02 - version initiale de script, avec seulement les tables CTEC et le lot 256001
--- v1.03 - image_extract_archive, image_extract_condition_links, image_extract_ccg, 
+-- v1.03 - image_extract_archive, image_extract_condition_links, image_extract_ccg,
 --           image_extract_cond_cat_dictionary, image_extract_conditions,
 --           image_extract_condition_set, image_extract
--- v1.04 - 
+-- v1.04 -
 -- v1.05 - changé le naming de plusieurs tables et configs pour les tables IE
 --           imgextr_config, imgextr_archive, imgextr_cond_set_configs,
 --           imgextr_cond_set, imgextr_cond_set_conditions, imgextr_condition,
 --           imgextr_cond_cat_conditions, imgextr_cond_category
 -- v1.06 - ajouté image_extract_config.description
 -- v1.07 - ajouté capture_batch_summary
+-- v1.08 - ajouté deux batches, changé les image paths
 -- =============================================================================
 
 -- =============================================================================
@@ -218,7 +219,7 @@ INSERT INTO statement_definition(statement_id, home_site, description) VALUES(43
 -- =============================================================================
 
 INSERT INTO capture_batch(batch_seq, capture_date, capture_id, capture_type_item,
-  client_batch_ref_number, custom_batch_number, exception_batch, statement_id, 
+  client_batch_ref_number, custom_batch_number, exception_batch, statement_id,
   reprocessing_batch)
   VALUES
   (
@@ -258,8 +259,7 @@ INSERT INTO matched_payment(batch_seq, matched_payment_seq, matched_payment_stat
 -- =============================================================================
 
 INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_status,
-  image_file_front, image_file_rear, item_source, item_status, matched_payment_seq,
-  text_1, transaction_reference)
+  item_source, item_status, matched_payment_seq, text_1, transaction_reference)
   VALUES
   (
     256001,    --batch_seq
@@ -267,8 +267,6 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
     60.15,     --amount_due
     60.15,     --amount_paid
     1,         --chadd_status
-    '1',       --image_file_front
-    '2',       --image_file_rear
     1,         --item_source
     1,         --item_status
     1,         --matched_payment_seq
@@ -277,8 +275,7 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
   );
 
 INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_status,
-  image_file_front, image_file_rear, item_source, item_status, matched_payment_seq,
-  text_1, transaction_reference)
+  item_source, item_status, matched_payment_seq, text_1, transaction_reference)
   VALUES
   (
     256001, --batch_seq
@@ -286,8 +283,6 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
     30.00,  --amount_due
     12.25,  --amount_paid
     null,   --chadd_status
-    '3',    --image_file_front
-    '4',    --image_file_rear
     1,      --item_source
     2,      --item_status
     2,      --matched_payment_seq
@@ -296,8 +291,7 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
   );
 
 INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_status,
-  image_file_front, image_file_rear, item_source, item_status, matched_payment_seq,
-  text_1, transaction_reference)
+  item_source, item_status, matched_payment_seq, text_1, transaction_reference)
   VALUES
   (
     256001,    --batch_seq
@@ -305,8 +299,6 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
     10.00,     --amount_due
     55.55,     --amount_paid
     0,         --chadd_status
-    '5',       --image_file_front
-    '6',       --image_file_rear
     1,         --item_source
     1,         --item_status
     3,         --matched_payment_seq
@@ -315,8 +307,7 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
   );
 
 INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_status,
-  image_file_front, image_file_rear, item_source, item_status, matched_payment_seq,
-  text_1, transaction_reference)
+  item_source, item_status, matched_payment_seq, text_1, transaction_reference)
   VALUES
   (
     256001, --batch_seq
@@ -324,8 +315,6 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
     null,   --amount_due
     null,   --amount_paid
     null,   --chadd_status
-    '7',    --image_file_front
-    '8',    --image_file_rear
     1,      --item_source
     7,      --item_status
     3,      --matched_payment_seq
@@ -334,8 +323,7 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
   );
 
 INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_status,
-  image_file_front, image_file_rear, item_source, item_status, matched_payment_seq,
-  text_1, transaction_reference)
+  item_source, item_status, matched_payment_seq, text_1, transaction_reference)
   VALUES
   (
     256001,     --batch_seq
@@ -343,8 +331,6 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
     100.0,      --amount_due
     100.0,      --amount_paid
     0,          --chadd_status
-    '9',        --image_file_front
-    '10',       --image_file_rear
     1,          --item_source
     1,          --item_status
     4,          --matched_payment_seq
@@ -357,16 +343,13 @@ INSERT INTO item_statement(batch_seq, item_ref, amount_due, amount_paid, chadd_s
 --                             FK sur matched_payment
 -- =============================================================================
 
-INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front, 
-  image_file_rear, item_source, item_status, matched_payment_seq, text_1, 
-  bank_account, check_no)
+INSERT INTO item_payment(batch_seq, item_ref, payment_amount, item_source,
+  item_status, matched_payment_seq, text_1, bank_account, check_no)
   VALUES
   (
     256001,    --batch_seq
     20,        --item_ref
     60.15,     --payment_amount
-    '11',       --image_file_front
-    '12',      --image_file_rear
     1,         --item_source
     1,         --item_status
     1,         --matched_payment_seq
@@ -375,16 +358,13 @@ INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front,
     '1565168'  --check_no
   );
 
-INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front, 
-  image_file_rear, item_source, item_status, matched_payment_seq, text_1, 
-  bank_account, check_no)
+INSERT INTO item_payment(batch_seq, item_ref, payment_amount, item_source,
+  item_status, matched_payment_seq, text_1, bank_account, check_no)
   VALUES
   (
     256001,    --batch_seq
     40,        --item_ref
     12.25,     --payment_amount
-    '13',       --image_file_front
-    '14',      --image_file_rear
     1,         --item_source
     2,         --item_status
     2,         --matched_payment_seq
@@ -393,16 +373,13 @@ INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front,
     '56658'    --check_no
   );
 
-INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front, 
-  image_file_rear, item_source, item_status, matched_payment_seq, text_1, 
-  bank_account, check_no)
+INSERT INTO item_payment(batch_seq, item_ref, payment_amount, item_source,
+  item_status, matched_payment_seq, text_1, bank_account, check_no)
   VALUES
   (
     256001,    --batch_seq
     70,        --item_ref
     55.55,     --payment_amount
-    '15',       --image_file_front
-    '16',      --image_file_rear
     1,         --item_source
     2,         --item_status
     3,         --matched_payment_seq
@@ -411,16 +388,13 @@ INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front,
     '76882'    --check_no
   );
 
-INSERT INTO item_payment(batch_seq, item_ref, payment_amount, image_file_front, 
-  image_file_rear, item_source, item_status, matched_payment_seq, text_1, 
-  bank_account, check_no)
+INSERT INTO item_payment(batch_seq, item_ref, payment_amount, item_source,
+  item_status, matched_payment_seq, text_1, bank_account, check_no)
   VALUES
   (
     256001,    --batch_seq
     90,        --item_ref
     100.00,    --payment_amount
-    '17',      --image_file_front
-    '18',      --image_file_rear
     1,         --item_source
     1,         --item_status
     4,         --matched_payment_seq
@@ -449,7 +423,7 @@ FROM
 -- Insertion de données IE - imgextr_config
 -- =============================================================================
 
-INSERT INTO imgextr_config(imgextr_config_id, description, statement_id, image_naming, encoding_config_path, 
+INSERT INTO imgextr_config(imgextr_config_id, description, statement_id, image_naming, encoding_config_path,
   endorsement_config_path)
   VALUES
   (
@@ -485,7 +459,7 @@ INSERT INTO image_extract_condition_set(condition_set_id, imgextr_config_id)
     1  --imgextr_config_id
   );
 */
-  
+
 -- =============================================================================
 -- Insertion de données IE - imgextr_condition
 -- =============================================================================
@@ -497,7 +471,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Batches: Multiples', --description
     'Capture_Batch.Capture_Type_Item = 1' --where_clause
   );
-  
+
 INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
@@ -505,7 +479,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Batches: Singles', --description
     'Capture_Batch.Capture_Type_Item = 2' --where_clause
   );
-  
+
 INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
@@ -545,7 +519,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Transaction Status: Automatically Matched', --description
     'Matched_Payment.Matched_Payment_Status = 1' --where_clause
   );
-  
+
 INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
@@ -577,7 +551,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Item Source (Payment): Captured Items', --description
     'Item_Payment.Item_Source = 1' --where_clause
   );
-  
+
 INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
@@ -585,7 +559,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Item Source (Payment): Virtual Items', --description
     'Item_Payment.Item_Source = 2' --where_clause
   );
-  
+
 INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
@@ -593,7 +567,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Item Source (Statement): Captured Items', --description
     'Item_Statement.Item_Source = 1' --where_clause
   );
-  
+
 INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
@@ -601,7 +575,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Item Source (Statement): Virtual Items', --description
     'Item_Statement.Item_Source = 2' --where_clause
   );
-  
+
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_set
 -- =============================================================================
@@ -611,7 +585,7 @@ INSERT INTO imgextr_cond_set(cond_set_id)
   (
     1 --cond_set_id
   );
-  
+
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_set_conditions
 -- =============================================================================
@@ -633,15 +607,15 @@ INSERT INTO imgextr_cond_set_conditions(cond_set_id, condition_id)
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_category
 -- =============================================================================
-  
+
 INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (1, 'Batch type');
 INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (2, 'Transaction status');
 INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (3, 'Item source');
-  
+
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_cat_conditions
 -- =============================================================================
-  
+
 INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (1, 1);
 INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (1, 2);
 INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (1, 3);
@@ -662,7 +636,7 @@ INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_set_configs
 -- =============================================================================
-  
+
 INSERT INTO imgextr_cond_set_configs(imgextr_config_id, cond_set_id)
   VALUES
   (
@@ -672,4 +646,15 @@ INSERT INTO imgextr_cond_set_configs(imgextr_config_id, cond_set_id)
 
 
 
+
+
+-- =============================================================================
+-- Ajout d'images
+-- =============================================================================
+
+UPDATE Item_Payment SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_F';
+UPDATE Item_Payment SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_R';
+
+UPDATE Item_Statement SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_F';
+UPDATE Item_Statement SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_R';
 

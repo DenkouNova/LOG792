@@ -118,6 +118,7 @@
             this.dgvPreviewGrid.RowTemplate.Height = 100;
             this.dgvPreviewGrid.RowTemplate.ReadOnly = true;
             this.dgvPreviewGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvPreviewGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPreviewGrid.Size = new System.Drawing.Size(394, 582);
             this.dgvPreviewGrid.TabIndex = 0;
             this.dgvPreviewGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageInclusion_Paint);

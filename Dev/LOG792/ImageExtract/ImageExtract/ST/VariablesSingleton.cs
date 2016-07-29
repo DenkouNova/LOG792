@@ -22,24 +22,33 @@ namespace ImageExtract.ST
     {
         private static VariablesSingleton allVariables = null;
 
-        public static VariablesSingleton GetGlobalVariables()
+        public static VariablesSingleton GetInstance()
         {
             if (allVariables == null) allVariables = new VariablesSingleton();
             return allVariables;
         }
-
-        private List<Domain.CaptureBatch> previewBatches;
 
         private VariablesSingleton()
         {
             previewBatches = new List<Domain.CaptureBatch>();
         }
 
+
+
+
+        private List<Domain.CaptureBatch> previewBatches;
+
         public List<Domain.CaptureBatch> PreviewBatches
         {
             get { return previewBatches; }
             set { previewBatches = value; }
         }
+
+        // Ordinateur à la maison
+        // public string ImagePath = @"D:\Cossins\Documents\ETS\LOG792\Images";
+
+        // Ordinateur à l'école
+        public string ImagePath = @"J:\LOG792\Images";
 
 
 

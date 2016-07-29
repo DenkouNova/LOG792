@@ -77,8 +77,6 @@ namespace ImageExtract.ST
             this.tabControl1.TabPages[0].Controls.Add(m_imageInclusionTab);
             m_imageInclusionTab.Dock = System.Windows.Forms.DockStyle.Fill;
 
-            /* TODO
-            // Initialize Image Separation tab
             m_imageSeparationTab = new ImageSeparationTab();
             this.tabControl1.TabPages[1].Controls.Add(m_imageSeparationTab);
             m_imageSeparationTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -97,7 +95,6 @@ namespace ImageExtract.ST
             m_otherOptionsTab = new OtherOptionsTab();
             this.tabControl1.TabPages[4].Controls.Add(m_otherOptionsTab);
             m_otherOptionsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            */
         }
 
 

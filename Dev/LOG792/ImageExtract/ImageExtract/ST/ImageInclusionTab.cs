@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using NHibernate.Tool.hbm2ddl;
 
 using ImageExtract.ST;
 using ImageExtract.Domain;
+using ImageExtract.ObserverPattern;
 
 namespace ImageExtract.ST
 {
@@ -27,7 +29,12 @@ namespace ImageExtract.ST
         {
             get { return conditionSetListBoxes; }
             set { conditionSetListBoxes = value; }
-        }        
+        }
+
+        private MyObservable observableBatchList = new MyObservable();
+        private ListOfBatchesObserver observerBatchList = new ListOfBatchesObserver("Batches shown in Image Inclusion Tab");
+
+
 
         public ImageInclusionTab()
         {
@@ -35,6 +42,16 @@ namespace ImageExtract.ST
             databaseSession = NHibernateHelper.GetCurrentSession();
 
             LoadConditionCategoryButtons();
+
+            this.dgvPreviewGrid.Columns[this.dgvcImageInclusionImage.Name].Width =
+                this.dgvPreviewGrid.Width - 20 -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionSide.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionIRef.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionMPS.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionBSeq.Name].Width;
+
+            observableBatchList.Subscribe(observerBatchList);
+            observerBatchList.dgv = this.dgvPreviewGrid;
 
             // CodeForScreenshots();
         }
@@ -121,11 +138,8 @@ namespace ImageExtract.ST
         private void btnLoadExampleBatches_Click(object sender, EventArgs e)
         {
             DialogLoadExampleImages exampleImages = new DialogLoadExampleImages();
-            IList<CaptureBatch> selectedBatches;
-
             exampleImages.ShowDialog();
-            
-            // brax selectedBatches = exampleImages.GetBatchesForInterface();
+            observableBatchList.NotifyObservers(exampleImages.ListOfBatchesForInterface);
         }
 
         private void ConditionCategoryButtons_Click(object sender, EventArgs e)
@@ -136,11 +150,76 @@ namespace ImageExtract.ST
         }
         #endregion
 
-        
+    } // public partial class ImageInclusionTab
 
 
 
 
 
-    }
+    class ListOfBatchesObserver : MyObserver
+    {
+        public DataGridView dgv;
+
+        public ListOfBatchesObserver(string name)
+            : base(name) { }
+
+        public override void OnNext(object value)
+        {
+            List<CaptureBatch> shownBatches = value as List<Domain.CaptureBatch>;
+            VariablesSingleton.GetInstance().PreviewBatches = shownBatches;
+
+            Image itemImage;
+
+            foreach (CaptureBatch oneBatch in shownBatches)
+            {
+                foreach (ItemStatement oneItem in oneBatch.ItemStatements)
+                {
+                    for (int i = 0; i < 1; i++)
+                    {
+                        itemImage = new Bitmap(Path.Combine(
+                            VariablesSingleton.GetInstance().ImagePath,
+                            (i == 0 ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif"));
+                        dgv.Rows.Add(
+                            oneItem.ItemStatementIdentifier.Batch_Seq,
+                            oneItem.Matched_Payment_Seq,
+                            oneItem.ItemStatementIdentifier.Item_Ref,
+                            (i == 0 ? "F" : "R"),
+                            itemImage);
+                    }
+                }
+
+                foreach (ItemPayment oneItem in oneBatch.ItemPayments)
+                {
+                    for (int i = 0; i < 1; i++)
+                    {
+                        itemImage = new Bitmap(Path.Combine(
+                            VariablesSingleton.GetInstance().ImagePath,
+                            (i == 0 ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif"));
+                        dgv.Rows.Add(
+                            oneItem.ItemPaymentIdentifier.Batch_Seq,
+                            oneItem.Matched_Payment_Seq,
+                            oneItem.ItemPaymentIdentifier.Item_Ref,
+                            (i == 0 ? "F" : "R"),
+                            itemImage);
+                    }
+                }
+            }
+
+            if (shownBatches.Count > 0)
+            {
+                dgv.Sort(dgv.Columns[0], ListSortDirection.Ascending);
+                dgv.Sort(dgv.Columns[1], ListSortDirection.Ascending);
+                dgv.Sort(dgv.Columns[2], ListSortDirection.Ascending);
+                dgv.Sort(dgv.Columns[3], ListSortDirection.Ascending);
+            }
+
+
+            MessageBox.Show("ha");
+
+        } // void OnNext
+
+    } // class ListOfBatchesObserver
+
+
+
 }
