@@ -25,8 +25,6 @@ namespace ImageExtract
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            Image savedImage;
-
             string fullImagePath = tbSampleImageFolderPath.Text + @"\" + tbSampleImageName.Text + ".jpg";
 
             imgSampleImage = Image.FromFile(fullImagePath);
