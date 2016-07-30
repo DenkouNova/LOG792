@@ -12,13 +12,33 @@ namespace ImageExtract.ST
 {
     public partial class ImageInclusionListBoxes : UserControl
     {
+
+        private Dictionary<int, Domain.ImageExtractCondition> allConditionsInInterface;
+        private Dictionary<int, Domain.ImageExtractCondition> conditionsInIncludeBox;
+        private Dictionary<int, Domain.ImageExtractCondition> conditionsInAllItemsBox;
+        private Dictionary<int, Domain.ImageExtractCondition> conditionsInExcludeBox;
+
+        // Currently not used
+        // We will need something like this if we want more than one ImageInclusionListBox
+
+        /*
+        private bool selected = false;
+
+        public bool Selected
+        {
+            get { return selected; }
+            set
+            {
+                selected = value;
+                this.BackColor = (selected ? System.Drawing.SystemColors.Control : System.Drawing.SystemColors.Highlight);
+            }
+        }
+        */
+
         public ImageInclusionListBoxes()
         {
             InitializeComponent();
         }
-
-
-
 
         public void UnallowRemovalOfConditionSet()
         {
@@ -30,22 +50,64 @@ namespace ImageExtract.ST
             this.btnAddConditionSet.Margin = myMargin;
         }
 
-        public void AddToIncludeBox(object o)
+        public void AddToIncludeBox(Domain.ImageExtractCondition oneCondition)
         {
-            this.lbInclude.Items.Add(o);
+            AddToIncludeBox(new MyComboBoxOrListBoxItem(oneCondition.Description, oneCondition.Condition_Id));
         }
 
-        public void AddToAllItemsBox(object o)
+        public void AddToIncludeBox(MyComboBoxOrListBoxItem oneConditionItem)
         {
-            this.lbAllItems.Items.Add(o);
+            AddToBox(oneConditionItem, this.conditionsInIncludeBox, this.lbInclude);
         }
 
-        public void AddToExcludeBox(object o)
+        public void AddToAllItemsBox(Domain.ImageExtractCondition oneCondition)
         {
-            this.lbExclude.Items.Add(o);
+            AddToAllItemsBox(new MyComboBoxOrListBoxItem(oneCondition.Description, oneCondition.Condition_Id));
         }
 
-        private void btnRemoveAllItems_Click(object sender, EventArgs e)
+        public void AddToAllItemsBox(MyComboBoxOrListBoxItem oneConditionItem)
+        {
+            AddToBox(oneConditionItem, this.conditionsInAllItemsBox, this.lbAllItems);
+        }
+
+        public void AddToExcludeBox(Domain.ImageExtractCondition oneCondition)
+        {
+            AddToExcludeBox(new MyComboBoxOrListBoxItem(oneCondition.Description, oneCondition.Condition_Id));
+        }
+
+        public void AddToExcludeBox(MyComboBoxOrListBoxItem oneConditionItem)
+        {
+            AddToBox(oneConditionItem, this.conditionsInExcludeBox, this.lbExclude);
+        }
+
+        private void AddToBox(MyComboBoxOrListBoxItem p_oneConditionItem, Dictionary<int, Domain.ImageExtractCondition> p_SetOfConditions, ListBox p_listBoxForAdding)
+        {
+            /*
+            if (!this.allConditionsInInterface.ContainsKey(p_oneConditionItem.Value)
+            {
+                this.allConditionsInInterface.Add(p_oneConditionItem.Value, p_oneConditionItem.);
+                p_SetOfConditions.Add(p_oneCondition);
+                p_listBoxForAdding.Items.Add(p_oneCondition.Description);
+            }
+            */
+        }
+
+        private void btnUnusedToInclude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnIncludeToUnused_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUnusedToExclude_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExcludeToUnused_Click(object sender, EventArgs e)
         {
 
         }

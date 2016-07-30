@@ -30,8 +30,8 @@
         {
             this.tlpListBoxes = new System.Windows.Forms.TableLayoutPanel();
             this.tlpExcludeButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnExcludeRight = new System.Windows.Forms.Button();
-            this.btnExcludeLeft = new System.Windows.Forms.Button();
+            this.btnUnusedToExclude = new System.Windows.Forms.Button();
+            this.btnExcludeToUnused = new System.Windows.Forms.Button();
             this.tlpExclude = new System.Windows.Forms.TableLayoutPanel();
             this.lbExclude = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,12 +42,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbInclude = new System.Windows.Forms.ListBox();
             this.tlpIncludeButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnIncludeLeft = new System.Windows.Forms.Button();
-            this.btnIncludeRight = new System.Windows.Forms.Button();
+            this.btnUnusedToInclude = new System.Windows.Forms.Button();
+            this.btnIncludeToUnused = new System.Windows.Forms.Button();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.btnAddConditionSet = new System.Windows.Forms.Button();
-            this.btnRemoveConditionSet = new System.Windows.Forms.Button();
             this.flpAddRemoveButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnRemoveConditionSet = new System.Windows.Forms.Button();
+            this.btnAddConditionSet = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemoveCondition = new System.Windows.Forms.Button();
             this.btnLinkConditions = new System.Windows.Forms.Button();
@@ -92,8 +92,8 @@
             this.tlpExcludeButtons.BackColor = System.Drawing.SystemColors.Control;
             this.tlpExcludeButtons.ColumnCount = 1;
             this.tlpExcludeButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpExcludeButtons.Controls.Add(this.btnExcludeRight, 0, 1);
-            this.tlpExcludeButtons.Controls.Add(this.btnExcludeLeft, 0, 2);
+            this.tlpExcludeButtons.Controls.Add(this.btnUnusedToExclude, 0, 1);
+            this.tlpExcludeButtons.Controls.Add(this.btnExcludeToUnused, 0, 2);
             this.tlpExcludeButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpExcludeButtons.Location = new System.Drawing.Point(469, 4);
             this.tlpExcludeButtons.Name = "tlpExcludeButtons";
@@ -105,25 +105,27 @@
             this.tlpExcludeButtons.Size = new System.Drawing.Size(44, 285);
             this.tlpExcludeButtons.TabIndex = 4;
             // 
-            // btnExcludeRight
+            // btnUnusedToExclude
             // 
-            this.btnExcludeRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExcludeRight.Location = new System.Drawing.Point(3, 100);
-            this.btnExcludeRight.Name = "btnExcludeRight";
-            this.btnExcludeRight.Size = new System.Drawing.Size(38, 39);
-            this.btnExcludeRight.TabIndex = 2;
-            this.btnExcludeRight.Text = "→";
-            this.btnExcludeRight.UseVisualStyleBackColor = true;
+            this.btnUnusedToExclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUnusedToExclude.Location = new System.Drawing.Point(3, 100);
+            this.btnUnusedToExclude.Name = "btnUnusedToExclude";
+            this.btnUnusedToExclude.Size = new System.Drawing.Size(38, 39);
+            this.btnUnusedToExclude.TabIndex = 2;
+            this.btnUnusedToExclude.Text = "→";
+            this.btnUnusedToExclude.UseVisualStyleBackColor = true;
+            this.btnUnusedToExclude.Click += new System.EventHandler(this.btnUnusedToExclude_Click);
             // 
-            // btnExcludeLeft
+            // btnExcludeToUnused
             // 
-            this.btnExcludeLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExcludeLeft.Location = new System.Drawing.Point(3, 145);
-            this.btnExcludeLeft.Name = "btnExcludeLeft";
-            this.btnExcludeLeft.Size = new System.Drawing.Size(38, 39);
-            this.btnExcludeLeft.TabIndex = 3;
-            this.btnExcludeLeft.Text = "←";
-            this.btnExcludeLeft.UseVisualStyleBackColor = true;
+            this.btnExcludeToUnused.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExcludeToUnused.Location = new System.Drawing.Point(3, 145);
+            this.btnExcludeToUnused.Name = "btnExcludeToUnused";
+            this.btnExcludeToUnused.Size = new System.Drawing.Size(38, 39);
+            this.btnExcludeToUnused.TabIndex = 3;
+            this.btnExcludeToUnused.Text = "←";
+            this.btnExcludeToUnused.UseVisualStyleBackColor = true;
+            this.btnExcludeToUnused.Click += new System.EventHandler(this.btnExcludeToUnused_Click);
             // 
             // tlpExclude
             // 
@@ -241,8 +243,8 @@
             this.tlpIncludeButtons.BackColor = System.Drawing.SystemColors.Control;
             this.tlpIncludeButtons.ColumnCount = 1;
             this.tlpIncludeButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpIncludeButtons.Controls.Add(this.btnIncludeLeft, 0, 1);
-            this.tlpIncludeButtons.Controls.Add(this.btnIncludeRight, 0, 2);
+            this.tlpIncludeButtons.Controls.Add(this.btnUnusedToInclude, 0, 1);
+            this.tlpIncludeButtons.Controls.Add(this.btnIncludeToUnused, 0, 2);
             this.tlpIncludeButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpIncludeButtons.Location = new System.Drawing.Point(211, 4);
             this.tlpIncludeButtons.Name = "tlpIncludeButtons";
@@ -254,25 +256,27 @@
             this.tlpIncludeButtons.Size = new System.Drawing.Size(44, 285);
             this.tlpIncludeButtons.TabIndex = 3;
             // 
-            // btnIncludeLeft
+            // btnUnusedToInclude
             // 
-            this.btnIncludeLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnIncludeLeft.Location = new System.Drawing.Point(3, 100);
-            this.btnIncludeLeft.Name = "btnIncludeLeft";
-            this.btnIncludeLeft.Size = new System.Drawing.Size(38, 39);
-            this.btnIncludeLeft.TabIndex = 0;
-            this.btnIncludeLeft.Text = "←";
-            this.btnIncludeLeft.UseVisualStyleBackColor = true;
+            this.btnUnusedToInclude.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUnusedToInclude.Location = new System.Drawing.Point(3, 100);
+            this.btnUnusedToInclude.Name = "btnUnusedToInclude";
+            this.btnUnusedToInclude.Size = new System.Drawing.Size(38, 39);
+            this.btnUnusedToInclude.TabIndex = 0;
+            this.btnUnusedToInclude.Text = "←";
+            this.btnUnusedToInclude.UseVisualStyleBackColor = true;
+            this.btnUnusedToInclude.Click += new System.EventHandler(this.btnUnusedToInclude_Click);
             // 
-            // btnIncludeRight
+            // btnIncludeToUnused
             // 
-            this.btnIncludeRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnIncludeRight.Location = new System.Drawing.Point(3, 145);
-            this.btnIncludeRight.Name = "btnIncludeRight";
-            this.btnIncludeRight.Size = new System.Drawing.Size(38, 39);
-            this.btnIncludeRight.TabIndex = 1;
-            this.btnIncludeRight.Text = "→";
-            this.btnIncludeRight.UseVisualStyleBackColor = true;
+            this.btnIncludeToUnused.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnIncludeToUnused.Location = new System.Drawing.Point(3, 145);
+            this.btnIncludeToUnused.Name = "btnIncludeToUnused";
+            this.btnIncludeToUnused.Size = new System.Drawing.Size(38, 39);
+            this.btnIncludeToUnused.TabIndex = 1;
+            this.btnIncludeToUnused.Text = "→";
+            this.btnIncludeToUnused.UseVisualStyleBackColor = true;
+            this.btnIncludeToUnused.Click += new System.EventHandler(this.btnIncludeToUnused_Click);
             // 
             // tlpMain
             // 
@@ -291,14 +295,15 @@
             this.tlpMain.Size = new System.Drawing.Size(831, 349);
             this.tlpMain.TabIndex = 1;
             // 
-            // btnAddConditionSet
+            // flpAddRemoveButtons
             // 
-            this.btnAddConditionSet.Location = new System.Drawing.Point(3, 159);
-            this.btnAddConditionSet.Name = "btnAddConditionSet";
-            this.btnAddConditionSet.Size = new System.Drawing.Size(91, 35);
-            this.btnAddConditionSet.TabIndex = 0;
-            this.btnAddConditionSet.Text = "Add\r\ncondition set";
-            this.btnAddConditionSet.UseVisualStyleBackColor = true;
+            this.flpAddRemoveButtons.Controls.Add(this.btnRemoveConditionSet);
+            this.flpAddRemoveButtons.Controls.Add(this.btnAddConditionSet);
+            this.flpAddRemoveButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flpAddRemoveButtons.Location = new System.Drawing.Point(734, 3);
+            this.flpAddRemoveButtons.Name = "flpAddRemoveButtons";
+            this.flpAddRemoveButtons.Size = new System.Drawing.Size(94, 293);
+            this.flpAddRemoveButtons.TabIndex = 5;
             // 
             // btnRemoveConditionSet
             // 
@@ -310,15 +315,14 @@
             this.btnRemoveConditionSet.Text = "Remove\r\ncondition set";
             this.btnRemoveConditionSet.UseVisualStyleBackColor = true;
             // 
-            // flpAddRemoveButtons
+            // btnAddConditionSet
             // 
-            this.flpAddRemoveButtons.Controls.Add(this.btnRemoveConditionSet);
-            this.flpAddRemoveButtons.Controls.Add(this.btnAddConditionSet);
-            this.flpAddRemoveButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flpAddRemoveButtons.Location = new System.Drawing.Point(734, 3);
-            this.flpAddRemoveButtons.Name = "flpAddRemoveButtons";
-            this.flpAddRemoveButtons.Size = new System.Drawing.Size(94, 293);
-            this.flpAddRemoveButtons.TabIndex = 5;
+            this.btnAddConditionSet.Location = new System.Drawing.Point(3, 159);
+            this.btnAddConditionSet.Name = "btnAddConditionSet";
+            this.btnAddConditionSet.Size = new System.Drawing.Size(91, 35);
+            this.btnAddConditionSet.TabIndex = 0;
+            this.btnAddConditionSet.Text = "Add\r\ncondition set";
+            this.btnAddConditionSet.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -402,10 +406,10 @@
         private System.Windows.Forms.TableLayoutPanel tlpInclude;
         private System.Windows.Forms.TableLayoutPanel tlpExcludeButtons;
         private System.Windows.Forms.TableLayoutPanel tlpIncludeButtons;
-        private System.Windows.Forms.Button btnExcludeRight;
-        private System.Windows.Forms.Button btnExcludeLeft;
-        private System.Windows.Forms.Button btnIncludeLeft;
-        private System.Windows.Forms.Button btnIncludeRight;
+        private System.Windows.Forms.Button btnUnusedToExclude;
+        private System.Windows.Forms.Button btnExcludeToUnused;
+        private System.Windows.Forms.Button btnUnusedToInclude;
+        private System.Windows.Forms.Button btnIncludeToUnused;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

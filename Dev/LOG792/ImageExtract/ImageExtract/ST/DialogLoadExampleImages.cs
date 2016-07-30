@@ -154,14 +154,22 @@ namespace ImageExtract
 
         private void btnAddSelection_Click(object sender, EventArgs e)
         {
+            List<DataGridViewRow> listOfRows = new List<DataGridViewRow>();
+
+            // Add the "Use" check on all rows that are 1- selected and 2- not already in the "for display" grid on the bottom.
+            // This is done in two steps because whenever one row has its Add value checked, it the other rows become deselected,
+            // such that this messes with the checking of condition 1
             foreach (DataGridViewRow dgvr in this.dgvSearchResults.Rows)
             {
                 // Only add the batches which are selected and are not used yet
-                if (dgvr.Selected && !(bool)dgvr.Cells[dgvcSearchResultsUse.Index].Value)
-                {
-                    // This calls the dgvSearchResults_CellValueChanged event which will take care of the adding
-                    dgvr.Cells[this.dgvcSearchResultsUse.Index].Value = true;
-                }
+                if (dgvr.Selected && !(bool)dgvr.Cells[dgvcSearchResultsUse.Index].Value) listOfRows.Add(dgvr);
+            }
+
+            
+            foreach(DataGridViewRow dgvr in listOfRows)
+            {
+                // This calls the dgvSearchResults_CellValueChanged event which will take care of the adding
+                dgvr.Cells[this.dgvcSearchResultsUse.Index].Value = true;
             }
         }
 

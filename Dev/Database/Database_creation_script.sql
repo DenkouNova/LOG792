@@ -936,8 +936,8 @@ INSERT INTO imgextr_cond_set_configs(imgextr_config_id, cond_set_id)
 -- =============================================================================
 
 UPDATE Item_Payment SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_F';
-UPDATE Item_Payment SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_R';
+UPDATE Item_Payment SET Image_File_Rear = Batch_Seq || '_' || Item_Ref || '_R';
 
 UPDATE Item_Statement SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_F';
-UPDATE Item_Statement SET Image_File_Front = Batch_Seq || '_' || Item_Ref || '_R';
+UPDATE Item_Statement SET Image_File_Rear = Batch_Seq || '_' || Item_Ref || '_R';
 

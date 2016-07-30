@@ -34,8 +34,6 @@ namespace ImageExtract.ST
         private MyObservable observableBatchList = new MyObservable();
         private ListOfBatchesObserver observerBatchList = new ListOfBatchesObserver("Batches shown in Image Inclusion Tab");
 
-
-
         public ImageInclusionTab()
         {
             InitializeComponent();
@@ -50,10 +48,13 @@ namespace ImageExtract.ST
                 this.dgvPreviewGrid.Columns[this.dgvcImageInclusionMPS.Name].Width -
                 this.dgvPreviewGrid.Columns[this.dgvcImageInclusionBSeq.Name].Width;
 
+            
             observableBatchList.Subscribe(observerBatchList);
             observerBatchList.dgv = this.dgvPreviewGrid;
+            
+            //CodeForScreenshots();
 
-            // CodeForScreenshots();
+            AddConditionSetListBox(false);
         }
 
 
@@ -146,7 +147,15 @@ namespace ImageExtract.ST
         {
             Button b = (Button)sender;
             ImageExtractCondCategory category = (ImageExtractCondCategory)b.Tag;
-            MessageBox.Show("ID " + category.Cond_Category_Id +", Description = '" + category.Description + "'");
+            //MessageBox.Show("ID " + category.Cond_Category_Id +", Description = '" + category.Description + "'");
+
+            foreach(Domain.ImageExtractCondition oneCondition in category.ImageExtractConditions)
+            {
+                //this.conditionSetListBoxes[0].AddToAllItemsBox(oneCondition.)
+            }
+
+
+
         }
         #endregion
 
@@ -168,55 +177,100 @@ namespace ImageExtract.ST
             List<CaptureBatch> shownBatches = value as List<Domain.CaptureBatch>;
             VariablesSingleton.GetInstance().PreviewBatches = shownBatches;
 
-            Image itemImage;
+            dgv.Rows.Clear();
 
+            // Add all the statements and payments
             foreach (CaptureBatch oneBatch in shownBatches)
             {
                 foreach (ItemStatement oneItem in oneBatch.ItemStatements)
                 {
-                    for (int i = 0; i < 1; i++)
-                    {
-                        itemImage = new Bitmap(Path.Combine(
-                            VariablesSingleton.GetInstance().ImagePath,
-                            (i == 0 ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif"));
-                        dgv.Rows.Add(
-                            oneItem.ItemStatementIdentifier.Batch_Seq,
-                            oneItem.Matched_Payment_Seq,
-                            oneItem.ItemStatementIdentifier.Item_Ref,
-                            (i == 0 ? "F" : "R"),
-                            itemImage);
-                    }
+                    AddStatementToGrid(dgv, oneItem, true);
+                    AddStatementToGrid(dgv, oneItem, false);
                 }
 
                 foreach (ItemPayment oneItem in oneBatch.ItemPayments)
                 {
-                    for (int i = 0; i < 1; i++)
-                    {
-                        itemImage = new Bitmap(Path.Combine(
-                            VariablesSingleton.GetInstance().ImagePath,
-                            (i == 0 ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif"));
-                        dgv.Rows.Add(
-                            oneItem.ItemPaymentIdentifier.Batch_Seq,
-                            oneItem.Matched_Payment_Seq,
-                            oneItem.ItemPaymentIdentifier.Item_Ref,
-                            (i == 0 ? "F" : "R"),
-                            itemImage);
-                    }
+                    AddPaymentToGrid(dgv, oneItem, true);
+                    AddPaymentToGrid(dgv, oneItem, false);
                 }
             }
 
-            if (shownBatches.Count > 0)
-            {
-                dgv.Sort(dgv.Columns[0], ListSortDirection.Ascending);
-                dgv.Sort(dgv.Columns[1], ListSortDirection.Ascending);
-                dgv.Sort(dgv.Columns[2], ListSortDirection.Ascending);
-                dgv.Sort(dgv.Columns[3], ListSortDirection.Ascending);
-            }
+            // Sort according to a sort key
+            // The sort column is just a concatenation of Batch_Seq, MPS, Item Ref and Image Side columns
+            // it's pretty bad, but...
+            dgv.Sort(dgv.Columns["dgvcImageInclusionImageSortColumn"], ListSortDirection.Ascending);
 
-
-            MessageBox.Show("ha");
+            RecolorCells(dgv);
 
         } // void OnNext
+
+
+        public void AddStatementToGrid(DataGridView p_dgv, Domain.ItemStatement oneItem, bool p_frontImage)
+        {
+            string pathForOneImage = Path.Combine(
+                            VariablesSingleton.GetInstance().ImagePath,
+                            (p_frontImage ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
+            Image itemImage = new Bitmap(pathForOneImage);
+            dgv.Rows.Add(
+                oneItem.ItemStatementIdentifier.Batch_Seq,
+                oneItem.Matched_Payment_Seq,
+                oneItem.ItemStatementIdentifier.Item_Ref,
+                (p_frontImage ? "F" : "R"),
+                itemImage,
+                oneItem.ItemStatementIdentifier.Batch_Seq.ToString().PadLeft(10) +
+                    oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
+                    oneItem.ItemStatementIdentifier.Item_Ref.ToString().PadLeft(10) +
+                    (p_frontImage ? "F" : "R"));
+        }
+
+
+        public void AddPaymentToGrid(DataGridView p_dgv, Domain.ItemPayment oneItem, bool p_frontImage)
+        {
+            string pathForOneImage = Path.Combine(
+                            VariablesSingleton.GetInstance().ImagePath,
+                            (p_frontImage ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
+            Image itemImage = new Bitmap(pathForOneImage);
+            dgv.Rows.Add(
+                oneItem.ItemPaymentIdentifier.Batch_Seq,
+                oneItem.Matched_Payment_Seq,
+                oneItem.ItemPaymentIdentifier.Item_Ref,
+                (p_frontImage ? "F" : "R"),
+                itemImage,
+                oneItem.ItemPaymentIdentifier.Batch_Seq.ToString().PadLeft(10) +
+                    oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
+                    oneItem.ItemPaymentIdentifier.Item_Ref.ToString().PadLeft(10) +
+                    (p_frontImage ? "F" : "R")
+                );
+        }
+
+        public void RecolorCells(DataGridView p_dgv)
+        {
+            // Recolor the cells
+            // Color first cell white, keep Batch_Seq and MPS values in memory
+            // If Batch_Seq and MPS values are different, now color them light gray
+
+            Color[] colorsToUse = new Color[2];
+            colorsToUse[0] = Color.White;
+            colorsToUse[1] = Color.LightBlue;
+            int currentColorIndice = 1;
+
+            string strCurrentBatchSeq, strCurrentMatchedPaymentSeq;
+            string strLastBatchSeq = "";
+            string strLastMatchedPaymentSeq = "";
+
+            foreach (DataGridViewRow dgvr in p_dgv.Rows)
+            {
+                strCurrentBatchSeq = dgvr.Cells[0].Value.ToString();
+                strCurrentMatchedPaymentSeq = dgvr.Cells[1].Value.ToString();
+                if (strCurrentMatchedPaymentSeq.CompareTo(strLastMatchedPaymentSeq) != 0 || strCurrentBatchSeq.CompareTo(strLastBatchSeq) != 0)
+                {
+                    currentColorIndice = 1 - currentColorIndice;
+                    strLastMatchedPaymentSeq = strCurrentMatchedPaymentSeq;
+                    strLastBatchSeq = strCurrentBatchSeq;
+                }
+                dgvr.DefaultCellStyle.BackColor = colorsToUse[currentColorIndice];
+            }
+        }
 
     } // class ListOfBatchesObserver
 

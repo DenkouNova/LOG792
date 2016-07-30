@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ImageExtract.ST
 {
-    class MyComboBoxOrListBoxItem
+    public class MyComboBoxOrListBoxItem
     {
         public string Name;
         public int Value;
