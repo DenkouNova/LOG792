@@ -78,12 +78,13 @@ namespace ImageExtract.ST
         }
 
 
+        /*
         public void CodeForScreenshots()
         {
             AddConditionSetListBox(false);
             AddConditionSetListBox();
 
-            conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Singles", 0));
+            conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Singles", new integer(0)));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Multiples", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Only", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Skirt", 0));
@@ -106,8 +107,9 @@ namespace ImageExtract.ST
                 ((DataGridViewImageCell)this.dgvPreviewGrid.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
             }
         }
+        */
 
-                public void AddConditionSetListBox()
+        public void AddConditionSetListBox()
         {
             AddConditionSetListBox(true);
         }
@@ -151,7 +153,7 @@ namespace ImageExtract.ST
 
             foreach(Domain.ImageExtractCondition oneCondition in category.ImageExtractConditions)
             {
-                //this.conditionSetListBoxes[0].AddToAllItemsBox(oneCondition.)
+                this.conditionSetListBoxes[0].AddToUnusedBox(oneCondition);
             }
 
 

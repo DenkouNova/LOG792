@@ -36,7 +36,7 @@
             this.lbExclude = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tlpAllItems = new System.Windows.Forms.TableLayoutPanel();
-            this.lbAllItems = new System.Windows.Forms.ListBox();
+            this.lbUnused = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tlpInclude = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -150,6 +150,7 @@
             this.lbExclude.FormattingEnabled = true;
             this.lbExclude.Location = new System.Drawing.Point(3, 23);
             this.lbExclude.Name = "lbExclude";
+            this.lbExclude.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbExclude.Size = new System.Drawing.Size(195, 259);
             this.lbExclude.TabIndex = 3;
             // 
@@ -169,7 +170,7 @@
             this.tlpAllItems.BackColor = System.Drawing.SystemColors.Control;
             this.tlpAllItems.ColumnCount = 1;
             this.tlpAllItems.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAllItems.Controls.Add(this.lbAllItems, 0, 1);
+            this.tlpAllItems.Controls.Add(this.lbUnused, 0, 1);
             this.tlpAllItems.Controls.Add(this.label2, 0, 0);
             this.tlpAllItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAllItems.Location = new System.Drawing.Point(262, 4);
@@ -181,14 +182,15 @@
             this.tlpAllItems.Size = new System.Drawing.Size(200, 285);
             this.tlpAllItems.TabIndex = 1;
             // 
-            // lbAllItems
+            // lbUnused
             // 
-            this.lbAllItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbAllItems.FormattingEnabled = true;
-            this.lbAllItems.Location = new System.Drawing.Point(3, 23);
-            this.lbAllItems.Name = "lbAllItems";
-            this.lbAllItems.Size = new System.Drawing.Size(194, 259);
-            this.lbAllItems.TabIndex = 2;
+            this.lbUnused.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbUnused.FormattingEnabled = true;
+            this.lbUnused.Location = new System.Drawing.Point(3, 23);
+            this.lbUnused.Name = "lbUnused";
+            this.lbUnused.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbUnused.Size = new System.Drawing.Size(194, 259);
+            this.lbUnused.TabIndex = 2;
             // 
             // label2
             // 
@@ -235,6 +237,7 @@
             this.lbInclude.FormattingEnabled = true;
             this.lbInclude.Location = new System.Drawing.Point(3, 23);
             this.lbInclude.Name = "lbInclude";
+            this.lbInclude.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbInclude.Size = new System.Drawing.Size(194, 259);
             this.lbInclude.TabIndex = 1;
             // 
@@ -307,6 +310,7 @@
             // 
             // btnRemoveConditionSet
             // 
+            this.btnRemoveConditionSet.Enabled = false;
             this.btnRemoveConditionSet.Location = new System.Drawing.Point(3, 118);
             this.btnRemoveConditionSet.Margin = new System.Windows.Forms.Padding(3, 118, 3, 3);
             this.btnRemoveConditionSet.Name = "btnRemoveConditionSet";
@@ -317,6 +321,7 @@
             // 
             // btnAddConditionSet
             // 
+            this.btnAddConditionSet.Enabled = false;
             this.btnAddConditionSet.Location = new System.Drawing.Point(3, 159);
             this.btnAddConditionSet.Name = "btnAddConditionSet";
             this.btnAddConditionSet.Size = new System.Drawing.Size(91, 35);
@@ -354,10 +359,12 @@
             this.btnRemoveCondition.TabIndex = 0;
             this.btnRemoveCondition.Text = "Remove selected conditions";
             this.btnRemoveCondition.UseVisualStyleBackColor = true;
+            this.btnRemoveCondition.Click += new System.EventHandler(this.btnRemoveCondition_Click);
             // 
             // btnLinkConditions
             // 
             this.btnLinkConditions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLinkConditions.Enabled = false;
             this.btnLinkConditions.Location = new System.Drawing.Point(325, 3);
             this.btnLinkConditions.Name = "btnLinkConditions";
             this.btnLinkConditions.Size = new System.Drawing.Size(114, 38);
@@ -368,6 +375,7 @@
             // btnUnlinkConditions
             // 
             this.btnUnlinkConditions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUnlinkConditions.Enabled = false;
             this.btnUnlinkConditions.Location = new System.Drawing.Point(465, 3);
             this.btnUnlinkConditions.Name = "btnUnlinkConditions";
             this.btnUnlinkConditions.Size = new System.Drawing.Size(114, 38);
@@ -414,7 +422,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lbExclude;
-        private System.Windows.Forms.ListBox lbAllItems;
+        private System.Windows.Forms.ListBox lbUnused;
         private System.Windows.Forms.ListBox lbInclude;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.FlowLayoutPanel flpAddRemoveButtons;
