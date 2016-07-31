@@ -33,6 +33,29 @@ namespace ImageExtract.ST
             previewBatches = new List<Domain.CaptureBatch>();
         }
 
+        private HashSet<Domain.ImageExtractCondition> conditionsInIncludeBox = new HashSet<Domain.ImageExtractCondition>();
+        private HashSet<Domain.ImageExtractCondition> conditionsInUnusedBox = new HashSet<Domain.ImageExtractCondition>();
+        private HashSet<Domain.ImageExtractCondition> conditionsInExcludeBox = new HashSet<Domain.ImageExtractCondition>();
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInIncludeBox
+        {
+            get { return conditionsInIncludeBox; }
+            set { conditionsInIncludeBox = value; }
+        }
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInExcludeBox
+        {
+            get { return conditionsInExcludeBox; }
+            set { conditionsInExcludeBox = value; }
+        }
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInUnusedBox
+        {
+            get { return conditionsInUnusedBox; }
+            set { conditionsInUnusedBox = value; }
+        }
+
+
 
 
 

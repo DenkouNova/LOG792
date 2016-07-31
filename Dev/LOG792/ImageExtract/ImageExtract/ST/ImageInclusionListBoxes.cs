@@ -85,6 +85,13 @@ namespace ImageExtract.ST
             AddToBox(oneCondition, this.conditionsInExcludeBox, this.lbExclude);
         }
 
+        private void SetGlobalConditions()
+        {
+            VariablesSingleton.GetInstance().ConditionsInIncludeBox = this.conditionsInIncludeBox;
+            VariablesSingleton.GetInstance().ConditionsInExcludeBox = this.conditionsInExcludeBox;
+            VariablesSingleton.GetInstance().ConditionsInUnusedBox = this.conditionsInUnusedBox;
+        }
+
         private void AddToBox(Domain.ImageExtractCondition p_oneCondition, HashSet<Domain.ImageExtractCondition> p_SetOfConditions, ListBox p_listBoxForAdding)
         {
             if (!this.allConditionsInInterface.Contains(p_oneCondition))
@@ -93,6 +100,7 @@ namespace ImageExtract.ST
                 p_SetOfConditions.Add(p_oneCondition);
                 p_listBoxForAdding.Items.Add(new MyComboBoxOrListBoxItem(p_oneCondition.Description, p_oneCondition));
             }
+            SetGlobalConditions();
         }
 
         private void MoveListOfConditions(ListBox sourceListBox, ListBox destinationListBox, 
@@ -112,6 +120,7 @@ namespace ImageExtract.ST
                 destinationListOfConditions.Add((Domain.ImageExtractCondition)listItem.Value);
             }
 
+            SetGlobalConditions();
             this.parentTab.RefreshPreviewGrid();
         }
 

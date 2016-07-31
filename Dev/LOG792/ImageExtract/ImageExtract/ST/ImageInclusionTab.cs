@@ -51,7 +51,6 @@ namespace ImageExtract.ST
             
             observableBatchList.Subscribe(observerBatchList);
             observerBatchList.dgv = this.dgvPreviewGrid;
-            observerBatchList.imageTab = this;
             
             //CodeForScreenshots();
 
@@ -167,7 +166,6 @@ namespace ImageExtract.ST
     class ListOfBatchesObserver : MyObserver
     {
         public DataGridView dgv;
-        public ImageInclusionTab imageTab;
 
         private int ROW_HEIGHT_ITEM_INCLUDED = 100;
         private int ROW_HEIGHT_ITEM_NOT_INCLUDED = 50;
@@ -228,7 +226,7 @@ namespace ImageExtract.ST
 
 
             // Change cell coloring depending on whether or not we have a condition
-            foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInIncludeBox)
+            foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
             {
                 if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
                 {
@@ -239,7 +237,7 @@ namespace ImageExtract.ST
 
             if (itemIsIncludedInConditions)
             {
-                foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInExcludeBox)
+                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
                 {
                     if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
                     {
@@ -273,7 +271,7 @@ namespace ImageExtract.ST
                 );
 
             // Change cell coloring depending on whether or not we have a condition
-            foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInIncludeBox)
+            foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
             {
                 if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
                 {
@@ -284,7 +282,7 @@ namespace ImageExtract.ST
 
             if (itemIsIncludedInConditions)
             {
-                foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInExcludeBox)
+                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
                 {
                     if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
                     {

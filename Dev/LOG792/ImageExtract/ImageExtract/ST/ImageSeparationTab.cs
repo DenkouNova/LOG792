@@ -24,8 +24,6 @@ namespace ImageExtract.ST
 
         public void InitializeImageSeparationDataGrid()
         {
-            Image img = new Bitmap(TestConstants.ExampleImagePath);
-
             // Set image last column to width
             this.dgvImageSeparation.Columns[this.dgvcImageInclusionImage.Name].Width =
                 this.dgvImageSeparation.Width - 20 -
@@ -34,7 +32,14 @@ namespace ImageExtract.ST
                 this.dgvImageSeparation.Columns[this.dgvcImageInclusionMPS.Name].Width -
                 this.dgvImageSeparation.Columns[this.dgvcImageInclusionBSeq.Name].Width;
 
+            // CodeForScreenshots();            
+        }
 
+
+
+        public void CodeForScreenshots()
+        {
+            Image img = new Bitmap(TestConstants.ExampleImagePath);
             for (int i = 0; i < 50; i++)
             {
                 this.dgvImageSeparation.Rows.Add(256001, (100 + i).ToString(), (i * 100).ToString(), (i % 2 == 0 ? "F" : "R"), null);
@@ -84,7 +89,10 @@ namespace ImageExtract.ST
 
 
 
-
+        public void RefreshPreviewGrid()
+        {
+            //observableBatchList.NotifyObservers(VariablesSingleton.GetInstance().PreviewBatches);
+        }
 
 
 
