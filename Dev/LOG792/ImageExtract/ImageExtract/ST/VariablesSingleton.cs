@@ -36,13 +36,15 @@ namespace ImageExtract.ST
 
 
 
-        private List<Domain.CaptureBatch> previewBatches;
+        private IList<Domain.CaptureBatch> previewBatches = new List<Domain.CaptureBatch>();
 
-        public List<Domain.CaptureBatch> PreviewBatches
+        public IList<Domain.CaptureBatch> PreviewBatches
         {
             get { return previewBatches; }
             set { previewBatches = value; }
         }
+
+
 
         // Ordinateur à la maison
         // public string ImagePath = @"D:\Cossins\Documents\ETS\LOG792\Images";

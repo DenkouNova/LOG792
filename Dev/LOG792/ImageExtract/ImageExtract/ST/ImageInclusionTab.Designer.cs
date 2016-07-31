@@ -32,6 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpImageInclusion = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPreviewGrid = new System.Windows.Forms.DataGridView();
+            this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvcImageInclusionImageSortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flpImageInclusionConditionSets = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,12 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flpLoadConditionsButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExampleConditionCategoryButton = new System.Windows.Forms.Button();
-            this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dgvcImageInclusionImageSortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpImageInclusion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPreviewGrid)).BeginInit();
             this.flpImageInclusionConditionSets.SuspendLayout();
@@ -119,10 +119,47 @@
             this.dgvPreviewGrid.RowTemplate.Height = 100;
             this.dgvPreviewGrid.RowTemplate.ReadOnly = true;
             this.dgvPreviewGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvPreviewGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPreviewGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvPreviewGrid.Size = new System.Drawing.Size(394, 582);
             this.dgvPreviewGrid.TabIndex = 0;
             this.dgvPreviewGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageInclusion_Paint);
+            // 
+            // dgvcImageInclusionBSeq
+            // 
+            this.dgvcImageInclusionBSeq.HeaderText = "BSeq";
+            this.dgvcImageInclusionBSeq.Name = "dgvcImageInclusionBSeq";
+            this.dgvcImageInclusionBSeq.Width = 46;
+            // 
+            // dgvcImageInclusionMPS
+            // 
+            this.dgvcImageInclusionMPS.HeaderText = "MPS";
+            this.dgvcImageInclusionMPS.Name = "dgvcImageInclusionMPS";
+            this.dgvcImageInclusionMPS.Width = 35;
+            // 
+            // dgvcImageInclusionIRef
+            // 
+            this.dgvcImageInclusionIRef.HeaderText = "IRef";
+            this.dgvcImageInclusionIRef.Name = "dgvcImageInclusionIRef";
+            this.dgvcImageInclusionIRef.Width = 35;
+            // 
+            // dgvcImageInclusionSide
+            // 
+            this.dgvcImageInclusionSide.HeaderText = "S";
+            this.dgvcImageInclusionSide.Name = "dgvcImageInclusionSide";
+            this.dgvcImageInclusionSide.Width = 22;
+            // 
+            // dgvcImageInclusionImage
+            // 
+            this.dgvcImageInclusionImage.HeaderText = "Image";
+            this.dgvcImageInclusionImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvcImageInclusionImage.Name = "dgvcImageInclusionImage";
+            this.dgvcImageInclusionImage.Width = 200;
+            // 
+            // dgvcImageInclusionImageSortColumn
+            // 
+            this.dgvcImageInclusionImageSortColumn.HeaderText = "HiddenSortColumn";
+            this.dgvcImageInclusionImageSortColumn.Name = "dgvcImageInclusionImageSortColumn";
+            this.dgvcImageInclusionImageSortColumn.Visible = false;
             // 
             // flpImageInclusionConditionSets
             // 
@@ -259,43 +296,6 @@
             this.btnExampleConditionCategoryButton.TabIndex = 0;
             this.btnExampleConditionCategoryButton.Text = "(Condition category)";
             this.btnExampleConditionCategoryButton.UseVisualStyleBackColor = true;
-            // 
-            // dgvcImageInclusionBSeq
-            // 
-            this.dgvcImageInclusionBSeq.HeaderText = "BSeq";
-            this.dgvcImageInclusionBSeq.Name = "dgvcImageInclusionBSeq";
-            this.dgvcImageInclusionBSeq.Width = 46;
-            // 
-            // dgvcImageInclusionMPS
-            // 
-            this.dgvcImageInclusionMPS.HeaderText = "MPS";
-            this.dgvcImageInclusionMPS.Name = "dgvcImageInclusionMPS";
-            this.dgvcImageInclusionMPS.Width = 35;
-            // 
-            // dgvcImageInclusionIRef
-            // 
-            this.dgvcImageInclusionIRef.HeaderText = "IRef";
-            this.dgvcImageInclusionIRef.Name = "dgvcImageInclusionIRef";
-            this.dgvcImageInclusionIRef.Width = 35;
-            // 
-            // dgvcImageInclusionSide
-            // 
-            this.dgvcImageInclusionSide.HeaderText = "S";
-            this.dgvcImageInclusionSide.Name = "dgvcImageInclusionSide";
-            this.dgvcImageInclusionSide.Width = 22;
-            // 
-            // dgvcImageInclusionImage
-            // 
-            this.dgvcImageInclusionImage.HeaderText = "Image";
-            this.dgvcImageInclusionImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvcImageInclusionImage.Name = "dgvcImageInclusionImage";
-            this.dgvcImageInclusionImage.Width = 200;
-            // 
-            // dgvcImageInclusionImageSortColumn
-            // 
-            this.dgvcImageInclusionImageSortColumn.HeaderText = "HiddenSortColumn";
-            this.dgvcImageInclusionImageSortColumn.Name = "dgvcImageInclusionImageSortColumn";
-            this.dgvcImageInclusionImageSortColumn.Visible = false;
             // 
             // ImageInclusionTab
             // 

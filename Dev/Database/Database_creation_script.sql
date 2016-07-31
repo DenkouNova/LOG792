@@ -151,7 +151,7 @@ CREATE TABLE 'imgextr_config' (
 CREATE TABLE 'imgextr_condition' (
   'condition_id' INTEGER,
   'description' TEXT NOT NULL,
-  'where_clause' TEXT  NOT NULL,
+  'where_clause' TEXT,
   PRIMARY KEY(condition_id)
 );
 
@@ -823,7 +823,7 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
   VALUES
   (
     10, --condition_id
-    'Transaction Status: Rejected Items', --description
+    'Transaction Status: Rejected Envelope', --description
     'Matched_Payment.Matched_Payment_Status = 4' --where_clause
   );
 
@@ -859,6 +859,38 @@ INSERT INTO imgextr_condition(condition_id, description, where_clause)
     'Item_Statement.Item_Source = 2' --where_clause
   );
 
+INSERT INTO imgextr_condition(condition_id, description, where_clause)
+  VALUES
+  (
+    15, --condition_id
+    'All items', --description
+    null --where_clause
+  );
+
+INSERT INTO imgextr_condition(condition_id, description, where_clause)
+  VALUES
+  (
+    16, --condition_id
+    'Front images', --description
+    '%FRONT_ONLY%' --where_clause
+  );
+
+INSERT INTO imgextr_condition(condition_id, description, where_clause)
+  VALUES
+  (
+    17, --condition_id
+    'Rear images', --description
+    '%REAR_ONLY%' --where_clause
+  );
+
+INSERT INTO imgextr_condition(condition_id, description, where_clause)
+  VALUES
+  (
+    18, --condition_id
+    'Items with CHADD', --description
+    'Item_Statement.Chadd_Status = 1' --where_clause
+  );
+  
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_set
 -- =============================================================================
@@ -894,6 +926,8 @@ INSERT INTO imgextr_cond_set_conditions(cond_set_id, condition_id)
 INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (1, 'Batch type');
 INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (2, 'Transaction status');
 INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (3, 'Item source');
+INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (4, 'Misc');
+INSERT INTO imgextr_cond_category(cond_category_id, description) VALUES (5, 'CHADD');
 
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_cat_conditions
@@ -915,6 +949,12 @@ INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (
 INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (3, 12);
 INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (3, 13);
 INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (3, 14);
+
+INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (4, 15);
+INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (4, 16);
+INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (4, 17);
+
+INSERT INTO imgextr_cond_cat_conditions(cond_category_id, condition_id) VALUES (5, 18);
 
 -- =============================================================================
 -- Insertion de données IE - imgextr_cond_set_configs

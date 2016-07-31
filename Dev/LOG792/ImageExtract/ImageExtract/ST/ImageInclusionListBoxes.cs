@@ -11,11 +11,31 @@ namespace ImageExtract.ST
 {
     public partial class ImageInclusionListBoxes : UserControl
     {
+        ImageInclusionTab parentTab;
 
         private HashSet<Domain.ImageExtractCondition> allConditionsInInterface = new HashSet<Domain.ImageExtractCondition>();
         private HashSet<Domain.ImageExtractCondition> conditionsInIncludeBox = new HashSet<Domain.ImageExtractCondition>();
         private HashSet<Domain.ImageExtractCondition> conditionsInUnusedBox = new HashSet<Domain.ImageExtractCondition>();
         private HashSet<Domain.ImageExtractCondition> conditionsInExcludeBox = new HashSet<Domain.ImageExtractCondition>();
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInIncludeBox
+        {
+            get { return conditionsInIncludeBox; }
+            set { conditionsInIncludeBox = value; }
+        }
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInExcludeBox
+        {
+            get { return conditionsInExcludeBox; }
+            set { conditionsInExcludeBox = value; }
+        }
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInUnusedBox
+        {
+            get { return conditionsInUnusedBox; }
+            set { conditionsInUnusedBox = value; }
+        }
+
 
         // Currently not used
         // We will need something like this if we want more than one ImageInclusionListBox
@@ -34,9 +54,10 @@ namespace ImageExtract.ST
         }
         */
 
-        public ImageInclusionListBoxes()
+        public ImageInclusionListBoxes(ImageInclusionTab p_parentTab)
         {
             InitializeComponent();
+            this.parentTab = p_parentTab;
         }
 
         public void UnallowRemovalOfConditionSet()
@@ -90,6 +111,8 @@ namespace ImageExtract.ST
                 destinationListBox.Items.Add(listItem);
                 destinationListOfConditions.Add((Domain.ImageExtractCondition)listItem.Value);
             }
+
+            this.parentTab.RefreshPreviewGrid();
         }
 
         private void btnUnusedToInclude_Click(object sender, EventArgs e)
@@ -131,6 +154,26 @@ namespace ImageExtract.ST
                 this.allConditionsInInterface.Remove((Domain.ImageExtractCondition)oneItemToRemove.Value);
             }
             
+        }
+
+        private void ClearNonSelectedListBoxes(ListBox lb)
+        {
+            if (lb != this.lbUnused) this.lbUnused.SelectedItems.Clear();
+            if (lb != this.lbInclude) this.lbInclude.SelectedItems.Clear();
+            if (lb != this.lbExclude) this.lbExclude.SelectedItems.Clear();
+        }
+
+        private void lb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.lbUnused.SelectedIndexChanged -= new System.EventHandler(this.lb_SelectedIndexChanged);
+            this.lbInclude.SelectedIndexChanged -= new System.EventHandler(this.lb_SelectedIndexChanged);
+            this.lbExclude.SelectedIndexChanged -= new System.EventHandler(this.lb_SelectedIndexChanged);
+
+            ClearNonSelectedListBoxes((ListBox)sender);
+            
+            this.lbUnused.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
+            this.lbInclude.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
+            this.lbExclude.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
         }
 
     }

@@ -153,6 +153,7 @@
             this.lbExclude.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbExclude.Size = new System.Drawing.Size(195, 259);
             this.lbExclude.TabIndex = 3;
+            this.lbExclude.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -191,6 +192,7 @@
             this.lbUnused.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbUnused.Size = new System.Drawing.Size(194, 259);
             this.lbUnused.TabIndex = 2;
+            this.lbUnused.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -240,6 +242,7 @@
             this.lbInclude.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbInclude.Size = new System.Drawing.Size(194, 259);
             this.lbInclude.TabIndex = 1;
+            this.lbInclude.SelectedIndexChanged += new System.EventHandler(this.lb_SelectedIndexChanged);
             // 
             // tlpIncludeButtons
             // 

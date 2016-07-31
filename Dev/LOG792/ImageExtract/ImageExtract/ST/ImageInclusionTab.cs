@@ -51,6 +51,7 @@ namespace ImageExtract.ST
             
             observableBatchList.Subscribe(observerBatchList);
             observerBatchList.dgv = this.dgvPreviewGrid;
+            observerBatchList.imageTab = this;
             
             //CodeForScreenshots();
 
@@ -114,14 +115,14 @@ namespace ImageExtract.ST
             AddConditionSetListBox(true);
         }
 
-        private void AddOneBatchInPreviewGrid(Domain.CaptureBatch oneBatch)
+        public void RefreshPreviewGrid()
         {
-
+            observableBatchList.NotifyObservers(VariablesSingleton.GetInstance().PreviewBatches);
         }
 
         public void AddConditionSetListBox(bool blnAllowRemovalOfConditionSet)
         {
-            ImageInclusionListBoxes oneConditionSet = new ImageInclusionListBoxes();
+            ImageInclusionListBoxes oneConditionSet = new ImageInclusionListBoxes(this);
             if (!blnAllowRemovalOfConditionSet) oneConditionSet.UnallowRemovalOfConditionSet();
             conditionSetListBoxes.Add(oneConditionSet);
             this.flpImageInclusionConditionSets.Controls.Add(oneConditionSet);
@@ -142,22 +143,18 @@ namespace ImageExtract.ST
         {
             DialogLoadExampleImages exampleImages = new DialogLoadExampleImages();
             exampleImages.ShowDialog();
-            observableBatchList.NotifyObservers(exampleImages.ListOfBatchesForInterface);
+            VariablesSingleton.GetInstance().PreviewBatches = exampleImages.ListOfBatchesForInterface;
+            RefreshPreviewGrid();
         }
 
         private void ConditionCategoryButtons_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             ImageExtractCondCategory category = (ImageExtractCondCategory)b.Tag;
-            //MessageBox.Show("ID " + category.Cond_Category_Id +", Description = '" + category.Description + "'");
-
             foreach(Domain.ImageExtractCondition oneCondition in category.ImageExtractConditions)
             {
                 this.conditionSetListBoxes[0].AddToUnusedBox(oneCondition);
             }
-
-
-
         }
         #endregion
 
@@ -170,6 +167,10 @@ namespace ImageExtract.ST
     class ListOfBatchesObserver : MyObserver
     {
         public DataGridView dgv;
+        public ImageInclusionTab imageTab;
+
+        private int ROW_HEIGHT_ITEM_INCLUDED = 100;
+        private int ROW_HEIGHT_ITEM_NOT_INCLUDED = 50;
 
         public ListOfBatchesObserver(string name)
             : base(name) { }
@@ -202,49 +203,180 @@ namespace ImageExtract.ST
             // it's pretty bad, but...
             dgv.Sort(dgv.Columns["dgvcImageInclusionImageSortColumn"], ListSortDirection.Ascending);
 
-            RecolorCells(dgv);
+            // RecolorCells(dgv);
 
         } // void OnNext
 
 
-        public void AddStatementToGrid(DataGridView p_dgv, Domain.ItemStatement oneItem, bool p_frontImage)
+        public void AddStatementToGrid(DataGridView p_dgv, Domain.ItemStatement oneItem, bool p_isFrontItem)
         {
+            bool itemIsIncludedInConditions = false;
             string pathForOneImage = Path.Combine(
                             VariablesSingleton.GetInstance().ImagePath,
-                            (p_frontImage ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
+                            (p_isFrontItem ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
             Image itemImage = new Bitmap(pathForOneImage);
             dgv.Rows.Add(
                 oneItem.ItemStatementIdentifier.Batch_Seq,
                 oneItem.Matched_Payment_Seq,
                 oneItem.ItemStatementIdentifier.Item_Ref,
-                (p_frontImage ? "F" : "R"),
+                (p_isFrontItem ? "F" : "R"),
                 itemImage,
                 oneItem.ItemStatementIdentifier.Batch_Seq.ToString().PadLeft(10) +
                     oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
                     oneItem.ItemStatementIdentifier.Item_Ref.ToString().PadLeft(10) +
-                    (p_frontImage ? "F" : "R"));
+                    (p_isFrontItem ? "F" : "R"));
+
+
+            // Change cell coloring depending on whether or not we have a condition
+            foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInIncludeBox)
+            {
+                if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                {
+                    itemIsIncludedInConditions = true;
+                    break;
+                }
+            }
+
+            if (itemIsIncludedInConditions)
+            {
+                foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInExcludeBox)
+                {
+                    if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                    {
+                        itemIsIncludedInConditions = false;
+                        break;
+                    }
+                }
+            }
+
+            dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = (itemIsIncludedInConditions ? Color.White : Color.LightCoral);
+            dgv.Rows[dgv.Rows.Count - 1].Height = (itemIsIncludedInConditions ? ROW_HEIGHT_ITEM_INCLUDED : ROW_HEIGHT_ITEM_NOT_INCLUDED);
         }
 
-
-        public void AddPaymentToGrid(DataGridView p_dgv, Domain.ItemPayment oneItem, bool p_frontImage)
+        public void AddPaymentToGrid(DataGridView p_dgv, Domain.ItemPayment oneItem, bool p_isFrontItem)
         {
+            bool itemIsIncludedInConditions = false;
             string pathForOneImage = Path.Combine(
                             VariablesSingleton.GetInstance().ImagePath,
-                            (p_frontImage ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
+                            (p_isFrontItem ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
             Image itemImage = new Bitmap(pathForOneImage);
             dgv.Rows.Add(
                 oneItem.ItemPaymentIdentifier.Batch_Seq,
                 oneItem.Matched_Payment_Seq,
                 oneItem.ItemPaymentIdentifier.Item_Ref,
-                (p_frontImage ? "F" : "R"),
+                (p_isFrontItem ? "F" : "R"),
                 itemImage,
                 oneItem.ItemPaymentIdentifier.Batch_Seq.ToString().PadLeft(10) +
                     oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
                     oneItem.ItemPaymentIdentifier.Item_Ref.ToString().PadLeft(10) +
-                    (p_frontImage ? "F" : "R")
+                    (p_isFrontItem ? "F" : "R")
                 );
+
+            // Change cell coloring depending on whether or not we have a condition
+            foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInIncludeBox)
+            {
+                if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                {
+                    itemIsIncludedInConditions = true;
+                    break;
+                }
+            }
+
+            if (itemIsIncludedInConditions)
+            {
+                foreach (ImageExtractCondition oneCondition in imageTab.ConditionSetListBoxes[0].ConditionsInExcludeBox)
+                {
+                    if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                    {
+                        itemIsIncludedInConditions = false;
+                        break;
+                    }
+                }
+            }
+
+            dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = (itemIsIncludedInConditions ? Color.White : Color.LightCoral);
+            dgv.Rows[dgv.Rows.Count - 1].Height = (itemIsIncludedInConditions ? ROW_HEIGHT_ITEM_INCLUDED : ROW_HEIGHT_ITEM_NOT_INCLUDED);
         }
 
+        public bool StatementConformsToCondition(ItemStatement item, ImageExtractCondition iec, bool p_isFrontItem)
+        {
+            bool returnedValue = false;
+            string tableName, symbol, columnName, comparisonValue;
+
+            if (String.IsNullOrEmpty(iec.Where_Clause))
+            {
+                returnedValue = true;
+            }
+            else if (iec.Where_Clause == "%FRONT_ONLY%")
+            {
+                returnedValue = p_isFrontItem;
+            }
+            else if (iec.Where_Clause == "%REAR_ONLY%")
+            {
+                returnedValue = !p_isFrontItem;
+            }
+            else
+            {
+                tableName = iec.Where_Clause.Substring(0, iec.Where_Clause.IndexOf("."));
+                symbol = iec.Where_Clause.Contains(">") ? ">" : "=";
+                columnName = iec.Where_Clause.Substring(iec.Where_Clause.IndexOf(".") + 1, iec.Where_Clause.IndexOf(symbol) - iec.Where_Clause.IndexOf(".") - 1).Trim();
+                comparisonValue = iec.Where_Clause.Substring(iec.Where_Clause.IndexOf(symbol) + 1).Trim();
+
+                /*
+                MessageBox.Show("tableName = '" + tableName + "', columnName = '" + columnName + "', symbol = '" + symbol + "', comparisonValue = '" + comparisonValue + "'");
+                */
+
+                if (tableName == "Capture_Batch" && columnName == "Capture_Type_Item" && symbol == "=")
+                    returnedValue = item.batch.Capture_Type_Item.Equals(comparisonValue);
+                else if (tableName == "Item_Statement" && columnName == "Item_Source" && symbol == "=")
+                    returnedValue = item.Item_Source.Equals(comparisonValue);
+                // Matched_Payment isn't implemented
+            }
+
+            return returnedValue;
+        }
+
+
+        public bool PaymentConformsToCondition(ItemPayment item, ImageExtractCondition iec, bool p_isFrontItem)
+        {
+            bool returnedValue = false;
+            string tableName, symbol, columnName, comparisonValue;
+
+            if (String.IsNullOrEmpty(iec.Where_Clause))
+            {
+                returnedValue = true;
+            }
+            else if (iec.Where_Clause == "%FRONT_ONLY%")
+            {
+                returnedValue = p_isFrontItem;
+            }
+            else if (iec.Where_Clause == "%REAR_ONLY%")
+            {
+                returnedValue = !p_isFrontItem;
+            }
+            else
+            {
+                tableName = iec.Where_Clause.Substring(0, iec.Where_Clause.IndexOf("."));
+                symbol = iec.Where_Clause.Contains(">") ? ">" : "=";
+                columnName = iec.Where_Clause.Substring(iec.Where_Clause.IndexOf(".") + 1, iec.Where_Clause.IndexOf(symbol) - iec.Where_Clause.IndexOf(".") - 1).Trim();
+                comparisonValue = iec.Where_Clause.Substring(iec.Where_Clause.IndexOf(symbol) + 1).Trim();
+
+                /*
+                MessageBox.Show("tableName = '" + tableName + "', columnName = '" + columnName + "', symbol = '" + symbol + "', comparisonValue = '" + comparisonValue + "'");
+                */
+
+                if (tableName == "Capture_Batch" && columnName == "Capture_Type_Item" && symbol == "=")
+                    returnedValue = item.batch.Capture_Type_Item.Equals(comparisonValue);
+                else if (tableName == "Item_Statement" && columnName == "Item_Source" && symbol == "=")
+                    returnedValue = item.Item_Source.Equals(comparisonValue);
+                // Matched_Payment isn't implemented
+            }
+
+            return returnedValue;
+        }
+
+
+        /*
         public void RecolorCells(DataGridView p_dgv)
         {
             // Recolor the cells
@@ -273,6 +405,7 @@ namespace ImageExtract.ST
                 dgvr.DefaultCellStyle.BackColor = colorsToUse[currentColorIndice];
             }
         }
+        */
 
     } // class ListOfBatchesObserver
 
