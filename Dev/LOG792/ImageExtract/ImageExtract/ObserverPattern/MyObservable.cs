@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImageExtract.ObserverPattern
 {
-    class MyObservable : IObservable<object>
+    public class MyObservable : IObservable<object>
     {
         private List<IObserver<object>> observers;
 

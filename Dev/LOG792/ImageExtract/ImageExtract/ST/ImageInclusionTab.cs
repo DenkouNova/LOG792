@@ -31,8 +31,7 @@ namespace ImageExtract.ST
             set { conditionSetListBoxes = value; }
         }
 
-        private MyObservable observableBatchList = new MyObservable();
-        private ListOfBatchesObserver observerBatchList = new ListOfBatchesObserver("Batches shown in Image Inclusion Tab");
+        private ListOfBatchesObserver observerBatchList;
 
         public ImageInclusionTab()
         {
@@ -48,10 +47,11 @@ namespace ImageExtract.ST
                 this.dgvPreviewGrid.Columns[this.dgvcImageInclusionMPS.Name].Width -
                 this.dgvPreviewGrid.Columns[this.dgvcImageInclusionBSeq.Name].Width;
 
-            
-            observableBatchList.Subscribe(observerBatchList);
+            observerBatchList = new ListOfBatchesObserver("Batches shown in Image Inclusion Tab");
             observerBatchList.dgv = this.dgvPreviewGrid;
-            
+            observerBatchList.dgType = ListOfBatchesObserver.DataGridType.Inclusion;
+            VariablesSingleton.GetInstance().observableBatchList.Subscribe(observerBatchList);
+
             //CodeForScreenshots();
 
             AddConditionSetListBox(false);
@@ -116,7 +116,7 @@ namespace ImageExtract.ST
 
         public void RefreshPreviewGrid()
         {
-            observableBatchList.NotifyObservers(VariablesSingleton.GetInstance().PreviewBatches);
+            VariablesSingleton.GetInstance().observableBatchList.NotifyObservers(VariablesSingleton.GetInstance().PreviewBatches);
         }
 
         public void AddConditionSetListBox(bool blnAllowRemovalOfConditionSet)
@@ -135,7 +135,6 @@ namespace ImageExtract.ST
             // Important: changing font color requires dgv.EnableHeadersVisualStyles = false;
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = (dgv.Enabled ? Color.Black : Color.Gray);
             foreach (DataGridViewRow dgvr in dgv.Rows) dgvr.Visible = dgv.Enabled;
-
         }
 
         private void btnLoadExampleBatches_Click(object sender, EventArgs e)

@@ -19,6 +19,17 @@ namespace ImageExtract.ObserverPattern
         private int ROW_HEIGHT_ITEM_INCLUDED = 100;
         private int ROW_HEIGHT_ITEM_NOT_INCLUDED = 50;
 
+        public enum DataGridType
+        {
+            NotInitialized,
+            Inclusion,
+            Separation
+        }
+
+        public DataGridType dgType = DataGridType.NotInitialized;
+
+        public string imageNaming = null;
+
         public ListOfBatchesObserver(string name)
             : base(name) { }
 
@@ -48,9 +59,9 @@ namespace ImageExtract.ObserverPattern
             // Sort according to a sort key
             // The sort column is just a concatenation of Batch_Seq, MPS, Item Ref and Image Side columns
             // it's pretty bad, but...
-            dgv.Sort(dgv.Columns["dgvcImageInclusionImageSortColumn"], ListSortDirection.Ascending);
+            dgv.Sort(dgv.Columns["HiddenSortColumn"], ListSortDirection.Ascending);
 
-            // RecolorCells(dgv);
+            if (this.dgType == DataGridType.Separation) RecolorCells(dgv);
 
         } // void OnNext
 
@@ -63,42 +74,143 @@ namespace ImageExtract.ObserverPattern
                             (p_isFrontItem ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
             Image itemImage = new Bitmap(pathForOneImage);
 
-            dgv.Rows.Add(
-            oneItem.ItemStatementIdentifier.Batch_Seq,
-            oneItem.Matched_Payment_Seq,
-            oneItem.ItemStatementIdentifier.Item_Ref,
-            (p_isFrontItem ? "F" : "R"),
-            itemImage,
-            oneItem.ItemStatementIdentifier.Batch_Seq.ToString().PadLeft(10) +
-                oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
-                oneItem.ItemStatementIdentifier.Item_Ref.ToString().PadLeft(10) +
-                (p_isFrontItem ? "F" : "R"));
-
-            // Change cell coloring depending on whether or not we have a condition
-            foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
+            if (dgType == DataGridType.Inclusion)
             {
-                if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
-                {
-                    itemIsIncludedInConditions = true;
-                    break;
-                }
-            }
+                dgv.Rows.Add(
+                    oneItem.ItemStatementIdentifier.Batch_Seq,
+                    oneItem.Matched_Payment_Seq,
+                    oneItem.ItemStatementIdentifier.Item_Ref,
+                    (p_isFrontItem ? "F" : "R"),
+                    itemImage,
+                    oneItem.ItemStatementIdentifier.Batch_Seq.ToString().PadLeft(10) +
+                        oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
+                        oneItem.ItemStatementIdentifier.Item_Ref.ToString().PadLeft(10) +
+                        (p_isFrontItem ? "F" : "R"));
 
-            if (itemIsIncludedInConditions)
-            {
-                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
+                // Change cell coloring depending on whether or not we have a condition
+                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
                 {
                     if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
                     {
-                        itemIsIncludedInConditions = false;
+                        itemIsIncludedInConditions = true;
                         break;
                     }
                 }
-            }
 
-            dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = (itemIsIncludedInConditions ? Color.White : Color.LightCoral);
-            dgv.Rows[dgv.Rows.Count - 1].Height = (itemIsIncludedInConditions ? ROW_HEIGHT_ITEM_INCLUDED : ROW_HEIGHT_ITEM_NOT_INCLUDED);
+                if (itemIsIncludedInConditions)
+                {
+                    foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
+                    {
+                        if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                        {
+                            itemIsIncludedInConditions = false;
+                            break;
+                        }
+                    }
+                }
+
+                dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = (itemIsIncludedInConditions ? Color.White : Color.LightCoral);
+                dgv.Rows[dgv.Rows.Count - 1].Height = (itemIsIncludedInConditions ? ROW_HEIGHT_ITEM_INCLUDED : ROW_HEIGHT_ITEM_NOT_INCLUDED);
+            } // dgType == DataGridType.Inclusion
+            else if (dgType == DataGridType.Separation)
+            {
+
+                // Add lines, but only if they are included in conditions
+                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
+                {
+                    if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                    {
+                        itemIsIncludedInConditions = true;
+                        break;
+                    }
+                }
+
+                if (itemIsIncludedInConditions)
+                {
+                    foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
+                    {
+                        if (StatementConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                        {
+                            itemIsIncludedInConditions = false;
+                            break;
+                        }
+                    }
+                }
+
+                string imageNamingForThisItem = ReplaceNamingForStatement(this.imageNaming, oneItem, p_isFrontItem);
+
+                if (itemIsIncludedInConditions)
+                {
+                    dgv.Rows.Add(
+                        oneItem.ItemStatementIdentifier.Batch_Seq,
+                        oneItem.Matched_Payment_Seq,
+                        oneItem.ItemStatementIdentifier.Item_Ref,
+                        (p_isFrontItem ? "F" : "R"),
+                        itemImage,
+                        imageNamingForThisItem + oneItem.ItemStatementIdentifier.Batch_Seq.ToString().PadLeft(10) +
+                            oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
+                            oneItem.ItemStatementIdentifier.Item_Ref.ToString().PadLeft(10) +
+                            (p_isFrontItem ? "F" : "R"),
+                            imageNamingForThisItem);
+                }
+
+            } // dgType == DataGridType.Separation
+            
         }
+
+
+
+        public string ReplaceNamingForStatement(string imageNaming, Domain.ItemStatement oneItem, bool p_isFrontItem)
+        {
+            string returnValue = imageNaming;
+
+            if (String.IsNullOrEmpty(imageNaming))
+            {
+                returnValue = "";
+            }
+            else
+            {
+                returnValue = imageNaming;
+                returnValue = returnValue.Replace("$BATCH_SEQ$", oneItem.ItemStatementIdentifier.Batch_Seq.ToString());
+                returnValue = returnValue.Replace("$CAPTURE_DATE$", oneItem.batch.Capture_Date.ToString());
+                returnValue = returnValue.Replace("$CAPTURE_SITE$", oneItem.batch.statement.site.Site_Id.ToString());
+                returnValue = returnValue.Replace("$IMAGE_SIDE$", (p_isFrontItem ? "F" : "R"));
+                returnValue = returnValue.Replace("$ITEM_REF$", oneItem.ItemStatementIdentifier.Item_Ref.ToString());
+                returnValue = returnValue.Replace("$ITEM_TYPE$", "STUB");
+                returnValue = returnValue.Replace("$STATEMENT_ID$", oneItem.batch.statement.Statement_Id.ToString());
+                //imageNaming = imageNaming.Replace("$MATCHED_PAYMENT_SEQ$", oneItem.batch.statement.Statement_Id.ToString());
+            }
+            
+            return returnValue;
+        }
+
+
+
+        public string ReplaceNamingForPayment(string imageNaming, Domain.ItemPayment oneItem, bool p_isFrontItem)
+        {
+            string returnValue;
+            
+            if (String.IsNullOrEmpty(imageNaming))
+            {
+                returnValue = "";
+            }
+            else
+            {
+                returnValue = imageNaming;
+                returnValue = returnValue.Replace("$BATCH_SEQ$", oneItem.batch.Batch_Seq.ToString());
+                returnValue = returnValue.Replace("$CAPTURE_DATE$", oneItem.batch.Capture_Date.ToString());
+                returnValue = returnValue.Replace("$CAPTURE_SITE$", oneItem.batch.statement.site.Site_Id.ToString());
+                returnValue = returnValue.Replace("$IMAGE_SIDE$", (p_isFrontItem ? "F" : "R"));
+                returnValue = returnValue.Replace("$ITEM_REF$", oneItem.ItemPaymentIdentifier.Item_Ref.ToString());
+                returnValue = returnValue.Replace("$ITEM_TYPE$", "STUB");
+                returnValue = returnValue.Replace("$STATEMENT_ID$", oneItem.batch.statement.Statement_Id.ToString());
+                //imageNaming = imageNaming.Replace("$MATCHED_PAYMENT_SEQ$", oneItem.batch.statement.Statement_Id.ToString());
+            }
+            
+            return returnValue;
+        }
+
+
 
         public void AddPaymentToGrid(DataGridView p_dgv, Domain.ItemPayment oneItem, bool p_isFrontItem)
         {
@@ -107,43 +219,92 @@ namespace ImageExtract.ObserverPattern
                             VariablesSingleton.GetInstance().ImagePath,
                             (p_isFrontItem ? oneItem.Image_File_Front : oneItem.Image_File_Rear) + ".tif");
             Image itemImage = new Bitmap(pathForOneImage);
-            dgv.Rows.Add(
-                oneItem.ItemPaymentIdentifier.Batch_Seq,
-                oneItem.Matched_Payment_Seq,
-                oneItem.ItemPaymentIdentifier.Item_Ref,
-                (p_isFrontItem ? "F" : "R"),
-                itemImage,
-                oneItem.ItemPaymentIdentifier.Batch_Seq.ToString().PadLeft(10) +
-                    oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
-                    oneItem.ItemPaymentIdentifier.Item_Ref.ToString().PadLeft(10) +
-                    (p_isFrontItem ? "F" : "R")
+
+            if (dgType == DataGridType.Inclusion)
+            {
+                dgv.Rows.Add(
+                    oneItem.ItemPaymentIdentifier.Batch_Seq,
+                    oneItem.Matched_Payment_Seq,
+                    oneItem.ItemPaymentIdentifier.Item_Ref,
+                    (p_isFrontItem ? "F" : "R"),
+                    itemImage,
+                    oneItem.ItemPaymentIdentifier.Batch_Seq.ToString().PadLeft(10) +
+                        oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
+                        oneItem.ItemPaymentIdentifier.Item_Ref.ToString().PadLeft(10) +
+                        (p_isFrontItem ? "F" : "R")
                 );
 
-            // Change cell coloring depending on whether or not we have a condition
-            foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
-            {
-                if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
-                {
-                    itemIsIncludedInConditions = true;
-                    break;
-                }
-            }
-
-            if (itemIsIncludedInConditions)
-            {
-                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
+                // Change cell coloring depending on whether or not we have a condition
+                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
                 {
                     if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
                     {
-                        itemIsIncludedInConditions = false;
+                        itemIsIncludedInConditions = true;
                         break;
                     }
                 }
-            }
 
-            dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = (itemIsIncludedInConditions ? Color.White : Color.LightCoral);
-            dgv.Rows[dgv.Rows.Count - 1].Height = (itemIsIncludedInConditions ? ROW_HEIGHT_ITEM_INCLUDED : ROW_HEIGHT_ITEM_NOT_INCLUDED);
+                if (itemIsIncludedInConditions)
+                {
+                    foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
+                    {
+                        if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                        {
+                            itemIsIncludedInConditions = false;
+                            break;
+                        }
+                    }
+                }
+
+                dgv.Rows[dgv.Rows.Count - 1].DefaultCellStyle.BackColor = (itemIsIncludedInConditions ? Color.White : Color.LightCoral);
+                dgv.Rows[dgv.Rows.Count - 1].Height = (itemIsIncludedInConditions ? ROW_HEIGHT_ITEM_INCLUDED : ROW_HEIGHT_ITEM_NOT_INCLUDED);
+            } // dgType == DataGridType.Inclusion
+            else if (dgType == DataGridType.Separation)
+            {
+                // Add lines, but only if they are included in conditions
+                foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInIncludeBox)
+                {
+                    if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                    {
+                        itemIsIncludedInConditions = true;
+                        break;
+                    }
+                }
+
+                if (itemIsIncludedInConditions)
+                {
+                    foreach (ImageExtractCondition oneCondition in VariablesSingleton.GetInstance().ConditionsInExcludeBox)
+                    {
+                        if (PaymentConformsToCondition(oneItem, oneCondition, p_isFrontItem))
+                        {
+                            itemIsIncludedInConditions = false;
+                            break;
+                        }
+                    }
+                }
+
+                string imageNamingForThisItem = ReplaceNamingForPayment(this.imageNaming, oneItem, p_isFrontItem);
+
+                if (itemIsIncludedInConditions)
+                {
+                    dgv.Rows.Add(
+                        oneItem.ItemPaymentIdentifier.Batch_Seq,
+                        oneItem.Matched_Payment_Seq,
+                        oneItem.ItemPaymentIdentifier.Item_Ref,
+                        (p_isFrontItem ? "F" : "R"),
+                        itemImage,
+                        imageNamingForThisItem + oneItem.ItemPaymentIdentifier.Batch_Seq.ToString().PadLeft(10) +
+                            oneItem.Matched_Payment_Seq.ToString().PadLeft(10) +
+                            oneItem.ItemPaymentIdentifier.Item_Ref.ToString().PadLeft(10) +
+                            (p_isFrontItem ? "F" : "R"),
+                            imageNamingForThisItem
+                    );
+                }
+            } // dgType == DataGridType.Separation
+
         }
+
+
 
         public bool StatementConformsToCondition(ItemStatement item, ImageExtractCondition iec, bool p_isFrontItem)
         {
@@ -223,7 +384,6 @@ namespace ImageExtract.ObserverPattern
         }
 
 
-        /*
         public void RecolorCells(DataGridView p_dgv)
         {
             // Recolor the cells
@@ -235,24 +395,20 @@ namespace ImageExtract.ObserverPattern
             colorsToUse[1] = Color.LightBlue;
             int currentColorIndice = 1;
 
-            string strCurrentBatchSeq, strCurrentMatchedPaymentSeq;
-            string strLastBatchSeq = "";
-            string strLastMatchedPaymentSeq = "";
+            string strCurrentImageNaming;
+            string strLastImageNaming = "";
 
             foreach (DataGridViewRow dgvr in p_dgv.Rows)
             {
-                strCurrentBatchSeq = dgvr.Cells[0].Value.ToString();
-                strCurrentMatchedPaymentSeq = dgvr.Cells[1].Value.ToString();
-                if (strCurrentMatchedPaymentSeq.CompareTo(strLastMatchedPaymentSeq) != 0 || strCurrentBatchSeq.CompareTo(strLastBatchSeq) != 0)
+                strCurrentImageNaming = dgvr.Cells["dgvcImageNaming"].Value.ToString();
+                if (strCurrentImageNaming.CompareTo(strLastImageNaming) != 0)
                 {
                     currentColorIndice = 1 - currentColorIndice;
-                    strLastMatchedPaymentSeq = strCurrentMatchedPaymentSeq;
-                    strLastBatchSeq = strCurrentBatchSeq;
+                    strLastImageNaming = strCurrentImageNaming;
                 }
                 dgvr.DefaultCellStyle.BackColor = colorsToUse[currentColorIndice];
             }
         }
-        */
 
     } // class ListOfBatchesObserver
 }

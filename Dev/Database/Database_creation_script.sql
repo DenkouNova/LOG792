@@ -242,7 +242,7 @@ INSERT INTO capture_batch(batch_seq, capture_date, capture_id, capture_type_item
     256038,     --batch_seq
     '20160701', --capture_date
     33334444,   --capture_id
-    3,          --capture_type_item
+    1,          --capture_type_item
     '855195',   --client_batch_ref_number
     4388,       --custom_batch_number
     null,       --exception_batch
@@ -258,7 +258,7 @@ INSERT INTO capture_batch(batch_seq, capture_date, capture_id, capture_type_item
     256164,     --batch_seq
     '20160706', --capture_date
     11111111,   --capture_id
-    1,          --capture_type_item
+    2,          --capture_type_item
     '432526',   --client_batch_ref_number
     5016,       --custom_batch_number
     null,       --exception_batch

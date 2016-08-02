@@ -28,42 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvImageSeparation = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dgvSplitOn = new System.Windows.Forms.DataGridView();
-            this.dgvcSplitOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcSplitOnOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.rbArchiveFormatTarGz = new System.Windows.Forms.RadioButton();
-            this.rbArchiveFormatTar = new System.Windows.Forms.RadioButton();
-            this.rbArchiveFormatZip = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dgvNamingTags = new System.Windows.Forms.DataGridView();
-            this.dgvcNamingTagsNameTags1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dgvcNamingTagsNameTags2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.dgvcNamingTagsNameTags3 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnRefreshFilenames = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.dgvcBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.HiddenSortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcImageNaming = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnRefreshFilenames = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbNamingPattern = new System.Windows.Forms.TextBox();
+            this.dgvSplitOn = new System.Windows.Forms.DataGridView();
+            this.dgvcSplitOnColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSplitUse = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.HiddenString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rbTiffBinaryConcat = new System.Windows.Forms.RadioButton();
+            this.rbTiffFormatStandard = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImageSeparation)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSplitOn)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNamingTags)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvImageSeparation
@@ -73,14 +68,14 @@
             this.dgvImageSeparation.AllowUserToResizeColumns = false;
             this.dgvImageSeparation.AllowUserToResizeRows = false;
             this.dgvImageSeparation.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvImageSeparation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvImageSeparation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvImageSeparation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImageSeparation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcBSeq,
@@ -88,15 +83,16 @@
             this.dgvcRef,
             this.dgvcSide,
             this.dgvcImage,
+            this.HiddenSortColumn,
             this.dgvcImageNaming});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvImageSeparation.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvImageSeparation.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvImageSeparation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvImageSeparation.EnableHeadersVisualStyles = false;
             this.dgvImageSeparation.Location = new System.Drawing.Point(3, 3);
@@ -109,222 +105,6 @@
             this.dgvImageSeparation.Size = new System.Drawing.Size(594, 582);
             this.dgvImageSeparation.TabIndex = 1;
             this.dgvImageSeparation.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageSeparation_Paint);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgvImageSeparation, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1278, 588);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.btnRefreshFilenames);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.dgvSplitOn);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.dgvNamingTags);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(613, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(662, 582);
-            this.panel1.TabIndex = 2;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 154);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(369, 13);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Example naming: Image_($IMAGE_SIDE, F, 1, R, 2, 3)_($BATCH_SEQ, 8).tif";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Naming pattern";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Naming tags";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(14, 126);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(366, 20);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "Image_($IMAGE_SIDE, F, 1, R, 2, 3)_($BATCH_SEQ, 8).tif";
-            // 
-            // dgvSplitOn
-            // 
-            this.dgvSplitOn.AllowUserToAddRows = false;
-            this.dgvSplitOn.AllowUserToDeleteRows = false;
-            this.dgvSplitOn.AllowUserToResizeColumns = false;
-            this.dgvSplitOn.AllowUserToResizeRows = false;
-            this.dgvSplitOn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSplitOn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcSplitOnColumn,
-            this.dgvcSplitOnOrder});
-            this.dgvSplitOn.Location = new System.Drawing.Point(14, 221);
-            this.dgvSplitOn.Name = "dgvSplitOn";
-            this.dgvSplitOn.RowHeadersVisible = false;
-            this.dgvSplitOn.Size = new System.Drawing.Size(179, 222);
-            this.dgvSplitOn.TabIndex = 10;
-            // 
-            // dgvcSplitOnColumn
-            // 
-            this.dgvcSplitOnColumn.HeaderText = "Split on";
-            this.dgvcSplitOnColumn.Name = "dgvcSplitOnColumn";
-            this.dgvcSplitOnColumn.ReadOnly = true;
-            this.dgvcSplitOnColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcSplitOnColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvcSplitOnColumn.Width = 125;
-            // 
-            // dgvcSplitOnOrder
-            // 
-            this.dgvcSplitOnOrder.HeaderText = "Order";
-            this.dgvcSplitOnOrder.Name = "dgvcSplitOnOrder";
-            this.dgvcSplitOnOrder.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcSplitOnOrder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvcSplitOnOrder.Width = 50;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.rbArchiveFormatTarGz);
-            this.panel2.Controls.Add(this.rbArchiveFormatTar);
-            this.panel2.Controls.Add(this.rbArchiveFormatZip);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(218, 221);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(149, 120);
-            this.panel2.TabIndex = 9;
-            // 
-            // rbArchiveFormatTarGz
-            // 
-            this.rbArchiveFormatTarGz.AutoSize = true;
-            this.rbArchiveFormatTarGz.Location = new System.Drawing.Point(18, 82);
-            this.rbArchiveFormatTarGz.Name = "rbArchiveFormatTarGz";
-            this.rbArchiveFormatTarGz.Size = new System.Drawing.Size(51, 17);
-            this.rbArchiveFormatTarGz.TabIndex = 4;
-            this.rbArchiveFormatTarGz.Text = "tar.gz";
-            this.rbArchiveFormatTarGz.UseVisualStyleBackColor = true;
-            // 
-            // rbArchiveFormatTar
-            // 
-            this.rbArchiveFormatTar.AutoSize = true;
-            this.rbArchiveFormatTar.Location = new System.Drawing.Point(18, 59);
-            this.rbArchiveFormatTar.Name = "rbArchiveFormatTar";
-            this.rbArchiveFormatTar.Size = new System.Drawing.Size(37, 17);
-            this.rbArchiveFormatTar.TabIndex = 3;
-            this.rbArchiveFormatTar.Text = "tar";
-            this.rbArchiveFormatTar.UseVisualStyleBackColor = true;
-            // 
-            // rbArchiveFormatZip
-            // 
-            this.rbArchiveFormatZip.AutoSize = true;
-            this.rbArchiveFormatZip.Checked = true;
-            this.rbArchiveFormatZip.Location = new System.Drawing.Point(18, 36);
-            this.rbArchiveFormatZip.Name = "rbArchiveFormatZip";
-            this.rbArchiveFormatZip.Size = new System.Drawing.Size(38, 17);
-            this.rbArchiveFormatZip.TabIndex = 2;
-            this.rbArchiveFormatZip.TabStop = true;
-            this.rbArchiveFormatZip.Text = "zip";
-            this.rbArchiveFormatZip.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Archive format";
-            // 
-            // dgvNamingTags
-            // 
-            this.dgvNamingTags.AllowUserToAddRows = false;
-            this.dgvNamingTags.AllowUserToDeleteRows = false;
-            this.dgvNamingTags.AllowUserToResizeColumns = false;
-            this.dgvNamingTags.AllowUserToResizeRows = false;
-            this.dgvNamingTags.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvNamingTags.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNamingTags.ColumnHeadersVisible = false;
-            this.dgvNamingTags.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcNamingTagsNameTags1,
-            this.dgvcNamingTagsNameTags2,
-            this.dgvcNamingTagsNameTags3});
-            this.dgvNamingTags.Location = new System.Drawing.Point(14, 28);
-            this.dgvNamingTags.Name = "dgvNamingTags";
-            this.dgvNamingTags.ReadOnly = true;
-            this.dgvNamingTags.RowHeadersVisible = false;
-            this.dgvNamingTags.Size = new System.Drawing.Size(453, 69);
-            this.dgvNamingTags.TabIndex = 8;
-            // 
-            // dgvcNamingTagsNameTags1
-            // 
-            this.dgvcNamingTagsNameTags1.HeaderText = "NameTags1";
-            this.dgvcNamingTagsNameTags1.Name = "dgvcNamingTagsNameTags1";
-            this.dgvcNamingTagsNameTags1.ReadOnly = true;
-            this.dgvcNamingTagsNameTags1.Width = 150;
-            // 
-            // dgvcNamingTagsNameTags2
-            // 
-            this.dgvcNamingTagsNameTags2.HeaderText = "NameTags2";
-            this.dgvcNamingTagsNameTags2.Name = "dgvcNamingTagsNameTags2";
-            this.dgvcNamingTagsNameTags2.ReadOnly = true;
-            this.dgvcNamingTagsNameTags2.Width = 150;
-            // 
-            // dgvcNamingTagsNameTags3
-            // 
-            this.dgvcNamingTagsNameTags3.HeaderText = "NameTags3";
-            this.dgvcNamingTagsNameTags3.Name = "dgvcNamingTagsNameTags3";
-            this.dgvcNamingTagsNameTags3.ReadOnly = true;
-            this.dgvcNamingTagsNameTags3.Width = 150;
-            // 
-            // btnRefreshFilenames
-            // 
-            this.btnRefreshFilenames.Location = new System.Drawing.Point(396, 117);
-            this.btnRefreshFilenames.Name = "btnRefreshFilenames";
-            this.btnRefreshFilenames.Size = new System.Drawing.Size(101, 37);
-            this.btnRefreshFilenames.TabIndex = 16;
-            this.btnRefreshFilenames.Text = "Refresh";
-            this.btnRefreshFilenames.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 173);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Example result: Image_001_00256801.tif";
             // 
             // dgvcBSeq
             // 
@@ -357,13 +137,180 @@
             this.dgvcImage.Name = "dgvcImage";
             this.dgvcImage.Width = 200;
             // 
+            // HiddenSortColumn
+            // 
+            this.HiddenSortColumn.HeaderText = "HiddenSortColumn";
+            this.HiddenSortColumn.Name = "HiddenSortColumn";
+            this.HiddenSortColumn.Visible = false;
+            // 
             // dgvcImageNaming
             // 
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvcImageNaming.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcImageNaming.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvcImageNaming.HeaderText = "Image Naming";
             this.dgvcImageNaming.Name = "dgvcImageNaming";
             this.dgvcImageNaming.Width = 200;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.dgvImageSeparation, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1278, 588);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.btnRefreshFilenames);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.tbNamingPattern);
+            this.panel1.Controls.Add(this.dgvSplitOn);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(613, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(662, 582);
+            this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 78);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(175, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Example result: Image_F_256801.tif";
+            // 
+            // btnRefreshFilenames
+            // 
+            this.btnRefreshFilenames.Location = new System.Drawing.Point(398, 22);
+            this.btnRefreshFilenames.Name = "btnRefreshFilenames";
+            this.btnRefreshFilenames.Size = new System.Drawing.Size(101, 37);
+            this.btnRefreshFilenames.TabIndex = 16;
+            this.btnRefreshFilenames.Text = "Refresh naming";
+            this.btnRefreshFilenames.UseVisualStyleBackColor = true;
+            this.btnRefreshFilenames.Click += new System.EventHandler(this.btnRefreshFilenames_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(369, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Example naming: Image_($IMAGE_SIDE, F, 1, R, 2, 3)_($BATCH_SEQ, 8).tif";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(13, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Naming pattern";
+            // 
+            // tbNamingPattern
+            // 
+            this.tbNamingPattern.Location = new System.Drawing.Point(16, 31);
+            this.tbNamingPattern.Name = "tbNamingPattern";
+            this.tbNamingPattern.Size = new System.Drawing.Size(366, 20);
+            this.tbNamingPattern.TabIndex = 11;
+            // 
+            // dgvSplitOn
+            // 
+            this.dgvSplitOn.AllowUserToAddRows = false;
+            this.dgvSplitOn.AllowUserToDeleteRows = false;
+            this.dgvSplitOn.AllowUserToResizeColumns = false;
+            this.dgvSplitOn.AllowUserToResizeRows = false;
+            this.dgvSplitOn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSplitOn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvcSplitOnColumn,
+            this.dgvcSplitUse,
+            this.HiddenString});
+            this.dgvSplitOn.Location = new System.Drawing.Point(16, 126);
+            this.dgvSplitOn.Name = "dgvSplitOn";
+            this.dgvSplitOn.RowHeadersVisible = false;
+            this.dgvSplitOn.Size = new System.Drawing.Size(179, 222);
+            this.dgvSplitOn.TabIndex = 10;
+            this.dgvSplitOn.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSplitOn_CellContentClick);
+            this.dgvSplitOn.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvSplitOn_CellMouseUp);
+            this.dgvSplitOn.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSplitOn_CellValueChanged);
+            // 
+            // dgvcSplitOnColumn
+            // 
+            this.dgvcSplitOnColumn.HeaderText = "Split on";
+            this.dgvcSplitOnColumn.Name = "dgvcSplitOnColumn";
+            this.dgvcSplitOnColumn.ReadOnly = true;
+            this.dgvcSplitOnColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcSplitOnColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvcSplitOnColumn.Width = 125;
+            // 
+            // dgvcSplitUse
+            // 
+            this.dgvcSplitUse.HeaderText = "Use";
+            this.dgvcSplitUse.Name = "dgvcSplitUse";
+            this.dgvcSplitUse.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcSplitUse.Width = 50;
+            // 
+            // HiddenString
+            // 
+            this.HiddenString.HeaderText = "HiddenString";
+            this.HiddenString.Name = "HiddenString";
+            this.HiddenString.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.rbTiffBinaryConcat);
+            this.panel2.Controls.Add(this.rbTiffFormatStandard);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(226, 126);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(194, 95);
+            this.panel2.TabIndex = 18;
+            // 
+            // rbTiffBinaryConcat
+            // 
+            this.rbTiffBinaryConcat.AutoSize = true;
+            this.rbTiffBinaryConcat.Location = new System.Drawing.Point(18, 59);
+            this.rbTiffBinaryConcat.Name = "rbTiffBinaryConcat";
+            this.rbTiffBinaryConcat.Size = new System.Drawing.Size(149, 17);
+            this.rbTiffBinaryConcat.TabIndex = 3;
+            this.rbTiffBinaryConcat.Text = "TIFF binary concatenation";
+            this.rbTiffBinaryConcat.UseVisualStyleBackColor = true;
+            // 
+            // rbTiffFormatStandard
+            // 
+            this.rbTiffFormatStandard.AutoSize = true;
+            this.rbTiffFormatStandard.Checked = true;
+            this.rbTiffFormatStandard.Location = new System.Drawing.Point(18, 36);
+            this.rbTiffFormatStandard.Name = "rbTiffFormatStandard";
+            this.rbTiffFormatStandard.Size = new System.Drawing.Size(123, 17);
+            this.rbTiffFormatStandard.TabIndex = 2;
+            this.rbTiffFormatStandard.TabStop = true;
+            this.rbTiffFormatStandard.Text = "TIFF format standard";
+            this.rbTiffFormatStandard.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(57, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Image format";
             // 
             // ImageSeparationTab
             // 
@@ -379,7 +326,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSplitOn)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvNamingTags)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,20 +336,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbNamingPattern;
         private System.Windows.Forms.DataGridView dgvSplitOn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSplitOnColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSplitOnOrder;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton rbArchiveFormatTar;
-        private System.Windows.Forms.RadioButton rbArchiveFormatZip;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvNamingTags;
-        private System.Windows.Forms.DataGridViewButtonColumn dgvcNamingTagsNameTags1;
-        private System.Windows.Forms.DataGridViewButtonColumn dgvcNamingTagsNameTags2;
-        private System.Windows.Forms.DataGridViewButtonColumn dgvcNamingTagsNameTags3;
-        private System.Windows.Forms.RadioButton rbArchiveFormatTarGz;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRefreshFilenames;
@@ -412,7 +346,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSide;
         private System.Windows.Forms.DataGridViewImageColumn dgvcImage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HiddenSortColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageNaming;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSplitOnColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dgvcSplitUse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HiddenString;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton rbTiffBinaryConcat;
+        private System.Windows.Forms.RadioButton rbTiffFormatStandard;
+        private System.Windows.Forms.Label label1;
 
     }
 }

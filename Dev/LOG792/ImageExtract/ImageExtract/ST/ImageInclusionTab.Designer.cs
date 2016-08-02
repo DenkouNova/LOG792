@@ -32,12 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpImageInclusion = new System.Windows.Forms.TableLayoutPanel();
             this.dgvPreviewGrid = new System.Windows.Forms.DataGridView();
-            this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dgvcImageInclusionImageSortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flpImageInclusionConditionSets = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,6 +44,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.flpLoadConditionsButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.btnExampleConditionCategoryButton = new System.Windows.Forms.Button();
+            this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImageInclusionImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.HiddenSortColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpImageInclusion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPreviewGrid)).BeginInit();
             this.flpImageInclusionConditionSets.SuspendLayout();
@@ -102,7 +102,7 @@
             this.dgvcImageInclusionIRef,
             this.dgvcImageInclusionSide,
             this.dgvcImageInclusionImage,
-            this.dgvcImageInclusionImageSortColumn});
+            this.HiddenSortColumn});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,43 +124,6 @@
             this.dgvPreviewGrid.Size = new System.Drawing.Size(394, 582);
             this.dgvPreviewGrid.TabIndex = 0;
             this.dgvPreviewGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageInclusion_Paint);
-            // 
-            // dgvcImageInclusionBSeq
-            // 
-            this.dgvcImageInclusionBSeq.HeaderText = "BSeq";
-            this.dgvcImageInclusionBSeq.Name = "dgvcImageInclusionBSeq";
-            this.dgvcImageInclusionBSeq.Width = 46;
-            // 
-            // dgvcImageInclusionMPS
-            // 
-            this.dgvcImageInclusionMPS.HeaderText = "MPS";
-            this.dgvcImageInclusionMPS.Name = "dgvcImageInclusionMPS";
-            this.dgvcImageInclusionMPS.Width = 35;
-            // 
-            // dgvcImageInclusionIRef
-            // 
-            this.dgvcImageInclusionIRef.HeaderText = "IRef";
-            this.dgvcImageInclusionIRef.Name = "dgvcImageInclusionIRef";
-            this.dgvcImageInclusionIRef.Width = 35;
-            // 
-            // dgvcImageInclusionSide
-            // 
-            this.dgvcImageInclusionSide.HeaderText = "S";
-            this.dgvcImageInclusionSide.Name = "dgvcImageInclusionSide";
-            this.dgvcImageInclusionSide.Width = 22;
-            // 
-            // dgvcImageInclusionImage
-            // 
-            this.dgvcImageInclusionImage.HeaderText = "Image";
-            this.dgvcImageInclusionImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvcImageInclusionImage.Name = "dgvcImageInclusionImage";
-            this.dgvcImageInclusionImage.Width = 200;
-            // 
-            // dgvcImageInclusionImageSortColumn
-            // 
-            this.dgvcImageInclusionImageSortColumn.HeaderText = "HiddenSortColumn";
-            this.dgvcImageInclusionImageSortColumn.Name = "dgvcImageInclusionImageSortColumn";
-            this.dgvcImageInclusionImageSortColumn.Visible = false;
             // 
             // flpImageInclusionConditionSets
             // 
@@ -298,6 +261,43 @@
             this.btnExampleConditionCategoryButton.Text = "(Condition category)";
             this.btnExampleConditionCategoryButton.UseVisualStyleBackColor = true;
             // 
+            // dgvcImageInclusionBSeq
+            // 
+            this.dgvcImageInclusionBSeq.HeaderText = "BSeq";
+            this.dgvcImageInclusionBSeq.Name = "dgvcImageInclusionBSeq";
+            this.dgvcImageInclusionBSeq.Width = 46;
+            // 
+            // dgvcImageInclusionMPS
+            // 
+            this.dgvcImageInclusionMPS.HeaderText = "MPS";
+            this.dgvcImageInclusionMPS.Name = "dgvcImageInclusionMPS";
+            this.dgvcImageInclusionMPS.Width = 35;
+            // 
+            // dgvcImageInclusionIRef
+            // 
+            this.dgvcImageInclusionIRef.HeaderText = "IRef";
+            this.dgvcImageInclusionIRef.Name = "dgvcImageInclusionIRef";
+            this.dgvcImageInclusionIRef.Width = 35;
+            // 
+            // dgvcImageInclusionSide
+            // 
+            this.dgvcImageInclusionSide.HeaderText = "S";
+            this.dgvcImageInclusionSide.Name = "dgvcImageInclusionSide";
+            this.dgvcImageInclusionSide.Width = 22;
+            // 
+            // dgvcImageInclusionImage
+            // 
+            this.dgvcImageInclusionImage.HeaderText = "Image";
+            this.dgvcImageInclusionImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvcImageInclusionImage.Name = "dgvcImageInclusionImage";
+            this.dgvcImageInclusionImage.Width = 200;
+            // 
+            // HiddenSortColumn
+            // 
+            this.HiddenSortColumn.HeaderText = "HiddenSortColumn";
+            this.HiddenSortColumn.Name = "HiddenSortColumn";
+            this.HiddenSortColumn.Visible = false;
+            // 
             // ImageInclusionTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +340,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionIRef;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionSide;
         private System.Windows.Forms.DataGridViewImageColumn dgvcImageInclusionImage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionImageSortColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HiddenSortColumn;
     }
 }

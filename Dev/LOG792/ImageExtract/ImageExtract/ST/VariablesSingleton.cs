@@ -15,6 +15,7 @@ using NHibernate.Tool.hbm2ddl;
 
 using ImageExtract.ST;
 using ImageExtract.Domain;
+using ImageExtract.ObserverPattern;
 
 namespace ImageExtract.ST
 {
@@ -31,6 +32,7 @@ namespace ImageExtract.ST
         private VariablesSingleton()
         {
             previewBatches = new List<Domain.CaptureBatch>();
+            observableBatchList = new MyObservable();
         }
 
         private HashSet<Domain.ImageExtractCondition> conditionsInIncludeBox = new HashSet<Domain.ImageExtractCondition>();
@@ -56,6 +58,10 @@ namespace ImageExtract.ST
         }
 
 
+
+        public MyObservable observableBatchList;
+
+        
 
 
 

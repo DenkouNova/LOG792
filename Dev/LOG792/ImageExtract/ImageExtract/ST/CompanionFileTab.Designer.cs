@@ -86,10 +86,12 @@
             // rbNoAccompanyingFile
             // 
             this.rbNoAccompanyingFile.AutoSize = true;
+            this.rbNoAccompanyingFile.Checked = true;
             this.rbNoAccompanyingFile.Location = new System.Drawing.Point(18, 13);
             this.rbNoAccompanyingFile.Name = "rbNoAccompanyingFile";
             this.rbNoAccompanyingFile.Size = new System.Drawing.Size(127, 17);
             this.rbNoAccompanyingFile.TabIndex = 1;
+            this.rbNoAccompanyingFile.TabStop = true;
             this.rbNoAccompanyingFile.Text = "No accompanying file";
             this.rbNoAccompanyingFile.UseVisualStyleBackColor = true;
             this.rbNoAccompanyingFile.CheckedChanged += new System.EventHandler(this.CompanionFileType_CheckedChanged);

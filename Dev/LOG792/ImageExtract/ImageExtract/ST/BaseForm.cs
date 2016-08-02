@@ -323,6 +323,11 @@ namespace ImageExtract.ST
             
         }
 
+        private void btnSaveConfig_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Saved.");
+        }
+
 
     }
 }
