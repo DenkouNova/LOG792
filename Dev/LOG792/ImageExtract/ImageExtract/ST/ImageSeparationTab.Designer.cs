@@ -29,13 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvImageSeparation = new System.Windows.Forms.DataGridView();
-            this.dgvcImageInclusionBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionIRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcImageInclusionImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,6 +50,14 @@
             this.dgvcNamingTagsNameTags1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvcNamingTagsNameTags2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvcNamingTagsNameTags3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnRefreshFilenames = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvcBSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcMPS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcRef = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcSide = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dgvcImageNaming = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImageSeparation)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -79,65 +83,37 @@
             this.dgvImageSeparation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvImageSeparation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImageSeparation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvcImageInclusionBSeq,
-            this.dgvcImageInclusionMPS,
-            this.dgvcImageInclusionIRef,
-            this.dgvcImageInclusionSide,
-            this.dgvcImageInclusionImage});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvImageSeparation.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvcBSeq,
+            this.dgvcMPS,
+            this.dgvcRef,
+            this.dgvcSide,
+            this.dgvcImage,
+            this.dgvcImageNaming});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvImageSeparation.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvImageSeparation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvImageSeparation.EnableHeadersVisualStyles = false;
             this.dgvImageSeparation.Location = new System.Drawing.Point(3, 3);
             this.dgvImageSeparation.Name = "dgvImageSeparation";
             this.dgvImageSeparation.RowHeadersVisible = false;
             this.dgvImageSeparation.RowTemplate.Height = 100;
             this.dgvImageSeparation.RowTemplate.ReadOnly = true;
             this.dgvImageSeparation.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvImageSeparation.Size = new System.Drawing.Size(394, 582);
+            this.dgvImageSeparation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvImageSeparation.Size = new System.Drawing.Size(594, 582);
             this.dgvImageSeparation.TabIndex = 1;
             this.dgvImageSeparation.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvImageSeparation_Paint);
-            // 
-            // dgvcImageInclusionBSeq
-            // 
-            this.dgvcImageInclusionBSeq.HeaderText = "BSeq";
-            this.dgvcImageInclusionBSeq.Name = "dgvcImageInclusionBSeq";
-            this.dgvcImageInclusionBSeq.Width = 46;
-            // 
-            // dgvcImageInclusionMPS
-            // 
-            this.dgvcImageInclusionMPS.HeaderText = "MPS";
-            this.dgvcImageInclusionMPS.Name = "dgvcImageInclusionMPS";
-            this.dgvcImageInclusionMPS.Width = 35;
-            // 
-            // dgvcImageInclusionIRef
-            // 
-            this.dgvcImageInclusionIRef.HeaderText = "IRef";
-            this.dgvcImageInclusionIRef.Name = "dgvcImageInclusionIRef";
-            this.dgvcImageInclusionIRef.Width = 35;
-            // 
-            // dgvcImageInclusionSide
-            // 
-            this.dgvcImageInclusionSide.HeaderText = "S";
-            this.dgvcImageInclusionSide.Name = "dgvcImageInclusionSide";
-            this.dgvcImageInclusionSide.Width = 22;
-            // 
-            // dgvcImageInclusionImage
-            // 
-            this.dgvcImageInclusionImage.HeaderText = "Image";
-            this.dgvcImageInclusionImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.dgvcImageInclusionImage.Name = "dgvcImageInclusionImage";
-            this.dgvcImageInclusionImage.Width = 200;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgvImageSeparation, 0, 0);
@@ -147,12 +123,13 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1278, 588);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.btnRefreshFilenames);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -161,26 +138,26 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dgvNamingTags);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(413, 3);
+            this.panel1.Location = new System.Drawing.Point(613, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(862, 582);
+            this.panel1.Size = new System.Drawing.Size(662, 582);
             this.panel1.TabIndex = 2;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 201);
+            this.label5.Location = new System.Drawing.Point(11, 154);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(208, 13);
+            this.label5.Size = new System.Drawing.Size(369, 13);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Example naming: Image_001_00256801.tif";
+            this.label5.Text = "Example naming: Image_($IMAGE_SIDE, F, 1, R, 2, 3)_($BATCH_SEQ, 8).tif";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 157);
+            this.label3.Location = new System.Drawing.Point(11, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 13;
@@ -190,7 +167,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 59);
+            this.label2.Location = new System.Drawing.Point(11, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
             this.label2.TabIndex = 12;
@@ -198,9 +175,9 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 173);
+            this.textBox1.Location = new System.Drawing.Point(14, 126);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(453, 20);
+            this.textBox1.Size = new System.Drawing.Size(366, 20);
             this.textBox1.TabIndex = 11;
             this.textBox1.Text = "Image_($IMAGE_SIDE, F, 1, R, 2, 3)_($BATCH_SEQ, 8).tif";
             // 
@@ -214,7 +191,7 @@
             this.dgvSplitOn.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvcSplitOnColumn,
             this.dgvcSplitOnOrder});
-            this.dgvSplitOn.Location = new System.Drawing.Point(16, 271);
+            this.dgvSplitOn.Location = new System.Drawing.Point(14, 221);
             this.dgvSplitOn.Name = "dgvSplitOn";
             this.dgvSplitOn.RowHeadersVisible = false;
             this.dgvSplitOn.Size = new System.Drawing.Size(179, 222);
@@ -244,7 +221,7 @@
             this.panel2.Controls.Add(this.rbArchiveFormatTar);
             this.panel2.Controls.Add(this.rbArchiveFormatZip);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(218, 271);
+            this.panel2.Location = new System.Drawing.Point(218, 221);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 120);
             this.panel2.TabIndex = 9;
@@ -303,7 +280,7 @@
             this.dgvcNamingTagsNameTags1,
             this.dgvcNamingTagsNameTags2,
             this.dgvcNamingTagsNameTags3});
-            this.dgvNamingTags.Location = new System.Drawing.Point(16, 75);
+            this.dgvNamingTags.Location = new System.Drawing.Point(14, 28);
             this.dgvNamingTags.Name = "dgvNamingTags";
             this.dgvNamingTags.ReadOnly = true;
             this.dgvNamingTags.RowHeadersVisible = false;
@@ -331,6 +308,63 @@
             this.dgvcNamingTagsNameTags3.ReadOnly = true;
             this.dgvcNamingTagsNameTags3.Width = 150;
             // 
+            // btnRefreshFilenames
+            // 
+            this.btnRefreshFilenames.Location = new System.Drawing.Point(396, 117);
+            this.btnRefreshFilenames.Name = "btnRefreshFilenames";
+            this.btnRefreshFilenames.Size = new System.Drawing.Size(101, 37);
+            this.btnRefreshFilenames.TabIndex = 16;
+            this.btnRefreshFilenames.Text = "Refresh";
+            this.btnRefreshFilenames.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 173);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(199, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Example result: Image_001_00256801.tif";
+            // 
+            // dgvcBSeq
+            // 
+            this.dgvcBSeq.HeaderText = "BSeq";
+            this.dgvcBSeq.Name = "dgvcBSeq";
+            this.dgvcBSeq.Width = 46;
+            // 
+            // dgvcMPS
+            // 
+            this.dgvcMPS.HeaderText = "MPS";
+            this.dgvcMPS.Name = "dgvcMPS";
+            this.dgvcMPS.Width = 35;
+            // 
+            // dgvcRef
+            // 
+            this.dgvcRef.HeaderText = "IRef";
+            this.dgvcRef.Name = "dgvcRef";
+            this.dgvcRef.Width = 35;
+            // 
+            // dgvcSide
+            // 
+            this.dgvcSide.HeaderText = "S";
+            this.dgvcSide.Name = "dgvcSide";
+            this.dgvcSide.Width = 22;
+            // 
+            // dgvcImage
+            // 
+            this.dgvcImage.HeaderText = "Image";
+            this.dgvcImage.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dgvcImage.Name = "dgvcImage";
+            this.dgvcImage.Width = 200;
+            // 
+            // dgvcImageNaming
+            // 
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvcImageNaming.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvcImageNaming.HeaderText = "Image Naming";
+            this.dgvcImageNaming.Name = "dgvcImageNaming";
+            this.dgvcImageNaming.Width = 200;
+            // 
             // ImageSeparationTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,11 +387,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvImageSeparation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionBSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionMPS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionIRef;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageInclusionSide;
-        private System.Windows.Forms.DataGridViewImageColumn dgvcImageInclusionImage;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
@@ -376,6 +405,14 @@
         private System.Windows.Forms.DataGridViewButtonColumn dgvcNamingTagsNameTags3;
         private System.Windows.Forms.RadioButton rbArchiveFormatTarGz;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnRefreshFilenames;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcBSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcMPS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcRef;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcSide;
+        private System.Windows.Forms.DataGridViewImageColumn dgvcImage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvcImageNaming;
 
     }
 }

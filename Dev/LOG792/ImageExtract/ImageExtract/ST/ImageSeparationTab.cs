@@ -25,12 +25,13 @@ namespace ImageExtract.ST
         public void InitializeImageSeparationDataGrid()
         {
             // Set image last column to width
-            this.dgvImageSeparation.Columns[this.dgvcImageInclusionImage.Name].Width =
+            this.dgvImageSeparation.Columns[this.dgvcImage.Name].Width =
                 this.dgvImageSeparation.Width - 20 -
-                this.dgvImageSeparation.Columns[this.dgvcImageInclusionSide.Name].Width -
-                this.dgvImageSeparation.Columns[this.dgvcImageInclusionIRef.Name].Width -
-                this.dgvImageSeparation.Columns[this.dgvcImageInclusionMPS.Name].Width -
-                this.dgvImageSeparation.Columns[this.dgvcImageInclusionBSeq.Name].Width;
+                this.dgvImageSeparation.Columns[this.dgvcSide.Name].Width -
+                this.dgvImageSeparation.Columns[this.dgvcRef.Name].Width -
+                this.dgvImageSeparation.Columns[this.dgvcMPS.Name].Width -
+                this.dgvImageSeparation.Columns[this.dgvcBSeq.Name].Width - 
+                this.dgvImageSeparation.Columns[this.dgvcImageNaming.Name].Width;
 
             // CodeForScreenshots();            
         }
@@ -43,7 +44,7 @@ namespace ImageExtract.ST
             for (int i = 0; i < 50; i++)
             {
                 this.dgvImageSeparation.Rows.Add(256001, (100 + i).ToString(), (i * 100).ToString(), (i % 2 == 0 ? "F" : "R"), null);
-                ((DataGridViewImageCell)this.dgvImageSeparation.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
+                ((DataGridViewImageCell)this.dgvImageSeparation.Rows[i].Cells[this.dgvcImage.Name]).Value = img;
             }
         }
 

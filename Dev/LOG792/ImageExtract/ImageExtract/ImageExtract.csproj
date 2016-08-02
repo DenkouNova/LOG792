@@ -94,6 +94,7 @@
     <Compile Include="Domain\MatchedPayment.cs" />
     <Compile Include="Domain\StatementDefinition.cs" />
     <Compile Include="FieldVerifications.cs" />
+    <Compile Include="ObserverPattern\ListOfBatchesObserver.cs" />
     <Compile Include="ObserverPattern\MyObservable.cs" />
     <Compile Include="ObserverPattern\MyObserver.cs" />
     <Compile Include="ST\DialogLoadExampleImages.cs">

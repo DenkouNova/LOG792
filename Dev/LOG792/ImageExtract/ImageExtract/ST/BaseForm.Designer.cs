@@ -171,6 +171,7 @@
             this.btnNewConfig.TabIndex = 1;
             this.btnNewConfig.Text = "New IE config";
             this.btnNewConfig.UseVisualStyleBackColor = true;
+            this.btnNewConfig.Click += new System.EventHandler(this.btnNewConfig_Click);
             // 
             // btnDeleteConfig
             // 

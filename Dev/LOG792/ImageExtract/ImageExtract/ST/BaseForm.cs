@@ -318,6 +318,11 @@ namespace ImageExtract.ST
 
         }
 
+        private void btnNewConfig_Click(object sender, EventArgs e)
+        {
+            
+        }
+
 
     }
 }

@@ -83,6 +83,7 @@
             // dgvPreviewGrid
             // 
             this.dgvPreviewGrid.AllowUserToAddRows = false;
+            this.dgvPreviewGrid.AllowUserToDeleteRows = false;
             this.dgvPreviewGrid.AllowUserToResizeColumns = false;
             this.dgvPreviewGrid.AllowUserToResizeRows = false;
             this.dgvPreviewGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
