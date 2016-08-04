@@ -171,6 +171,7 @@
             this.btnNewConfig.TabIndex = 1;
             this.btnNewConfig.Text = "New IE config";
             this.btnNewConfig.UseVisualStyleBackColor = true;
+            this.btnNewConfig.Click += new System.EventHandler(this.btnNewConfig_Click);
             // 
             // btnDeleteConfig
             // 
@@ -197,6 +198,7 @@
             this.btnSaveConfig.TabIndex = 4;
             this.btnSaveConfig.Text = "Save IE config";
             this.btnSaveConfig.UseVisualStyleBackColor = true;
+            this.btnSaveConfig.Click += new System.EventHandler(this.btnSaveConfig_Click);
             // 
             // btnTest
             // 
@@ -206,6 +208,7 @@
             this.btnTest.TabIndex = 5;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // BaseForm

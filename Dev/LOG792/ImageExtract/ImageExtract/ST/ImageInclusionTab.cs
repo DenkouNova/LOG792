@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using NHibernate.Tool.hbm2ddl;
 
 using ImageExtract.ST;
 using ImageExtract.Domain;
+using ImageExtract.ObserverPattern;
 
 namespace ImageExtract.ST
 {
@@ -27,7 +29,9 @@ namespace ImageExtract.ST
         {
             get { return conditionSetListBoxes; }
             set { conditionSetListBoxes = value; }
-        }        
+        }
+
+        private ListOfBatchesObserver observerBatchList;
 
         public ImageInclusionTab()
         {
@@ -36,7 +40,21 @@ namespace ImageExtract.ST
 
             LoadConditionCategoryButtons();
 
-            // CodeForScreenshots();
+            this.dgvPreviewGrid.Columns[this.dgvcImageInclusionImage.Name].Width =
+                this.dgvPreviewGrid.Width - 20 -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionSide.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionIRef.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionMPS.Name].Width -
+                this.dgvPreviewGrid.Columns[this.dgvcImageInclusionBSeq.Name].Width;
+
+            observerBatchList = new ListOfBatchesObserver("Batches shown in Image Inclusion Tab");
+            observerBatchList.dgv = this.dgvPreviewGrid;
+            observerBatchList.dgType = ListOfBatchesObserver.DataGridType.Inclusion;
+            VariablesSingleton.GetInstance().observableBatchList.Subscribe(observerBatchList);
+
+            //CodeForScreenshots();
+
+            AddConditionSetListBox(false);
         }
 
 
@@ -60,12 +78,13 @@ namespace ImageExtract.ST
         }
 
 
+        /*
         public void CodeForScreenshots()
         {
             AddConditionSetListBox(false);
             AddConditionSetListBox();
 
-            conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Singles", 0));
+            conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Singles", new integer(0)));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Multiples", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Only", 0));
             conditionSetListBoxes[0].AddToAllItemsBox(new MyComboBoxOrListBoxItem("Check Skirt", 0));
@@ -88,20 +107,21 @@ namespace ImageExtract.ST
                 ((DataGridViewImageCell)this.dgvPreviewGrid.Rows[i].Cells[this.dgvcImageInclusionImage.Name]).Value = img;
             }
         }
+        */
 
-                public void AddConditionSetListBox()
+        public void AddConditionSetListBox()
         {
             AddConditionSetListBox(true);
         }
 
-        private void AddOneBatchInPreviewGrid(Domain.CaptureBatch oneBatch)
+        public void RefreshPreviewGrid()
         {
-
+            VariablesSingleton.GetInstance().observableBatchList.NotifyObservers(VariablesSingleton.GetInstance().PreviewBatches);
         }
 
         public void AddConditionSetListBox(bool blnAllowRemovalOfConditionSet)
         {
-            ImageInclusionListBoxes oneConditionSet = new ImageInclusionListBoxes();
+            ImageInclusionListBoxes oneConditionSet = new ImageInclusionListBoxes(this);
             if (!blnAllowRemovalOfConditionSet) oneConditionSet.UnallowRemovalOfConditionSet();
             conditionSetListBoxes.Add(oneConditionSet);
             this.flpImageInclusionConditionSets.Controls.Add(oneConditionSet);
@@ -115,32 +135,28 @@ namespace ImageExtract.ST
             // Important: changing font color requires dgv.EnableHeadersVisualStyles = false;
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = (dgv.Enabled ? Color.Black : Color.Gray);
             foreach (DataGridViewRow dgvr in dgv.Rows) dgvr.Visible = dgv.Enabled;
-
         }
 
         private void btnLoadExampleBatches_Click(object sender, EventArgs e)
         {
             DialogLoadExampleImages exampleImages = new DialogLoadExampleImages();
-            IList<CaptureBatch> selectedBatches;
-
             exampleImages.ShowDialog();
-            
-            // brax selectedBatches = exampleImages.GetBatchesForInterface();
+            VariablesSingleton.GetInstance().PreviewBatches = exampleImages.ListOfBatchesForInterface;
+            RefreshPreviewGrid();
         }
 
         private void ConditionCategoryButtons_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
             ImageExtractCondCategory category = (ImageExtractCondCategory)b.Tag;
-            MessageBox.Show("ID " + category.Cond_Category_Id +", Description = '" + category.Description + "'");
+            foreach(Domain.ImageExtractCondition oneCondition in category.ImageExtractConditions)
+            {
+                this.conditionSetListBoxes[0].AddToUnusedBox(oneCondition);
+            }
         }
         #endregion
 
-        
+    } // public partial class ImageInclusionTab
 
 
-
-
-
-    }
 }

@@ -15,6 +15,7 @@ using NHibernate.Tool.hbm2ddl;
 
 using ImageExtract.ST;
 using ImageExtract.Domain;
+using ImageExtract.ObserverPattern;
 
 namespace ImageExtract.ST
 {
@@ -22,24 +23,63 @@ namespace ImageExtract.ST
     {
         private static VariablesSingleton allVariables = null;
 
-        public static VariablesSingleton GetGlobalVariables()
+        public static VariablesSingleton GetInstance()
         {
             if (allVariables == null) allVariables = new VariablesSingleton();
             return allVariables;
         }
 
-        private List<Domain.CaptureBatch> previewBatches;
-
         private VariablesSingleton()
         {
             previewBatches = new List<Domain.CaptureBatch>();
+            observableBatchList = new MyObservable();
         }
 
-        public List<Domain.CaptureBatch> PreviewBatches
+        private HashSet<Domain.ImageExtractCondition> conditionsInIncludeBox = new HashSet<Domain.ImageExtractCondition>();
+        private HashSet<Domain.ImageExtractCondition> conditionsInUnusedBox = new HashSet<Domain.ImageExtractCondition>();
+        private HashSet<Domain.ImageExtractCondition> conditionsInExcludeBox = new HashSet<Domain.ImageExtractCondition>();
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInIncludeBox
+        {
+            get { return conditionsInIncludeBox; }
+            set { conditionsInIncludeBox = value; }
+        }
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInExcludeBox
+        {
+            get { return conditionsInExcludeBox; }
+            set { conditionsInExcludeBox = value; }
+        }
+
+        public HashSet<Domain.ImageExtractCondition> ConditionsInUnusedBox
+        {
+            get { return conditionsInUnusedBox; }
+            set { conditionsInUnusedBox = value; }
+        }
+
+
+
+        public MyObservable observableBatchList;
+
+        
+
+
+
+        private IList<Domain.CaptureBatch> previewBatches = new List<Domain.CaptureBatch>();
+
+        public IList<Domain.CaptureBatch> PreviewBatches
         {
             get { return previewBatches; }
             set { previewBatches = value; }
         }
+
+
+
+        // Ordinateur à la maison
+        // public string ImagePath = @"D:\Cossins\Documents\ETS\LOG792\Images";
+
+        // Ordinateur à l'école
+        public string ImagePath = @"J:\LOG792\Images";
 
 
 

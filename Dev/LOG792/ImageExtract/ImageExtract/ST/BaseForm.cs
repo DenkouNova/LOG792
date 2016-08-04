@@ -77,8 +77,6 @@ namespace ImageExtract.ST
             this.tabControl1.TabPages[0].Controls.Add(m_imageInclusionTab);
             m_imageInclusionTab.Dock = System.Windows.Forms.DockStyle.Fill;
 
-            /* TODO
-            // Initialize Image Separation tab
             m_imageSeparationTab = new ImageSeparationTab();
             this.tabControl1.TabPages[1].Controls.Add(m_imageSeparationTab);
             m_imageSeparationTab.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -97,7 +95,6 @@ namespace ImageExtract.ST
             m_otherOptionsTab = new OtherOptionsTab();
             this.tabControl1.TabPages[4].Controls.Add(m_otherOptionsTab);
             m_otherOptionsTab.Dock = System.Windows.Forms.DockStyle.Fill;
-            */
         }
 
 
@@ -123,11 +120,11 @@ namespace ImageExtract.ST
 
             // Tab Control 1, Delete button and Save button are only available if a config is selected
             this.tabControl1.Enabled = this.btnDeleteConfig.Enabled = this.btnSaveConfig.Enabled =
-                ((cb.SelectedItem as MyComboBoxOrListBoxItem).Value != NO_CONFIG_SELECTED);
+                ((int)(cb.SelectedItem as MyComboBoxOrListBoxItem).Value != NO_CONFIG_SELECTED);
 
             // If the chosen option isn't "no config selected", remove the "no config selected" choice.
             // We only need that option when entirely reloading the top section, for example at startup
-            if ((cb.SelectedItem as MyComboBoxOrListBoxItem).Value != NO_CONFIG_SELECTED)
+            if ((int)(cb.SelectedItem as MyComboBoxOrListBoxItem).Value != NO_CONFIG_SELECTED)
             {
                 cb.Items.Remove(noConfigSelected);
             }
@@ -135,7 +132,7 @@ namespace ImageExtract.ST
             for (int i = 0; i < this.listOfImageExtractConfigs.Count && !configFoundInList; i++ )
             {
                 if ((listOfImageExtractConfigs[i] as ImageExtractConfig).ImgExtr_Config_Id == 
-                    (this.comboChooseImageExtract.SelectedItem as MyComboBoxOrListBoxItem).Value)
+                    (int)(this.comboChooseImageExtract.SelectedItem as MyComboBoxOrListBoxItem).Value)
                 {
                     currentlyDisplayedImageExtractConfig = listOfImageExtractConfigs[i] as ImageExtractConfig;
                 }
@@ -319,6 +316,16 @@ namespace ImageExtract.ST
             sess.Close();
             */
 
+        }
+
+        private void btnNewConfig_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnSaveConfig_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Saved.");
         }
 
 
