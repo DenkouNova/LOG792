@@ -50,8 +50,6 @@
             this.btnAddConditionSet = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemoveCondition = new System.Windows.Forms.Button();
-            this.btnLinkConditions = new System.Windows.Forms.Button();
-            this.btnUnlinkConditions = new System.Windows.Forms.Button();
             this.tlpListBoxes.SuspendLayout();
             this.tlpExcludeButtons.SuspendLayout();
             this.tlpExclude.SuspendLayout();
@@ -313,7 +311,6 @@
             // 
             // btnRemoveConditionSet
             // 
-            this.btnRemoveConditionSet.Enabled = false;
             this.btnRemoveConditionSet.Location = new System.Drawing.Point(3, 118);
             this.btnRemoveConditionSet.Margin = new System.Windows.Forms.Padding(3, 118, 3, 3);
             this.btnRemoveConditionSet.Name = "btnRemoveConditionSet";
@@ -324,7 +321,6 @@
             // 
             // btnAddConditionSet
             // 
-            this.btnAddConditionSet.Enabled = false;
             this.btnAddConditionSet.Location = new System.Drawing.Point(3, 159);
             this.btnAddConditionSet.Name = "btnAddConditionSet";
             this.btnAddConditionSet.Size = new System.Drawing.Size(91, 35);
@@ -334,17 +330,15 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.btnRemoveCondition, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnLinkConditions, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnUnlinkConditions, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 302);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -356,35 +350,13 @@
             // btnRemoveCondition
             // 
             this.btnRemoveCondition.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRemoveCondition.Location = new System.Drawing.Point(145, 3);
+            this.btnRemoveCondition.Location = new System.Drawing.Point(305, 3);
             this.btnRemoveCondition.Name = "btnRemoveCondition";
             this.btnRemoveCondition.Size = new System.Drawing.Size(114, 38);
             this.btnRemoveCondition.TabIndex = 0;
             this.btnRemoveCondition.Text = "Remove selected conditions";
             this.btnRemoveCondition.UseVisualStyleBackColor = true;
             this.btnRemoveCondition.Click += new System.EventHandler(this.btnRemoveCondition_Click);
-            // 
-            // btnLinkConditions
-            // 
-            this.btnLinkConditions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLinkConditions.Enabled = false;
-            this.btnLinkConditions.Location = new System.Drawing.Point(325, 3);
-            this.btnLinkConditions.Name = "btnLinkConditions";
-            this.btnLinkConditions.Size = new System.Drawing.Size(114, 38);
-            this.btnLinkConditions.TabIndex = 1;
-            this.btnLinkConditions.Text = "Link conditions together";
-            this.btnLinkConditions.UseVisualStyleBackColor = true;
-            // 
-            // btnUnlinkConditions
-            // 
-            this.btnUnlinkConditions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUnlinkConditions.Enabled = false;
-            this.btnUnlinkConditions.Location = new System.Drawing.Point(465, 3);
-            this.btnUnlinkConditions.Name = "btnUnlinkConditions";
-            this.btnUnlinkConditions.Size = new System.Drawing.Size(114, 38);
-            this.btnUnlinkConditions.TabIndex = 2;
-            this.btnUnlinkConditions.Text = "Unlink conditions";
-            this.btnUnlinkConditions.UseVisualStyleBackColor = true;
             // 
             // ImageInclusionListBoxes
             // 
@@ -433,7 +405,5 @@
         private System.Windows.Forms.Button btnAddConditionSet;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btnRemoveCondition;
-        private System.Windows.Forms.Button btnLinkConditions;
-        private System.Windows.Forms.Button btnUnlinkConditions;
     }
 }

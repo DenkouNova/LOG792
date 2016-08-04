@@ -122,7 +122,7 @@ namespace ImageExtract.ST
         public void AddConditionSetListBox(bool blnAllowRemovalOfConditionSet)
         {
             ImageInclusionListBoxes oneConditionSet = new ImageInclusionListBoxes(this);
-            if (!blnAllowRemovalOfConditionSet) oneConditionSet.UnallowRemovalOfConditionSet();
+            // if (!blnAllowRemovalOfConditionSet) oneConditionSet.UnallowRemovalOfConditionSet(); // TODO commented for presentation
             conditionSetListBoxes.Add(oneConditionSet);
             this.flpImageInclusionConditionSets.Controls.Add(oneConditionSet);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Drawing.Imaging;
 using System.Collections.Generic;
 
 using NHibernate;
@@ -204,9 +206,10 @@ namespace ImageExtract.ST
             ICriteria criteria;
             ISession sess;
 
+            /*
             TestImageGenerator tig = new TestImageGenerator();
             tig.Show();
-
+            */
 
             /*
             sess = NHibernateHelper.GetCurrentSession();
@@ -316,6 +319,12 @@ namespace ImageExtract.ST
             sess.Close();
             */
 
+            string ImagePathOne = @"D:\Cossins\Documents\ETS\LOG792\Images\stub.jpg";
+            string imagePathTwo = @"D:\Cossins\Documents\ETS\LOG792\Images\256001_10_R.tif";
+            string imagePathThree = @"D:\Cossins\Documents\ETS\LOG792\Images\cheque.jpg";
+            string imagePathFour = @"D:\Cossins\Documents\ETS\LOG792\Images\256001_20_R.tif";
+            CombineTwoImages(ImagePathOne, imagePathTwo, imagePathThree, imagePathFour);
+
         }
 
         private void btnNewConfig_Click(object sender, EventArgs e)
@@ -326,6 +335,113 @@ namespace ImageExtract.ST
         private void btnSaveConfig_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Saved.");
+        }
+
+
+        private void CombineTwoImages(string imageOne, string imageTwo, string imageThree, string imageFour)
+        {
+            // Start with the first bitmap by putting it into an Image object
+
+            Bitmap one = (Bitmap)Image.FromFile(imageOne);
+
+            // Save the bitmap to memory as tiff
+
+            MemoryStream byteStream = new MemoryStream();
+            one.Save(byteStream, ImageFormat.Tiff);
+
+            // Put Tiff into another Image object
+
+            Image tiff = Image.FromStream(byteStream);
+
+            // Prepare encoders:
+
+            ImageCodecInfo encoderInfo = this.GetEncoderInfo("image/tiff");
+
+            EncoderParameters encoderParams = new EncoderParameters(2);
+            EncoderParameter parameter = new EncoderParameter(
+                System.Drawing.Imaging.Encoder.Compression, (long)EncoderValue.CompressionLZW);
+            encoderParams.Param[0] = parameter;
+            parameter = new EncoderParameter(System.Drawing.Imaging.Encoder.SaveFlag,
+                (long)EncoderValue.MultiFrame);
+            encoderParams.Param[1] = parameter;
+
+            // Save to file:
+
+            tiff.Save(VariablesSingleton.GetInstance().ImagePath + @"\a.tiff", encoderInfo, encoderParams);
+
+            // For subsequent pages, prepare encoders:
+
+            encoderParams = new EncoderParameters(2);
+            EncoderParameter SaveEncodeParam = new EncoderParameter(
+                 System.Drawing.Imaging.Encoder.SaveFlag, 
+                 (long)EncoderValue.FrameDimensionPage);
+            EncoderParameter CompressionEncodeParam = new EncoderParameter(
+                 System.Drawing.Imaging.Encoder.Compression, (long)EncoderValue.CompressionLZW);
+            encoderParams.Param[0] = CompressionEncodeParam;
+            encoderParams.Param[1] = SaveEncodeParam;
+
+            Bitmap two = (Bitmap)Image.FromFile(imageTwo);
+            byteStream = new MemoryStream();
+            two.Save(byteStream, ImageFormat.Tiff);
+            tiff.SaveAdd(Image.FromStream(byteStream), encoderParams);
+
+            encoderParams = new EncoderParameters(2);
+            SaveEncodeParam = new EncoderParameter(
+                 System.Drawing.Imaging.Encoder.SaveFlag,
+                 (long)EncoderValue.FrameDimensionPage);
+            CompressionEncodeParam = new EncoderParameter(
+                 System.Drawing.Imaging.Encoder.Compression, (long)EncoderValue.CompressionLZW);
+            encoderParams.Param[0] = CompressionEncodeParam;
+            encoderParams.Param[1] = SaveEncodeParam;
+
+            Bitmap three = (Bitmap)Image.FromFile(imageThree);
+            byteStream = new MemoryStream();
+            three.Save(byteStream, ImageFormat.Tiff);
+            tiff.SaveAdd(Image.FromStream(byteStream), encoderParams);
+
+            encoderParams = new EncoderParameters(2);
+            SaveEncodeParam = new EncoderParameter(
+                 System.Drawing.Imaging.Encoder.SaveFlag,
+                 (long)EncoderValue.FrameDimensionPage);
+            CompressionEncodeParam = new EncoderParameter(
+                 System.Drawing.Imaging.Encoder.Compression, (long)EncoderValue.CompressionLZW);
+            encoderParams.Param[0] = CompressionEncodeParam;
+            encoderParams.Param[1] = SaveEncodeParam;
+
+            Bitmap four = (Bitmap)Image.FromFile(imageFour);
+            byteStream = new MemoryStream();
+            four.Save(byteStream, ImageFormat.Tiff);
+            tiff.SaveAdd(Image.FromStream(byteStream), encoderParams);
+
+            // Finally flush the file:
+
+            SaveEncodeParam = new EncoderParameter(
+                System.Drawing.Imaging.Encoder.SaveFlag, (long)EncoderValue.Flush);
+            encoderParams = new EncoderParameters(1);
+            encoderParams.Param[0] = SaveEncodeParam;
+            tiff.SaveAdd(encoderParams);
+
+            MessageBox.Show("complete");
+
+            /*
+            Bitmap three = (Bitmap)Image.FromFile(imageThree);
+            Bitmap four = (Bitmap)Image.FromFile(imageFour);
+            */
+        }
+
+
+
+        private ImageCodecInfo GetEncoderInfo(String mimeType)
+        {
+            int j;
+            ImageCodecInfo[] encoders;
+            encoders = ImageCodecInfo.GetImageEncoders();
+            for (j = 0; j < encoders.Length; ++j)
+            {
+                if (encoders[j].MimeType == mimeType)
+                    return encoders[j];
+            }
+            return null;
         }
 
 
