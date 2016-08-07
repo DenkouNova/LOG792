@@ -1,0 +1,56 @@
+LOUOKDOM TAKAM, Stève Anicet
+Accès GIA
+Intro: 15/20
+Structure: 16/20
+Illustrations: 4/5
+Capter l'attention: 3/5
+Conclusion: 17/20
+Préparation: 7/10
+
+HALLÉ, Israël
+Identification dynamique de fonctions
+Intro: 14/20
+Structure: 16/20
+Illustrations: 3/5
+Capter l'attention: 4/5
+Conclusion: 19/20
+Préparation: 9/10
+
+POIRIER, Guillaume
+Modélisation tridimensionnelle
+Intro: 16/20
+Structure: 16/20
+Illustrations: 3/5
+Capter l'attention: 4/5
+Conclusion: 16/20
+Préparation: 9/10
+
+BEAUDET, David
+Business Objects
+Intro: 17/20
+Structure: 15/20
+Illustrations: 4/5
+Capter l'attention: 2/5
+Conclusion: 14/20
+Préparation: 8/10
+
+GRIMARD, David
+Gestion d'Immeuble
+Intro: 18/20
+Structure: 18/20
+Illustrations: 4/5
+Capter l'attention: 5/5
+Conclusion: 17/20
+Préparation: 9/10
+
+
+
+MEILLEURE PRÉSENTATION:
+La présentation de David Grimard sur la Gestion d'immeubles m'a semblé la meilleure. Elle était bien structurée et l'auditoire savait où l'on s'en allait. Le présentateur était dynamique et intéressant.
+
+
+MOINS BONNE PRÉSENTATION:
+La présentation de David Beaudet sur le "phasing out" de Business Objects m'a semblé un peu vide. Le point qui achoppe n'est pas tant dans la structure ou le dynamisme, mais plutôt dans le fait que ce type de projet est très abstrait. Il s'agit d'un projet très "haut niveau" d'analyse de migration d'un système de gestion Business Objects vers un autre système de gestion; on y effleurait des concepts qui, il me semblait, sont surtout évidents quand on a travaillé avec ce genre de système. Pour garder l'auditoire concentré, on aurait peut-être gagné à donner plus d'exemples concrets, par exemple en décrivant des utilisateurs type de Business Objects, l'utilisation qu'ils font de Business Objects, et comment ces utilisateurs seraient impactés par la migration.
+
+La préparation et l'effort y étaient sans aucun doute; simplement, David avait dans les mains un projet difficile à présenter.
+
