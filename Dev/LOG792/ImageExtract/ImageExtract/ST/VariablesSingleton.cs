@@ -76,10 +76,10 @@ namespace ImageExtract.ST
 
 
         // Ordinateur à la maison
-        // public string ImagePath = @"D:\Cossins\Documents\ETS\LOG792\Images";
+        public string ImagePath = @"D:\Cossins\Documents\ETS\LOG792\Images";
 
         // Ordinateur à l'école
-        public string ImagePath = @"J:\LOG792\Images";
+        // public string ImagePath = @"J:\LOG792\Images";
 
 
 

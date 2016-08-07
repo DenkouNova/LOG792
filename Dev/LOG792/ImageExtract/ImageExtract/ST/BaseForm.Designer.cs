@@ -218,7 +218,7 @@
             this.ClientSize = new System.Drawing.Size(1298, 668);
             this.Controls.Add(this.tlpMain);
             this.Name = "BaseForm";
-            this.Text = "Configuration d\'Extraction d\'Image";
+            this.Text = "Image Extract Configuration";
             this.tabControl1.ResumeLayout(false);
             this.tlpMain.ResumeLayout(false);
             this.flpChooseImageExtractConfig.ResumeLayout(false);
