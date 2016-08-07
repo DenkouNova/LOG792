@@ -1,0 +1,11 @@
+
+
+Avant d’arriver à décortiquer le nouveau besoin évoqué en introduction, il importe de revenir en arrière définir la situation de la compagnie avant l'arrivée du nouveau requis. Cette section contiendra un survol des activités de CTEC et de ses interactions avec ses clients.
+
+
+
+CTEC est une compagnie faisant du traitement de documents pour ses clients. Les clients sont généralement d'autres compagnies qui sont des fournisseures de services, comme des compagnies d'électricité ou d'Internet; en d'autres mots, des entités qui envoient des factures à un grand nombre d'individus. Ces individus renvoient par la poste la facture avec un paiement, généralement un chèque.
+
+
+
+Ces fournisseurs de services ont alors le choix de gérer les paiements eux-mêmes, ou de les envoyer en sous-traitance. Dans le cas présent, les fournisseurs envoient les documents à CTEC. CTEC renvoie alors les résultats à la compagnie sous formes de plusieurs livrables; rapports divers, fichiers bancaires, ainsi que des fichiers "Extraction" pour importation dans les serveurs de la compagnie client.

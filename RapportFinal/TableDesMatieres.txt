@@ -1,0 +1,90 @@
+
+
+--====================================================================
+                       TABLE DES MATIÈRES - OLD
+--====================================================================
+
+   INTRODUCTION
+
+   CHAPITRE 1 : REVUE DE LA DOCUMENTATION
+
+   CHAPITRE 2 :  SITUATION ACTUELLE
+      2.1  Description de la compagnie
+      2.2  Déroulement actuel des activités
+      2.3  Un nouveau requis : l'Extraction d'Image
+      2.4  Problèmes de la gestion actuelle de l'Extraction d'Image
+      2.5  Solution proposée
+
+   CHAPITRE 3 :  PROJET EXTRACTION D'IMAGE
+      3.1  Liste des fonctionnalités
+      3.2  Intégration avec l'outil de configuration S.T.
+      3.3  Extraction d'Image type
+           3.3.1  Inclusion d'images et groupements
+           3.3.2  Archivage
+           3.3.3  Opérations sur les images
+           3.3.4  Fichier accompagnateur
+      3.5  Outil testeur
+      3.6  Outil de visionnement
+
+   CHAPITRE 4 :  DISCUSSION : LE PROJET ATTEINT-IL TOUS SES BUTS?
+
+   CONCLUSION
+
+   RÉFÉRENCES BIBLIOGRAPHIQUES
+
+   ANNEXES 
+
+
+   
+   
+   
+
+
+   
+   
+
+--====================================================================
+                      TABLE DES MATIÈRES - NEW
+--====================================================================
+
+   INTRODUCTION
+
+   CHAPITRE 1 : DOMAINE D'AFFAIRES DE CTEC
+      1.1  Description de lacompagnie
+	  1.2  Déroulement actuel des activités
+	  
+
+   CHAPITRE 2 :  SITUATION ACTUELLE
+      2.1  Description de la compagnie
+      2.2  Déroulement actuel des activités
+      2.3  Un nouveau requis : l'Extraction d'Image
+      2.4  Problèmes de la gestion actuelle de l'Extraction d'Image
+      2.5  Solution proposée
+
+   CHAPITRE 3 :  PROJET EXTRACTION D'IMAGE
+      3.1  Liste des fonctionnalités
+      3.2  Intégration avec l'outil de configuration S.T.
+      3.3  Extraction d'Image type
+           3.3.1  Inclusion d'images et groupements
+           3.3.2  Archivage
+           3.3.3  Opérations sur les images
+           3.3.4  Fichier accompagnateur
+      3.5  Outil testeur
+      3.6  Outil de visionnement
+
+   CHAPITRE 4 :  DISCUSSION : LE PROJET ATTEINT-IL TOUS SES BUTS?
+
+   CONCLUSION
+
+   RÉFÉRENCES BIBLIOGRAPHIQUES
+
+   ANNEXES 
+
+	
+   
+   
+   
+   
+   
+   
+   
